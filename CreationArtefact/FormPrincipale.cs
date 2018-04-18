@@ -1,0 +1,603 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+
+namespace CreationArtefact
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public partial class FormPrincipale : Form
+    {
+        FormContenant formContenant = null;
+        FormFacetteQualite formFacetteQualite = null;
+        FormFacetteCombat formFacetteCombat = null;
+        FormAttaqueSpeciale formAttaqueSpeciale = null;
+        FormFacetteDefensive formFacetteDefensive = null;
+        FormFacetteProtection formFacetteProtection = null;
+        FormFacetteMagique formFacetteMagique = null;
+        FormFacettePsychique formFacettePsychique = null;
+        FormFacetteConvocation formFacetteConvocation = null;
+        FormFacetteMagieInnee formFacetteMagieInnee = null;
+        FormFacetteAugmentation formFacetteAugmentation = null;
+        FormFacetteMaitrise formFacetteMaitrise = null;
+        FormFacetteEsoterique formFacetteEsoterique = null;
+        FormEffetMystique formEffetMystique = null;
+
+        public ClassArtefact artefact = null;
+        List<string> descriptionLigne;
+        bool saved;
+        bool DissimulationAdded = false;
+        bool modificationActive = false;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public FormPrincipale()
+        {
+            InitializeComponent();
+            formContenant = new FormContenant();
+            artefact = new ClassArtefact();
+            ComboBoxFacette.DataSource = Properties.Settings.Default.Facette;
+            descriptionLigne = new List<string>();
+            saved = false;
+        }
+
+        private void MAJRichTextBoxDescArtefact()
+        {
+            string tempdesc = "";
+
+            descriptionLigne = new List<string>();
+            artefact.MAJPpointPouvoirPresence();
+            artefact.DescriptionArtefact(descriptionLigne);
+
+            foreach (string ligne in descriptionLigne)
+            {
+                tempdesc += ligne + "\n";
+            }
+
+            richTextBoxDescArtefact.Text = tempdesc;
+        }
+
+        private void ButtonQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void SaveFileDialogArtefact_FileOk(object sender, CancelEventArgs e)
+        {
+            ButtonSave.Text = "Sauvegarder";
+            SauvegarderSousToolStripMenuItem.Enabled = false;
+        }
+
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            SaveArtefactToFile();
+        }
+
+        private void ButtonAjouterPouvoir_Click(object sender, EventArgs e)
+        {
+            bool isSavedAdded = false;
+            bool wasSavePressed = false;
+
+            if (!modificationActive)
+            {
+                switch (ComboBoxFacette.SelectedIndex)
+                {
+                    case 1:
+                        if (formFacetteQualite != null)
+                        {
+                            formFacetteQualite.Dispose();
+                        }
+                        formFacetteQualite = new FormFacetteQualite();
+                        formFacetteQualite.ShowDialog(this);
+                        wasSavePressed = formFacetteQualite.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteQualite.Qualite);
+                        }
+                        break;
+                    case 2:
+                        if (formFacetteCombat != null)
+                        {
+                            formFacetteCombat.Dispose();
+                        }
+                        formFacetteCombat = new FormFacetteCombat();
+                        formFacetteCombat.ShowDialog(this);
+                        wasSavePressed = formFacetteCombat.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteCombat.Combat);
+                        }
+                        break;
+                    case 3:
+                        if (formAttaqueSpeciale != null)
+                        {
+                            formAttaqueSpeciale.Dispose();
+                        }
+                        formAttaqueSpeciale = new FormAttaqueSpeciale();
+                        formAttaqueSpeciale.ShowDialog(this);
+                        wasSavePressed = formAttaqueSpeciale.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formAttaqueSpeciale.AttaqueSpec);
+                        }
+                        break;
+                    case 4:
+                        if (formFacetteDefensive != null)
+                        {
+                            formFacetteDefensive.Dispose();
+                        }
+                        formFacetteDefensive = new FormFacetteDefensive();
+                        formFacetteDefensive.ShowDialog(this);
+                        wasSavePressed = formFacetteDefensive.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteDefensive.Defense);
+                        }
+                        break;
+                    case 5:
+                        if (formFacetteProtection != null)
+                        {
+                            formFacetteProtection.Dispose();
+                        }
+                        formFacetteProtection = new FormFacetteProtection();
+                        formFacetteProtection.ShowDialog(this);
+                        wasSavePressed = formFacetteProtection.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteProtection.Protection);
+                        }
+                        break;
+                    case 6:
+                        if (formFacetteMagique != null)
+                        {
+                            formFacetteMagique.Dispose();
+                        }
+                        formFacetteMagique = new FormFacetteMagique();
+                        formFacetteMagique.ShowDialog(this);
+                        wasSavePressed = formFacetteMagique.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteMagique.Magique);
+                        }
+                        break;
+                    case 7:
+                        if (formFacettePsychique != null)
+                        {
+                            formFacettePsychique.Dispose();
+                        }
+                        formFacettePsychique = new FormFacettePsychique();
+                        formFacettePsychique.ShowDialog(this);
+                        wasSavePressed = formFacettePsychique.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacettePsychique.Psychique);
+                        }
+                        break;
+                    case 8:
+                        if (formFacetteConvocation != null)
+                        {
+                            formFacetteConvocation.Dispose();
+                        }
+                        formFacetteConvocation = new FormFacetteConvocation();
+                        formFacetteConvocation.ShowDialog(this);
+                        wasSavePressed = formFacetteConvocation.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteConvocation.Convocation);
+                        }
+                        break;
+                    case 9:
+                        if (formFacetteMagieInnee != null)
+                        {
+                            formFacetteMagieInnee.Dispose();
+                        }
+                        formFacetteMagieInnee = new FormFacetteMagieInnee();
+                        formFacetteMagieInnee.ShowDialog(this);
+                        wasSavePressed = formFacetteMagieInnee.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteMagieInnee.MagieInnee);
+                        }
+                        break;
+                    case 10:
+                        if (formFacetteAugmentation != null)
+                        {
+                            formFacetteAugmentation.Dispose();
+                        }
+                        formFacetteAugmentation = new FormFacetteAugmentation();
+                        formFacetteAugmentation.ShowDialog(this);
+                        wasSavePressed = formFacetteAugmentation.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteAugmentation.Augmentation);
+                        }
+                        break;
+                    case 11:
+                        if (formFacetteMaitrise != null)
+                        {
+                            formFacetteMaitrise.Dispose();
+                        }
+                        formFacetteMaitrise = new FormFacetteMaitrise();
+                        formFacetteMaitrise.ShowDialog(this);
+                        wasSavePressed = formFacetteMaitrise.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formFacetteMaitrise.Maitrise);
+                        }
+                        break;
+                    case 12:
+                        if (formFacetteEsoterique != null)
+                        {
+                            formFacetteEsoterique.Dispose();
+                        }
+                        formFacetteEsoterique = new FormFacetteEsoterique();
+                        formFacetteEsoterique.ShowDialog(this);
+                        wasSavePressed = formFacetteEsoterique.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            if (formFacetteEsoterique.Esoterique.Dissimulation != 0)
+                            {
+                                DissimulationAdded = true;
+                            }
+                            if (DissimulationAdded)
+                            {
+                                if (MessageBox.Show("En ajoutant le pouvoir de dissimulation \nvous ne pourrez plus ajouter d'autre pouvoir.",
+                                    "Avertissement", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                {
+                                    isSavedAdded = artefact.addPouvoir(formFacetteEsoterique.Esoterique, true);
+                                }
+                                else
+                                {
+                                    DissimulationAdded = false;
+                                }
+                            }
+                            else
+                            {
+                                isSavedAdded = artefact.addPouvoir(formFacetteEsoterique.Esoterique);
+                            }
+                        }
+                        break;
+                    case 13:
+                        if (formEffetMystique != null)
+                        {
+                            formEffetMystique.Dispose();
+                        }
+                        formEffetMystique = new FormEffetMystique();
+                        formEffetMystique.ShowDialog(this);
+                        wasSavePressed = formEffetMystique.CloseSaveCancel;
+                        if (wasSavePressed)
+                        {
+                            isSavedAdded = artefact.addPouvoir(formEffetMystique.EffetMystique);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                if (!isSavedAdded && wasSavePressed)
+                {
+                    MessageBox.Show("Ajout de pouvoir impossible.\nPrésence potentiellement insufisante.",
+                        Properties.Settings.Default.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (DissimulationAdded)
+                    {
+                        DissimulationAdded = false;
+                    }
+                }
+                else if (isSavedAdded && wasSavePressed)
+                {
+
+
+                    MAJRichTextBoxDescArtefact();
+                    ButtonSave.Enabled = true;
+                    ButtonModifier.Enabled = true;
+                    SauvegarderToolStripMenuItem.Enabled = true;
+                    if (!saved)
+                    {
+                        SauvegarderSousToolStripMenuItem.Enabled = true;
+                    }
+                }
+
+
+                if (DissimulationAdded)
+                {
+                    ComboBoxFacette.Enabled = false;
+                }
+                ComboBoxFacette.SelectedIndex = 0;
+                ComboBoxFacette.Focus();
+                ButtonContenant.Enabled = false;
+            }
+            else
+            {
+                if (ListBoxArtefact.SelectedIndex == 0)
+                {
+                    formContenant.ShowDialog(artefact.Contenant);
+
+                    if (formContenant.CloseSaveCancel)
+                    {
+                        artefact.SetContenant(formContenant.Contenant);
+                        MAJRichTextBoxDescArtefact();
+                        ComboBoxFacette.Enabled = true;
+                        ButtonContenant.Enabled = false;
+                        NouveauToolStripMenuItem.Enabled = true;
+                    }
+                }
+                else
+                {
+                    switch (artefact.Pouvoirs[ListBoxArtefact.SelectedIndex-1].TypePouvoir)
+                    {
+                        case TypeFacette.FacetteAugmentation:
+                            if (formFacetteAugmentation != null)
+                            {
+                                formFacetteAugmentation.Dispose();
+                            }
+                            formFacetteAugmentation = new FormFacetteAugmentation();
+                            ClassFacetteAugmentation tempAug = 
+                                (ClassFacetteAugmentation)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+
+                            formFacetteAugmentation.ShowDialog(tempAug);
+                            wasSavePressed = formFacetteAugmentation.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                isSavedAdded = artefact.addPouvoir(tempAug);
+                            }
+                            break;
+                        case TypeFacette.FacetteCombat:
+                            break;
+                        case TypeFacette.FacetteConvocation:
+                            break;
+                        case TypeFacette.FacetteDefensive:
+                            break;
+                        case TypeFacette.FacetteEsoterique:
+                            break;
+                        case TypeFacette.FacetteInnee:
+                            break;
+                        case TypeFacette.FacetteMagique:
+                            break;
+                        case TypeFacette.FacetteMaitrise:
+                            break;
+                        case TypeFacette.FacetteProtection:
+                            break;
+                        case TypeFacette.FacettePsychique:
+                            break;
+                        case TypeFacette.FacetteQualite:
+                            MessageBox.Show("FacetteQualite", "Avertissement",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            ListBoxArtefact.ClearSelected();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                ListBoxArtefact.ClearSelected();
+            }
+        }
+
+        private void ButtonContenant_Click(object sender, EventArgs e)
+        {
+            formContenant.ShowDialog(artefact.Contenant);
+
+            if (formContenant.CloseSaveCancel)
+            {
+                artefact.SetContenant(formContenant.Contenant);
+                MAJRichTextBoxDescArtefact();
+                ComboBoxFacette.Enabled = true;
+                ButtonContenant.Enabled = false;
+                NouveauToolStripMenuItem.Enabled = true;
+                ButtonContenant.Text = "Modifier";
+            }
+        }
+
+        private void ComboBoxFacette_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ComboBoxFacette.SelectedIndex != 0)
+                ButtonAjouterPouvoir.Enabled = true;
+            else
+                ButtonAjouterPouvoir.Enabled = false;
+        }
+
+        private void NouveauToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!formContenant.IsDisposed)
+            {
+                formContenant.Dispose();
+            }
+            formContenant = new FormContenant();
+
+            artefact = new ClassArtefact();
+            richTextBoxDescArtefact.Text = "";
+            //ListBoxArtefact.Items.Clear();
+
+            ComboBoxFacette.Enabled = false;
+            ButtonAjouterPouvoir.Enabled = false;
+            ButtonContenant.Enabled = true;
+            NouveauToolStripMenuItem.Enabled = false;
+            SauvegarderSousToolStripMenuItem.Enabled = false;
+            SauvegarderToolStripMenuItem.Enabled = false;
+            ButtonSave.Enabled = false;
+            ButtonSave.Text = "Sauvegarder sous...";
+            ButtonModifier.Enabled = false;
+            saved = false;
+            DissimulationAdded = false;
+        }
+
+        private void SauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveArtefactToFile();
+        }
+
+        private void SauvegarderSousToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveArtefactToFile();
+        }
+
+        private void SaveArtefactToFile()
+        {
+            DialogResult result = DialogResult.Cancel;
+            string tmpDir;
+
+            if (!saved)
+            {
+                SaveFileDialogArtefact.InitialDirectory = Properties.Settings.Default.RepertoireInit;
+                //SaveFileDialogArtefact.RestoreDirectory = true;
+                //SaveFileDialogArtefact.Filter = "txt files (*.txt)|*.txt|xml files (*.xml)|*.xml|All files (*.*)|*.*";
+                SaveFileDialogArtefact.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                SaveFileDialogArtefact.FilterIndex = 1;
+                result = SaveFileDialogArtefact.ShowDialog();
+            }
+
+            if (result == DialogResult.OK)
+            {
+                string invertFile = "", invertDir = "";
+                tmpDir = SaveFileDialogArtefact.FileName;
+                for (int i = SaveFileDialogArtefact.FileName.Length-1; i >= 0; i--)
+                {
+                    invertFile += SaveFileDialogArtefact.FileName[i];
+                }
+                bool dirFound = false;
+                foreach (char c in invertFile)
+                {
+                    if (dirFound)
+                        invertDir += c;
+                    else
+                    {
+                        if (c == '\\')
+                        {
+                            dirFound = true;
+                            invertDir += c;
+                        }
+                    }
+                }
+                tmpDir = "";
+                for (int i = invertDir.Length - 1; i >= 0; i--)
+                {
+                    tmpDir += invertDir[i];
+                }
+                Properties.Settings.Default.RepertoireInit = tmpDir;
+                Properties.Settings.Default.Save();                
+            }
+
+            if (result == DialogResult.OK || saved)
+            {
+                if (SaveFileDialogArtefact.FilterIndex == 1)
+                {
+                    File.WriteAllLines(SaveFileDialogArtefact.FileName, descriptionLigne);
+                }
+                /*else if (SaveFileDialogArtefact.FilterIndex == 2)
+                {
+                    XmlWriter writer = XmlWriter.Create(SaveFileDialogArtefact.FileName/*, settings*);
+
+                    artefact.ExportXML(writer);
+                    writer.Flush();
+                    writer.Close();
+                    writer.Dispose();
+                }*/
+                else
+                {
+                    File.WriteAllLines(SaveFileDialogArtefact.FileName, descriptionLigne);
+                }
+
+                saved = true;                
+
+                SauvegarderToolStripMenuItem.Enabled = false;
+                ButtonSave.Enabled = false;
+            }
+        }
+
+        private void AProposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBoxArtefact aboutBoxArtefact = new AboutBoxArtefact();
+
+            aboutBoxArtefact.ShowDialog();
+        }
+
+        private void ListBoxArtefact_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListBoxArtefact.SelectedIndex >= 0)
+            {
+                ButtonAjouterPouvoir.Enabled = true;
+            }
+            else
+            {
+                ButtonAjouterPouvoir.Enabled = false;
+            }
+        }
+
+        private void ButtonModifier_Click(object sender, EventArgs e)
+        {
+            if (!modificationActive)
+            {
+                ListBoxArtefact.Enabled = true;
+                ListBoxArtefact.Visible = true;
+                richTextBoxDescArtefact.Visible = false;
+                richTextBoxDescArtefact.Enabled = false;
+
+                ButtonAjouterPouvoir.Enabled = false;
+                ButtonAjouterPouvoir.Text = "Modifier";
+                ButtonModifier.Text = "Terminer";
+
+                ButtonSave.Enabled = false;
+                ButtonContenant.Enabled = false;
+
+                ComboBoxFacette.Enabled = false;
+
+                modificationActive = true;
+
+                RemplirListBox();
+            }
+            else
+            {
+                ListBoxArtefact.Enabled = false;
+                ListBoxArtefact.Visible = false;
+                richTextBoxDescArtefact.Visible = true;
+                richTextBoxDescArtefact.Enabled = true;
+
+                ButtonAjouterPouvoir.Enabled = true;
+                ButtonAjouterPouvoir.Text = "Ajouter";
+                ButtonModifier.Text = "Modifier";
+
+                ButtonSave.Enabled = true;
+                ButtonContenant.Enabled = true;
+
+                ComboBoxFacette.Enabled = true;
+
+                modificationActive = false;
+
+                MAJRichTextBoxDescArtefact();
+            }
+        }
+
+        private void RemplirListBox()
+        {
+            ListBoxArtefact.Items.Clear();
+
+            artefact.MAJPpointPouvoirPresence();
+
+            ListBoxArtefact.Items.Add(artefact.Contenant.DescriptionObjetUneLigne());
+
+            foreach (ClassFacette pouvoir in artefact.Pouvoirs)
+            {
+                ListBoxArtefact.Items.Add(pouvoir.DescriptionPouvoirUneLigne());
+            }
+        }
+
+        private void richTextBoxDescArtefact_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

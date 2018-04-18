@@ -1,0 +1,1017 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CreationArtefact.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Facette" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Facette générale de qualité&lt;/string&gt;
+  &lt;string&gt;Facette offensive&lt;/string&gt;
+  &lt;string&gt;Facette offensive: Attaque spéciale&lt;/string&gt;
+  &lt;string&gt;Facette défensive&lt;/string&gt;
+  &lt;string&gt;Facette de protection&lt;/string&gt;
+  &lt;string&gt;Facette de renforcement magique&lt;/string&gt;
+  &lt;string&gt;Facette de renforcement psychique&lt;/string&gt;
+  &lt;string&gt;Facette de renforcement de la convocation&lt;/string&gt;
+  &lt;string&gt;Facette de magie innée&lt;/string&gt;
+  &lt;string&gt;Facette d'augmentation&lt;/string&gt;
+  &lt;string&gt;Facette de maîtrise&lt;/string&gt;
+  &lt;string&gt;Facette ésotérique&lt;/string&gt;
+  &lt;string&gt;Facette ésotérique: Effet mystique&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BonusInc525" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+5&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+15&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+25&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BonusQualiteItem" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Qualité moindre&lt;/string&gt;
+  &lt;string&gt;Qualité normale&lt;/string&gt;
+  &lt;string&gt;Qualité magistrale (+5)&lt;/string&gt;
+  &lt;string&gt;Qualité unique (+10)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BonusInc520" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+5&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+15&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BonusDegat" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+  &lt;string&gt;+40&lt;/string&gt;
+  &lt;string&gt;+50&lt;/string&gt;
+  &lt;string&gt;+60&lt;/string&gt;
+  &lt;string&gt;+80&lt;/string&gt;
+  &lt;string&gt;+100&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Enchantee" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Enchantée&lt;/string&gt;
+  &lt;string&gt;Surnaturelle&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Elementaire" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Froid&lt;/string&gt;
+  &lt;string&gt;Feu&lt;/string&gt;
+  &lt;string&gt;Électricité&lt;/string&gt;
+  &lt;string&gt;Lumière&lt;/string&gt;
+  &lt;string&gt;Obsurité&lt;/string&gt;
+  &lt;string&gt;Énergie&lt;/string&gt;
+  &lt;string&gt;Terre ou Eau ou Air&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Exterminateur" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Un type de race&lt;/string&gt;
+  &lt;string&gt;Un être en particulier&lt;/string&gt;
+  &lt;string&gt;Une condition&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Assaut" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Assaut&lt;/string&gt;
+  &lt;string&gt;Assaut majeur&lt;/string&gt;
+  &lt;string&gt;Force 8&lt;/string&gt;
+  &lt;string&gt;Force 10&lt;/string&gt;
+  &lt;string&gt;Force 12&lt;/string&gt;
+  &lt;string&gt;Force 15&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Munition" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;10 Projectiles par jour&lt;/string&gt;
+  &lt;string&gt;25 Projectiles par jour&lt;/string&gt;
+  &lt;string&gt;100 Projectiles par jour&lt;/string&gt;
+  &lt;string&gt;Projectiles infinis&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Critique" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+  &lt;string&gt;+40&lt;/string&gt;
+  &lt;string&gt;+50&lt;/string&gt;
+  &lt;string&gt;+60&lt;/string&gt;
+  &lt;string&gt;Critique automatique&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Recuperation" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Lancement (actif)&lt;/string&gt;
+  &lt;string&gt;Lancement (passif)&lt;/string&gt;
+  &lt;string&gt;À vue&lt;/string&gt;
+  &lt;string&gt;À proximité&lt;/string&gt;
+  &lt;string&gt;Illimité&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DestArmure" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;-1 IP&lt;/string&gt;
+  &lt;string&gt;-2 IP&lt;/string&gt;
+  &lt;string&gt;-3 IP&lt;/string&gt;
+  &lt;string&gt;-4 IP&lt;/string&gt;
+  &lt;string&gt;-5 IP&lt;/string&gt;
+  &lt;string&gt;-6 IP&lt;/string&gt;
+  &lt;string&gt;-8 IP&lt;/string&gt;
+  &lt;string&gt;IP ignoré&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AutreCompSpec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Précise&lt;/string&gt;
+  &lt;string&gt;Vorpal&lt;/string&gt;
+  &lt;string&gt;Transformation (Limité)&lt;/string&gt;
+  &lt;string&gt;Transformation (Complète)&lt;/string&gt;
+  &lt;string&gt;Contrôle des dégats&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteCombat" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Arme à l'attaque accrue&lt;/string&gt;
+  &lt;string&gt;Renforcement offensif&lt;/string&gt;
+  &lt;string&gt;Dégat accrus&lt;/string&gt;
+  &lt;string&gt;Arme enchantée&lt;/string&gt;
+  &lt;string&gt;Attaques élémentaires&lt;/string&gt;
+  &lt;string&gt;Exterminateur&lt;/string&gt;
+  &lt;string&gt;Assaut&lt;/string&gt;
+  &lt;string&gt;Munition illimitées&lt;/string&gt;
+  &lt;string&gt;Critique accru&lt;/string&gt;
+  &lt;string&gt;Récupération&lt;/string&gt;
+  &lt;string&gt;Destruction d'armure&lt;/string&gt;
+  &lt;string&gt;Autres compétence d'arme&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Materiel" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Pierre&lt;/string&gt;
+  &lt;string&gt;Os commun&lt;/string&gt;
+  &lt;string&gt;Marbre&lt;/string&gt;
+  &lt;string&gt;Métal courant/Bois courant/Cuir courant&lt;/string&gt;
+  &lt;string&gt;Acier noir&lt;/string&gt;
+  &lt;string&gt;Ironwood&lt;/string&gt;
+  &lt;string&gt;Diamant&lt;/string&gt;
+  &lt;string&gt;Acier blanc&lt;/string&gt;
+  &lt;string&gt;Cuir draconique&lt;/string&gt;
+  &lt;string&gt;Illuminati[Anima]&lt;/string&gt;
+  &lt;string&gt;Perle noire&lt;/string&gt;
+  &lt;string&gt;Élektra[Anima]&lt;/string&gt;
+  &lt;string&gt;Bois de Ghestal[Anima]&lt;/string&gt;
+  &lt;string&gt;Malebolgia[Anima]&lt;/string&gt;
+  &lt;string&gt;Cold Iron[D&amp;amp;D]&lt;/string&gt;
+  &lt;string&gt;Mythril[D&amp;amp;D]&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ErreurPresenceBase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Entré des chiffres seulement.</Value>
+    </Setting>
+    <Setting Name="Erreur" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Erreur</Value>
+    </Setting>
+    <Setting Name="FacetteQualite" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Qualité de combat&lt;/string&gt;
+  &lt;string&gt;Qualité générale&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DistanceAttSpec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Melee&lt;/string&gt;
+  &lt;string&gt;25m&lt;/string&gt;
+  &lt;string&gt;50m&lt;/string&gt;
+  &lt;string&gt;100m&lt;/string&gt;
+  &lt;string&gt; 250m&lt;/string&gt;
+  &lt;string&gt;1km&lt;/string&gt;
+  &lt;string&gt;Tout point visible&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DegatAttSpec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;1/2 base de l'arme&lt;/string&gt;
+  &lt;string&gt;40&lt;/string&gt;
+  &lt;string&gt;60&lt;/string&gt;
+  &lt;string&gt;80&lt;/string&gt;
+  &lt;string&gt;100&lt;/string&gt;
+  &lt;string&gt;120&lt;/string&gt;
+  &lt;string&gt;150&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;250&lt;/string&gt;
+  &lt;string&gt;Base de l'arme&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ZoneAttSpec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Non&lt;/string&gt;
+  &lt;string&gt;1m radius&lt;/string&gt;
+  &lt;string&gt;3m radius&lt;/string&gt;
+  &lt;string&gt;5m radius&lt;/string&gt;
+  &lt;string&gt;10m radius&lt;/string&gt;
+  &lt;string&gt;25m radius&lt;/string&gt;
+  &lt;string&gt;100m radius&lt;/string&gt;
+  &lt;string&gt;250m radius&lt;/string&gt;
+  &lt;string&gt;500m radius&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="CompOffAttSpec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Non&lt;/string&gt;
+  &lt;string&gt;80&lt;/string&gt;
+  &lt;string&gt;120&lt;/string&gt;
+  &lt;string&gt;180&lt;/string&gt;
+  &lt;string&gt;240&lt;/string&gt;
+  &lt;string&gt;320&lt;/string&gt;
+  &lt;string&gt;440&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="PrepAttSpec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Instant&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;2&lt;/string&gt;
+  &lt;string&gt;3&lt;/string&gt;
+  &lt;string&gt;4&lt;/string&gt;
+  &lt;string&gt;5&lt;/string&gt;
+  &lt;string&gt;6&lt;/string&gt;
+  &lt;string&gt;7&lt;/string&gt;
+  &lt;string&gt;8&lt;/string&gt;
+  &lt;string&gt;9&lt;/string&gt;
+  &lt;string&gt;10&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="NBJourAttSpec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Ilimité&lt;/string&gt;
+  &lt;string&gt;1/jour&lt;/string&gt;
+  &lt;string&gt;3/jour&lt;/string&gt;
+  &lt;string&gt;5/jour&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ArmureInnee" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;2&lt;/string&gt;
+  &lt;string&gt;3&lt;/string&gt;
+  &lt;string&gt;4&lt;/string&gt;
+  &lt;string&gt;5&lt;/string&gt;
+  &lt;string&gt;6&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ArmureInneeMod" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Physique&lt;/string&gt;
+  &lt;string&gt;Élémentaire&lt;/string&gt;
+  &lt;string&gt;Concentrée&lt;/string&gt;
+  &lt;string&gt;Complète&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteDefensive" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Qualité de l'armure&lt;/string&gt;
+  &lt;string&gt;Armure innée&lt;/string&gt;
+  &lt;string&gt;Renforcement défensif&lt;/string&gt;
+  &lt;string&gt;Arme avec défense accrue&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TypeArmure" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;TRA&lt;/string&gt;
+  &lt;string&gt;CON&lt;/string&gt;
+  &lt;string&gt;PER&lt;/string&gt;
+  &lt;string&gt;CHA&lt;/string&gt;
+  &lt;string&gt;FRO&lt;/string&gt;
+  &lt;string&gt;ELE&lt;/string&gt;
+  &lt;string&gt;Physique&lt;/string&gt;
+  &lt;string&gt;Élémentaire&lt;/string&gt;
+  &lt;string&gt;Mystique&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteMagique" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Amplification de l'AMR&lt;/string&gt;
+  &lt;string&gt;Projection magique&lt;/string&gt;
+  &lt;string&gt;Réceptacle de Zéon&lt;/string&gt;
+  &lt;string&gt;Puissance ajouté&lt;/string&gt;
+  &lt;string&gt;Test de résistance mystique accrus&lt;/string&gt;
+  &lt;string&gt;Recharge magique&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="VoieDeMagie" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Livre de Lumière&lt;/string&gt;
+  &lt;string&gt;Livre d'Obscurité&lt;/string&gt;
+  &lt;string&gt;Livre de Création&lt;/string&gt;
+  &lt;string&gt;Livre de Destruction&lt;/string&gt;
+  &lt;string&gt;Livre d'Air&lt;/string&gt;
+  &lt;string&gt;Livre d'Eau&lt;/string&gt;
+  &lt;string&gt;Livre de Feu&lt;/string&gt;
+  &lt;string&gt;Livre de Terre&lt;/string&gt;
+  &lt;string&gt;Livre d'Essence&lt;/string&gt;
+  &lt;string&gt;Livre d'Illusion&lt;/string&gt;
+  &lt;string&gt;Livre de Nécromancie&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BonusInc530" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+5&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+15&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+25&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ReceptZeon" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;100&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;250&lt;/string&gt;
+  &lt;string&gt;500&lt;/string&gt;
+  &lt;string&gt;750&lt;/string&gt;
+  &lt;string&gt;1000&lt;/string&gt;
+  &lt;string&gt;1500&lt;/string&gt;
+  &lt;string&gt;2000&lt;/string&gt;
+  &lt;string&gt;3000&lt;/string&gt;
+  &lt;string&gt;5000&lt;/string&gt;
+  &lt;string&gt;10000&lt;/string&gt;
+  &lt;string&gt;Illimité&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="PuisAjoute" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10 points de Zéon&lt;/string&gt;
+  &lt;string&gt;+20 points de Zéon&lt;/string&gt;
+  &lt;string&gt;+30 points de Zéon&lt;/string&gt;
+  &lt;string&gt;+40 points de Zéon&lt;/string&gt;
+  &lt;string&gt;Degré supérieur&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BonusInc510to30" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+15&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+25&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="RegenMag" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+  &lt;string&gt;+40&lt;/string&gt;
+  &lt;string&gt;+50&lt;/string&gt;
+  &lt;string&gt;+60&lt;/string&gt;
+  &lt;string&gt;Double&lt;/string&gt;
+  &lt;string&gt;Triple&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacettePsychique" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Talent&lt;/string&gt;
+  &lt;string&gt;Projection psychique&lt;/string&gt;
+  &lt;string&gt;Test de résistance psychique accrus&lt;/string&gt;
+  &lt;string&gt;Amélioration du maintien des pouvoirs&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BonusInc1010to50" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+  &lt;string&gt;+40&lt;/string&gt;
+  &lt;string&gt;+50&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DiscplinePsy" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Télépathie&lt;/string&gt;
+  &lt;string&gt;Télékinésie&lt;/string&gt;
+  &lt;string&gt;Pyrokinésie&lt;/string&gt;
+  &lt;string&gt;Cryokinésie&lt;/string&gt;
+  &lt;string&gt;Augmentation physique&lt;/string&gt;
+  &lt;string&gt;Énergie&lt;/string&gt;
+  &lt;string&gt;Sensation&lt;/string&gt;
+  &lt;string&gt;Télémétrie&lt;/string&gt;
+  &lt;string&gt;Causalité&lt;/string&gt;
+  &lt;string&gt;Électromagnétisme&lt;/string&gt;
+  &lt;string&gt;Téléportation&lt;/string&gt;
+  &lt;string&gt;Lumière&lt;/string&gt;
+  &lt;string&gt;Hypersensibilité&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteConvocation" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Présence accrue&lt;/string&gt;
+  &lt;string&gt;Lien économe&lt;/string&gt;
+  &lt;string&gt;Convocation accrue&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Presence" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+  &lt;string&gt;+50&lt;/string&gt;
+  &lt;string&gt;+75&lt;/string&gt;
+  &lt;string&gt;+100&lt;/string&gt;
+  &lt;string&gt;+150&lt;/string&gt;
+  &lt;string&gt;+200&lt;/string&gt;
+  &lt;string&gt;+250&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="LienEconome" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;-1 niveau&lt;/string&gt;
+  &lt;string&gt;-2 niveaux&lt;/string&gt;
+  &lt;string&gt;-3 niveaux&lt;/string&gt;
+  &lt;string&gt;-4 niveaux&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ConvoAccrue" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+5&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+15&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+25&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+  &lt;string&gt;+40&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ElementLie" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Air&lt;/string&gt;
+  &lt;string&gt;Terre&lt;/string&gt;
+  &lt;string&gt;Feu&lt;/string&gt;
+  &lt;string&gt;Eau&lt;/string&gt;
+  &lt;string&gt;Noirceur[Anima]&lt;/string&gt;
+  &lt;string&gt;Lumière[Anima]&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ConvoLie" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Convoquer&lt;/string&gt;
+  &lt;string&gt;Dominer&lt;/string&gt;
+  &lt;string&gt;Lier&lt;/string&gt;
+  &lt;string&gt;Révoquer&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteProtection" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Immunité&lt;/string&gt;
+  &lt;string&gt;Immunité magique&lt;/string&gt;
+  &lt;string&gt;Immunité psychique&lt;/string&gt;
+  &lt;string&gt;Immunité élémentaire&lt;/string&gt;
+  &lt;string&gt;Réduction des dégats&lt;/string&gt;
+  &lt;string&gt;Seuil d'invulnérabilité&lt;/string&gt;
+  &lt;string&gt;Amélioration des résistances&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Immunite" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Dégats réduits de moitié&lt;/string&gt;
+  &lt;string&gt;Dégats physiques&lt;/string&gt;
+  &lt;string&gt;Dégats mystique réduits de moitié&lt;/string&gt;
+  &lt;string&gt;N'importe quelle Présence&lt;/string&gt;
+  &lt;string&gt;Présence supérieur à 80&lt;/string&gt;
+  &lt;string&gt;Présence supérieur à 120&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ImmuniteMag" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Zéon 40&lt;/string&gt;
+  &lt;string&gt;Zéon 80&lt;/string&gt;
+  &lt;string&gt;Zéon 120&lt;/string&gt;
+  &lt;string&gt;Zéon 180&lt;/string&gt;
+  &lt;string&gt;Zéon 250&lt;/string&gt;
+  &lt;string&gt;Zéon 350&lt;/string&gt;
+  &lt;string&gt;Zéon 500&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ImmunitePsy" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Test de Talent 80&lt;/string&gt;
+  &lt;string&gt;Test de Talent 120&lt;/string&gt;
+  &lt;string&gt;Test de Talent 140&lt;/string&gt;
+  &lt;string&gt;Test de Talent 180&lt;/string&gt;
+  &lt;string&gt;Test de Talent 240&lt;/string&gt;
+  &lt;string&gt;Test de Talent 280&lt;/string&gt;
+  &lt;string&gt;Test de Talent 320&lt;/string&gt;
+  &lt;string&gt;Matrices complètes&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ImmuniteElem" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;2 intensités&lt;/string&gt;
+  &lt;string&gt;4 intensités&lt;/string&gt;
+  &lt;string&gt;6 intensités&lt;/string&gt;
+  &lt;string&gt;10 intensités&lt;/string&gt;
+  &lt;string&gt;20 intensités&lt;/string&gt;
+  &lt;string&gt;Immunité totale&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TypeImmuniteElem" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Air&lt;/string&gt;
+  &lt;string&gt;Terre&lt;/string&gt;
+  &lt;string&gt;Feu&lt;/string&gt;
+  &lt;string&gt;Eau&lt;/string&gt;
+  &lt;string&gt;Noirceur[Anima]&lt;/string&gt;
+  &lt;string&gt;Lumière[Anima]&lt;/string&gt;
+  &lt;string&gt;Éléments naturels&lt;/string&gt;
+  &lt;string&gt;Tous les éléments[Anima]&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ReducDegats" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;-10&lt;/string&gt;
+  &lt;string&gt;-20&lt;/string&gt;
+  &lt;string&gt;-30&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Invulnerabilite" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;40&lt;/string&gt;
+  &lt;string&gt;60&lt;/string&gt;
+  &lt;string&gt;80&lt;/string&gt;
+  &lt;string&gt;100&lt;/string&gt;
+  &lt;string&gt;120&lt;/string&gt;
+  &lt;string&gt;150&lt;/string&gt;
+  &lt;string&gt;180&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;250&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AmelioRes" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+20&lt;/string&gt;
+  &lt;string&gt;+30&lt;/string&gt;
+  &lt;string&gt;+40&lt;/string&gt;
+  &lt;string&gt;+50&lt;/string&gt;
+  &lt;string&gt;+80&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TypeAmelioRes" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;RPhy&lt;/string&gt;
+  &lt;string&gt;RPoi&lt;/string&gt;
+  &lt;string&gt;RMal&lt;/string&gt;
+  &lt;string&gt;RMys&lt;/string&gt;
+  &lt;string&gt;RPsy&lt;/string&gt;
+  &lt;string&gt;De type physique&lt;/string&gt;
+  &lt;string&gt;De type mystique&lt;/string&gt;
+  &lt;string&gt;Toutes les résistances&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteMagieInnee" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Sort automatique&lt;/string&gt;
+  &lt;string&gt;Lanceur de sorts&lt;/string&gt;
+  &lt;string&gt;Compétence de lancement&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="CompLancement" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;80&lt;/string&gt;
+  &lt;string&gt;120&lt;/string&gt;
+  &lt;string&gt;160&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;240&lt;/string&gt;
+  &lt;string&gt;280&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ModLanceurSort" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Sans le Don&lt;/string&gt;
+  &lt;string&gt;AMR double&lt;/string&gt;
+  &lt;string&gt;Inné&lt;/string&gt;
+  &lt;string&gt;Coût réduit  de moitié&lt;/string&gt;
+  &lt;string&gt;Autonomie d'énergie&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteAugmentation" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Initiative&lt;/string&gt;
+  &lt;string&gt;Régénération&lt;/string&gt;
+  &lt;string&gt;Augmentation du déplacement&lt;/string&gt;
+  &lt;string&gt;Augmentation des compétences secondaires&lt;/string&gt;
+  &lt;string&gt;Augmentation des caractéristiques&lt;/string&gt;
+  &lt;string&gt;Substitution de caractéristique&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Regeneration" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Régénération 4&lt;/string&gt;
+  &lt;string&gt;Régénération 8&lt;/string&gt;
+  &lt;string&gt;Régénération 12&lt;/string&gt;
+  &lt;string&gt;Régénération 14&lt;/string&gt;
+  &lt;string&gt;Régénération 16&lt;/string&gt;
+  &lt;string&gt;Régénération +1&lt;/string&gt;
+  &lt;string&gt;Régénération +2&lt;/string&gt;
+  &lt;string&gt;Régénération +4&lt;/string&gt;
+  &lt;string&gt;Régénération +6&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Mouvement" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+1&lt;/string&gt;
+  &lt;string&gt;+2&lt;/string&gt;
+  &lt;string&gt;+3&lt;/string&gt;
+  &lt;string&gt;+4&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AugCompSec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+10&lt;/string&gt;
+  &lt;string&gt;+25&lt;/string&gt;
+  &lt;string&gt;+50&lt;/string&gt;
+  &lt;string&gt;+75&lt;/string&gt;
+  &lt;string&gt;+100&lt;/string&gt;
+  &lt;string&gt;+10 Champ complet&lt;/string&gt;
+  &lt;string&gt;+20 Champ complet&lt;/string&gt;
+  &lt;string&gt;+30 Champ complet&lt;/string&gt;
+  &lt;string&gt;+40 Champ complet&lt;/string&gt;
+  &lt;string&gt;+50 Champ complet&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AugCarac" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+1&lt;/string&gt;
+  &lt;string&gt;+2&lt;/string&gt;
+  &lt;string&gt;+3&lt;/string&gt;
+  &lt;string&gt;+4&lt;/string&gt;
+  &lt;string&gt;+5&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="SubstiCarac" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;8&lt;/string&gt;
+  &lt;string&gt;10&lt;/string&gt;
+  &lt;string&gt;11&lt;/string&gt;
+  &lt;string&gt;12&lt;/string&gt;
+  &lt;string&gt;14&lt;/string&gt;
+  &lt;string&gt;15&lt;/string&gt;
+  &lt;string&gt;16&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ChampSec" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Athlétique&lt;/string&gt;
+  &lt;string&gt;Sociale&lt;/string&gt;
+  &lt;string&gt;Sensorielle&lt;/string&gt;
+  &lt;string&gt;Intellectuelle&lt;/string&gt;
+  &lt;string&gt;Vitale&lt;/string&gt;
+  &lt;string&gt;Clandestine&lt;/string&gt;
+  &lt;string&gt;Créative&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteMaitrise" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Renforcement d'accumulation du Ki&lt;/string&gt;
+  &lt;string&gt;Technique spéciale&lt;/string&gt;
+  &lt;string&gt;Réserve de Ki&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="LienAccumulation" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Force&lt;/string&gt;
+  &lt;string&gt;Constitution&lt;/string&gt;
+  &lt;string&gt;Agilité&lt;/string&gt;
+  &lt;string&gt;Dextérité&lt;/string&gt;
+  &lt;string&gt;Pouvoir&lt;/string&gt;
+  &lt;string&gt;Volonté&lt;/string&gt;
+  &lt;string&gt;Caractéristiques physiques&lt;/string&gt;
+  &lt;string&gt;Caractéristiques d'habilité&lt;/string&gt;
+  &lt;string&gt;Caractéristiques animiques&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AccumulationKi" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;+1&lt;/string&gt;
+  &lt;string&gt;+2&lt;/string&gt;
+  &lt;string&gt;+3&lt;/string&gt;
+  &lt;string&gt;+4&lt;/string&gt;
+  &lt;string&gt;+5&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TechKi" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Niveau 1&lt;/string&gt;
+  &lt;string&gt;Niveau 2&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ReserveKi" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;12&lt;/string&gt;
+  &lt;string&gt;24&lt;/string&gt;
+  &lt;string&gt;36&lt;/string&gt;
+  &lt;string&gt;48&lt;/string&gt;
+  &lt;string&gt;60&lt;/string&gt;
+  &lt;string&gt;120&lt;/string&gt;
+  &lt;string&gt;180&lt;/string&gt;
+  &lt;string&gt;240&lt;/string&gt;
+  &lt;string&gt;300&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FacetteEsoterique" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Prothèse&lt;/string&gt;
+  &lt;string&gt;Altération du destin&lt;/string&gt;
+  &lt;string&gt;Dissimulation améliorée&lt;/string&gt;
+  &lt;string&gt;Moyen spéciaux de vision&lt;/string&gt;
+  &lt;string&gt;Effets mineurs&lt;/string&gt;
+  &lt;string&gt;Ego&lt;/string&gt;
+  &lt;string&gt;Créateur de portail&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Prothese" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Membre inférieur&lt;/string&gt;
+  &lt;string&gt;Membre parfait&lt;/string&gt;
+  &lt;string&gt;Membre supérieur&lt;/string&gt;
+  &lt;string&gt;Organe sensitif inférieur&lt;/string&gt;
+  &lt;string&gt;Organe sensitif parfait&lt;/string&gt;
+  &lt;string&gt;Organe sensitif supérieur&lt;/string&gt;
+  &lt;string&gt;Organe interne inférieur&lt;/string&gt;
+  &lt;string&gt;Organe interne parfait&lt;/string&gt;
+  &lt;string&gt;Organe interne supérieur&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Destin" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Réduction des maladresses&lt;/string&gt;
+  &lt;string&gt;Amélioration critique&lt;/string&gt;
+  &lt;string&gt;Doubles&lt;/string&gt;
+  &lt;string&gt;Altération existentielle&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Dissimulation" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Absurde&lt;/string&gt;
+  &lt;string&gt;Quasiment impossible&lt;/string&gt;
+  &lt;string&gt;Impossible&lt;/string&gt;
+  &lt;string&gt;Surhumain&lt;/string&gt;
+  &lt;string&gt;Zen&lt;/string&gt;
+  &lt;string&gt;Indétectable&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Vision" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir&lt;/string&gt;
+  &lt;string&gt;Vision nocturne&lt;/string&gt;
+  &lt;string&gt;Vision nocturne totale&lt;/string&gt;
+  &lt;string&gt;Voir la magie&lt;/string&gt;
+  &lt;string&gt;Voir les matrices&lt;/string&gt;
+  &lt;string&gt;Voir les esprits&lt;/string&gt;
+  &lt;string&gt;Voir le surnaturel&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Ego" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Ego simple&lt;/string&gt;
+  &lt;string&gt;Ego complexe&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Portal" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Porte vers la veille[Anima]/Plan élémentaire[D&amp;amp;D] (Voile faibe)&lt;/string&gt;
+  &lt;string&gt;Porte vers la veille[Anima]/Plan[D&amp;amp;D]&lt;/string&gt;
+  &lt;string&gt;Portail (lieu déterminé)&lt;/string&gt;
+  &lt;string&gt;Portail fixe&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="EffetMystique" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Peur&lt;/string&gt;
+  &lt;string&gt;Terreur&lt;/string&gt;
+  &lt;string&gt;Douleur&lt;/string&gt;
+  &lt;string&gt;Douleur extrême&lt;/string&gt;
+  &lt;string&gt;Faiblesse&lt;/string&gt;
+  &lt;string&gt;Paralysie partielle&lt;/string&gt;
+  &lt;string&gt;Paralysie totale&lt;/string&gt;
+  &lt;string&gt;Colère&lt;/string&gt;
+  &lt;string&gt;Cécité&lt;/string&gt;
+  &lt;string&gt;Surdité&lt;/string&gt;
+  &lt;string&gt;Mutisme&lt;/string&gt;
+  &lt;string&gt;Fascination&lt;/string&gt;
+  &lt;string&gt;Dégâts simples&lt;/string&gt;
+  &lt;string&gt;Dégâts doubles&lt;/string&gt;
+  &lt;string&gt;Inconscience&lt;/string&gt;
+  &lt;string&gt;Domination&lt;/string&gt;
+  &lt;string&gt;Mort&lt;/string&gt;
+  &lt;string&gt;Folie&lt;/string&gt;
+  &lt;string&gt;Vieillesse&lt;/string&gt;
+  &lt;string&gt;Malus à toute action&lt;/string&gt;
+  &lt;string&gt;Destruction de caractéristiques&lt;/string&gt;
+  &lt;string&gt;Drain (moitié)&lt;/string&gt;
+  &lt;string&gt;Drain (comlet)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ResistanceEffet" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;RMys 40&lt;/string&gt;
+  &lt;string&gt;RMys 80&lt;/string&gt;
+  &lt;string&gt;RMys 100&lt;/string&gt;
+  &lt;string&gt;RMys 120&lt;/string&gt;
+  &lt;string&gt;RMys 140&lt;/string&gt;
+  &lt;string&gt;RMys 180&lt;/string&gt;
+  &lt;string&gt;RMys 200&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ConditionEffet" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Par les dégâts&lt;/string&gt;
+  &lt;string&gt;Par le contact&lt;/string&gt;
+  &lt;string&gt;Par le son&lt;/string&gt;
+  &lt;string&gt;Par la vue&lt;/string&gt;
+  &lt;string&gt;Par l'odeur&lt;/string&gt;
+  &lt;string&gt;Zone (5 mètres)&lt;/string&gt;
+  &lt;string&gt;Zone (10 mètres)&lt;/string&gt;
+  &lt;string&gt;Zone (25 mètres)&lt;/string&gt;
+  &lt;string&gt;Zone (50 mètres)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="EffetMineur" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Choisir...&lt;/string&gt;
+  &lt;string&gt;Occultation&lt;/string&gt;
+  &lt;string&gt;Transfert&lt;/string&gt;
+  &lt;string&gt;Maestria&lt;/string&gt;
+  &lt;string&gt;Indestructibilité&lt;/string&gt;
+  &lt;string&gt;Autodestruction&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="NBUtilsPortal" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Illimité&lt;/string&gt;
+  &lt;string&gt;5 fois par jour&lt;/string&gt;
+  &lt;string&gt;3 fois par jour&lt;/string&gt;
+  &lt;string&gt;1 fois par jour&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="RepertoireInit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
