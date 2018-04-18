@@ -334,6 +334,7 @@
             this.Name = "FormFacetteConvocation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette convocation";
+            this.Load += new System.EventHandler(this.FormFacetteConvocation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

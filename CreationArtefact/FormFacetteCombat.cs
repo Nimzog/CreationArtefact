@@ -18,11 +18,11 @@ namespace CreationArtefact
         /// <summary>
         /// 
         /// </summary>
-        public bool CloseSaveCancel;
+        public bool CloseSaveCancel, Modification;
         /// <summary>
         /// 
         /// </summary>
-        public ClassFacetteCombat Combat;
+        public ClassFacetteCombat Combat, importCombat;
 
         /// <summary>
         /// 
@@ -34,8 +34,22 @@ namespace CreationArtefact
             Combat = new ClassFacetteCombat();
 
             CloseSaveCancel = false;
+            Modification = false;
 
             ComboBoxSelectPouv.DataSource = Properties.Settings.Default.FacetteCombat;
+        }
+
+        public DialogResult ShowDialog(ClassFacetteCombat combat)
+        {
+            DialogResult result;
+
+            Modification = true;
+
+            importCombat = combat;
+
+            result = ShowDialog();
+
+            return result;
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -665,6 +679,103 @@ namespace CreationArtefact
         private void RadioButtonMod3_CheckedChanged(object sender, EventArgs e)
         {
             majForm();
+        }
+
+        private void FormFacetteCombat_Load(object sender, EventArgs e)
+        {
+            if (Modification)
+            {
+                if (importCombat.Attaque != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Attaque;
+                }
+                else if (importCombat.Offensif != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Offensif;
+                }
+                else if (importCombat.BonusDegat != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.BonusDegat;
+                }
+                else if (importCombat.Enchantee != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 4;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Enchantee;
+                }
+                else if (importCombat.Element != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 5;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Element;
+                    if (importCombat.ElemVariable)
+                    {
+                        RadioButtonMod2.Checked = true;
+                    }
+                    if (importCombat.ElemCombine)
+                    {
+                        RadioButtonMod3.Checked = true;
+                    }
+                    if (importCombat.ElemPrime)
+                    {
+                        RadioButtonMod4.Checked = true;
+                    }
+                }
+                else if (importCombat.Exterminateur != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 6;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Exterminateur;
+                    if (importCombat.GrandExterminateur)
+                    {
+                        CheckBoxMod1.Checked = true;
+                    }
+                    TextBoxExterminateur.Text = importCombat.DescExterminateur;
+                }
+                else if (importCombat.Assaut != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 7;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Assaut;
+                }
+                else if (importCombat.Munition != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 8;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Munition;
+                    if (importCombat.Firearm)
+                    {
+                        CheckBoxMod1.Checked = true;
+                    }
+                    if (importCombat.MuniCombi)
+                    {
+                        CheckBoxMod2.Checked = true;
+                    }
+                }
+                else if (importCombat.Critique != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 9;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Critique;
+                }
+                else if (importCombat.Recuperation != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 10;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.Recuperation;
+                }
+                else if (importCombat.DestArmure != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 11;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.DestArmure;
+                }
+                else if (importCombat.AutreComp != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 12;
+                    ComboBoxSelectBonus.SelectedIndex = importCombat.AutreComp;
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
         }
 
         private void RadioButtonMod4_CheckedChanged(object sender, EventArgs e)

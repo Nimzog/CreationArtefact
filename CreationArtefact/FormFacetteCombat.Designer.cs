@@ -309,6 +309,7 @@
             this.Name = "FormFacetteCombat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette offensive";
+            this.Load += new System.EventHandler(this.FormFacetteCombat_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

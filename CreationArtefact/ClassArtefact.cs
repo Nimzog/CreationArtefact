@@ -367,153 +367,134 @@ namespace CreationArtefact
         public bool UpdatePouvoir(ClassFacette pouvoir, int index)
         {
             bool canAdd = false;
-            int tempPresDiff, extraAffinite, suppose;            
+            int affiniteCurrent, extraAffinite, suppose, current, nouveau;
+
+            pouvoir.GenererCoutPouvoir();
+            
+
+            affiniteCurrent = 0;
+            extraAffinite = 0;
+            current = Pouvoirs[index].CoutPouvoir.Presence;
+            nouveau = pouvoir.CoutPouvoir.GeneratePresence();
+            suppose = Pouvoirs[index].CoutPouvoir.GeneratePresence();
 
             //si le niveau de l'original est différent du nouveau
-            if (pouvoir.CoutPouvoir.Niveau != Pouvoirs[index].CoutPouvoir.Niveau)
+            if (current != nouveau)
             {
-                tempPresDiff = 0;
-                extraAffinite = 0;
-
-                suppose = Pouvoirs[index].CoutPouvoir.GeneratePresence();
                 //vérifie si le cout du pouvoir original était réduit
-                if (Pouvoirs[index].CoutPouvoir.Presence != suppose)
+                if (current != suppose)
                 {
-                    tempPresDiff = suppose - Pouvoirs[index].CoutPouvoir.Presence;
-                    if (tempPresDiff > 0)
+                    affiniteCurrent = suppose - current;
+                    if (affiniteCurrent > 0)
                     {
-                        extraAffinite = tempPresDiff - pouvoir.CoutPouvoir.Presence;
-                        //vérifie si le nouveau pouvoir a un cout inférieur a l'original réduit
-                        if (extraAffinite > 0)
+                        if (affiniteCurrent > nouveau)
                         {
-                            //réassigne la différence c
+                            extraAffinite = affiniteCurrent - nouveau;
+                            //réassigne la différence
                             switch (pouvoir.TypePouvoir)
                             {
                                 case TypeFacette.FacetteCombat:
                                     if (((ClassFacetteCombat)pouvoir).Element > 0)
                                     {
                                         Contenant.AffiniteAttElement.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (pouvoir.SubType == SubTypeFacette.AttaqueSpeciale)
                                     {
                                         Contenant.AffiniteAttSpec.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 case TypeFacette.FacetteProtection:
                                     if (((ClassFacetteProtection)pouvoir).Immunite > 0)
                                     {
                                         Contenant.AffiniteImmunite.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteProtection)pouvoir).ImmuniteMagique > 0)
                                     {
                                         Contenant.AffiniteImmuniteMystique.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteProtection)pouvoir).ImmunitePsychique > 0)
                                     {
                                         Contenant.AffiniteImmunitePsy.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteProtection)pouvoir).ImmuniteElementaire > 0)
                                     {
                                         Contenant.AffiniteImmuniteElem.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteProtection)pouvoir).SeuilInvul > 0)
                                     {
                                         Contenant.AffiniteSeuilInvul.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteProtection)pouvoir).AugmentRes > 0)
                                     {
                                         Contenant.AffiniteAmelorationRes.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 case TypeFacette.FacetteMagique:
                                     if (((ClassFacetteMagique)pouvoir).AmpliAMR > 0)
                                     {
                                         Contenant.AffiniteAmpliAMR.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagique)pouvoir).ProjMagique > 0)
                                     {
                                         Contenant.AffiniteProjMag.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagique)pouvoir).PuissAjout > 0)
                                     {
                                         Contenant.AffinitePuissAjoutee.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagique)pouvoir).ReceptZeon > 0)
                                     {
                                         Contenant.AffiniteReceptacleZeon.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagique)pouvoir).RegenZeon > 0)
                                     {
                                         Contenant.AffiniteRechargeMag.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagique)pouvoir).TestResMysAcc > 0)
                                     {
                                         Contenant.AffiniteTestResAccrus.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 case TypeFacette.FacettePsychique:
                                     if (((ClassFacettePsychique)pouvoir).Talent > 0)
                                     {
                                         Contenant.AffiniteTalent.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacettePsychique)pouvoir).TestResPsyAccrus > 0)
                                     {
                                         Contenant.AffiniteTestResAccrus.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacettePsychique)pouvoir).MaintPouvoir > 0)
                                     {
                                         Contenant.AffiniteAmelioMaintPouvoir.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 case TypeFacette.FacetteConvocation:
                                     if (((ClassFacetteConvocation)pouvoir).PresenceAccrue > 0)
                                     {
                                         Contenant.AffinitePresAccru.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteConvocation)pouvoir).ConvoAccrue > 0)
                                     {
                                         Contenant.AffiniteConvoAccrue.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 case TypeFacette.FacetteInnee:
                                     if (Contenant.AffiniteMagieInnee.hasAffinite())
                                     {
                                         Contenant.AffiniteMagieInnee.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagieInnee)pouvoir).SortAutomatique.Count > 0)
                                     {
                                         Contenant.AffiniteSortsAuto.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagieInnee)pouvoir).LanceurSort.Count > 0)
                                     {
                                         Contenant.AffiniteLanceurSort.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteMagieInnee)pouvoir).CompLancement != 0)
                                     {
                                         Contenant.AffiniteCompLancement.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
 
                                     break;
@@ -521,71 +502,58 @@ namespace CreationArtefact
                                     if (((ClassFacetteAugmentation)pouvoir).AugDeplacement != 0)
                                     {
                                         Contenant.AffiniteAugmentDeplacement.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteAugmentation)pouvoir).AugCompSec != 0)
                                     {
                                         Contenant.AffiniteAugmentCompSec.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteAugmentation)pouvoir).AugCarac != 0)
                                     {
                                         Contenant.AffiniteAugmentCharac.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteAugmentation)pouvoir).SubstiCarac != 0)
                                     {
                                         Contenant.AffiniteSubstiCarac.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 case TypeFacette.FacetteMaitrise:
                                     if (((ClassFacetteMaitrise)pouvoir).ReserveKi != 0)
                                     {
                                         Contenant.AffiniteReserveKi.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 case TypeFacette.FacetteEsoterique:
                                     if (((ClassFacetteEsoterique)pouvoir).AlterationDestion != 0)
                                     {
                                         Contenant.AffiniteAltDestin.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteEsoterique)pouvoir).Vision != 0)
                                     {
                                         Contenant.AffiniteVision.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (((ClassFacetteEsoterique)pouvoir).Portal != 0)
                                     {
                                         Contenant.AffiniteCreatePortail.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     else if (pouvoir.SubType == SubTypeFacette.EffetMystique)
                                     {
                                         Contenant.AffiniteEffetMystique.setAffinite(Math.Abs(extraAffinite));
-                                        tempPresDiff += extraAffinite;
                                     }
                                     break;
                                 default:
 
                                     break;
                             }
-                            tempPresDiff -= extraAffinite;
+                            affiniteCurrent -= extraAffinite;
                         }
+                        nouveau -= affiniteCurrent;
                     }
                 }
                 if (PresenceRestante >= pouvoir.CoutPouvoir.Presence - extraAffinite)
                 {                    
-                    pouvoir.CoutPouvoir.Presence = pouvoir.CoutPouvoir.GeneratePresence() - tempPresDiff;
+                    pouvoir.CoutPouvoir.Presence = nouveau;
                     canAdd = true;
                 }
-            }
-            else
-            {
-                pouvoir.CoutPouvoir.Presence = Pouvoirs[index].CoutPouvoir.Presence;
-                canAdd = true;
             }
 
             if (canAdd)
@@ -7935,7 +7903,7 @@ namespace CreationArtefact
 
         public override ClassCoutPouvoir GenererCoutPouvoir()
         {
-            CoutPouvoir = new ClassCoutPouvoir(0, 0);
+            CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
 
             if (SortAutomatique.Count != 0)
             {
@@ -8309,7 +8277,7 @@ namespace CreationArtefact
             }
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 

@@ -14,7 +14,8 @@ namespace CreationArtefact
     {
         public bool CloseSaveCancel,
             Modification;
-        public ClassFacetteAugmentation Augmentation;
+        public ClassFacetteAugmentation Augmentation,
+            importAgmentation;
 
         public FormFacetteAugmentation()
         {
@@ -32,7 +33,7 @@ namespace CreationArtefact
 
             Modification = true;
 
-            Augmentation = augmentation;
+            importAgmentation = augmentation;
 
             result = ShowDialog();
             
@@ -359,119 +360,115 @@ namespace CreationArtefact
                 default:
                     break;
             }
+
+            Augmentation.GenererCoutPouvoir();
         }
 
         private void majForm()
         {
-            if (!Modification)
+            if (ComboBoxSelectBonus.SelectedIndex != 0 && ComboBoxSelectPouv.SelectedIndex != 0)
             {
-                ClassCoutPouvoir coutPouvoir = new ClassCoutPouvoir();
+                ButtonSave.Enabled = true;
+                creerPouvoir();
 
-                if (ComboBoxSelectBonus.SelectedIndex != 0 && ComboBoxSelectPouv.SelectedIndex != 0)
+                LabelNiveau.Text = "" + Augmentation.CoutPouvoir.Niveau;
+                LabelPP.Text = "" + Augmentation.CoutPouvoir.PP;
+                switch (Augmentation.CoutPouvoir.Niveau)
                 {
-                    ButtonSave.Enabled = true;
-                    creerPouvoir();
-
-                    //calculer les coûts du pouvoir à ajouter
-                    coutPouvoir = Augmentation.GenererCoutPouvoir();
-
-                    LabelNiveau.Text = "" + coutPouvoir.Niveau;
-                    LabelPP.Text = "" + coutPouvoir.PP;
-                    switch (coutPouvoir.Niveau)
-                    {
-                        case 1:
-                            LabelPres.Text = "10";
-                            break;
-                        case 2:
-                            LabelPres.Text = "15";
-                            break;
-                        case 3:
-                            LabelPres.Text = "25";
-                            break;
-                        case 4:
-                            LabelPres.Text = "60";
-                            break;
-                        case 5:
-                            LabelPres.Text = "100";
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else
-                {
-                    ButtonSave.Enabled = false;
-
-                    LabelNiveau.Text = "NA";
-                    LabelPP.Text = "NA";
-                    LabelPres.Text = "NA";
+                    case 1:
+                        LabelPres.Text = "10";
+                        break;
+                    case 2:
+                        LabelPres.Text = "15";
+                        break;
+                    case 3:
+                        LabelPres.Text = "25";
+                        break;
+                    case 4:
+                        LabelPres.Text = "60";
+                        break;
+                    case 5:
+                        LabelPres.Text = "100";
+                        break;
+                    default:
+                        break;
                 }
             }
+            else
+            {
+                ButtonSave.Enabled = false;
+
+                LabelNiveau.Text = "NA";
+                LabelPP.Text = "NA";
+                LabelPres.Text = "NA";
+            }
+
         }
 
         private void FormFacetteAugmentation_Load(object sender, EventArgs e)
         {
             if (Modification)
             {
-                if (Augmentation.Initiative != 0)
+                if (importAgmentation.Initiative != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 1;
-                    ComboBoxSelectBonus.SelectedIndex = Augmentation.Initiative;
+                    ComboBoxSelectBonus.SelectedIndex = importAgmentation.Initiative;
                 }
-                else if (Augmentation.Regeneration !=0)
+                else if (importAgmentation.Regeneration !=0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 2;
-                    ComboBoxSelectBonus.SelectedIndex = Augmentation.Regeneration;
+                    ComboBoxSelectBonus.SelectedIndex = importAgmentation.Regeneration;
                 }
-                else if (Augmentation.AugDeplacement != 0)
+                else if (importAgmentation.AugDeplacement != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 3;
-                    ComboBoxSelectBonus.SelectedIndex = Augmentation.AugDeplacement;
+                    ComboBoxSelectBonus.SelectedIndex = importAgmentation.AugDeplacement;
                 }
-                else if (Augmentation.AugCompSec != 0)
+                else if (importAgmentation.AugCompSec != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 4;
-                    ComboBoxSelectBonus.SelectedIndex = Augmentation.AugCompSec;
+                    ComboBoxSelectBonus.SelectedIndex = importAgmentation.AugCompSec;
                     if (ComboBoxSelectBonus.SelectedIndex < 5 && ComboBoxSelectBonus.SelectedIndex > 0)
                     {
-                        TextBoxCompetence.Text = Augmentation.Competence;
+                        TextBoxCompetence.Text = importAgmentation.Competence;
                     }
                     else
                     {
-                        if (Augmentation.Competence.CompareTo("Athlétique") == 0)
+                        if (importAgmentation.Competence.CompareTo("Athlétique") == 0)
                             ComboBoxChampSec.SelectedIndex = 1;
-                        else if (Augmentation.Competence.CompareTo("Sociale") == 0)
+                        else if (importAgmentation.Competence.CompareTo("Sociale") == 0)
                             ComboBoxChampSec.SelectedIndex = 2;
-                        else if (Augmentation.Competence.CompareTo("Sensorielle") == 0)
+                        else if (importAgmentation.Competence.CompareTo("Sensorielle") == 0)
                             ComboBoxChampSec.SelectedIndex = 3;
-                        else if (Augmentation.Competence.CompareTo("Intellectuelle") == 0)
+                        else if (importAgmentation.Competence.CompareTo("Intellectuelle") == 0)
                             ComboBoxChampSec.SelectedIndex = 4;
-                        else if (Augmentation.Competence.CompareTo("Vitale") == 0)
+                        else if (importAgmentation.Competence.CompareTo("Vitale") == 0)
                             ComboBoxChampSec.SelectedIndex = 5;
-                        else if (Augmentation.Competence.CompareTo("Clandestine") == 0)
+                        else if (importAgmentation.Competence.CompareTo("Clandestine") == 0)
                             ComboBoxChampSec.SelectedIndex = 6;
-                        else if (Augmentation.Competence.CompareTo("Créative") == 0)
+                        else if (importAgmentation.Competence.CompareTo("Créative") == 0)
                             ComboBoxChampSec.SelectedIndex = 7;
                     }
                 }
-                else if (Augmentation.AugCarac != 0)
+                else if (importAgmentation.AugCarac != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 5;
-                    ComboBoxSelectBonus.SelectedIndex = Augmentation.AugCarac;
-                    if (Augmentation.Confontation)
+                    ComboBoxSelectBonus.SelectedIndex = importAgmentation.AugCarac;
+                    if (importAgmentation.Confontation)
                     {
                         CheckBoxConfrontation.Checked = true;
                     }
                 }
-                else if (Augmentation.SubstiCarac != 0)
+                else if (importAgmentation.SubstiCarac != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 6;
-                    ComboBoxSelectBonus.SelectedIndex = Augmentation.SubstiCarac;
+                    ComboBoxSelectBonus.SelectedIndex = importAgmentation.SubstiCarac;
                 }
                 else
                 {
                     ComboBoxSelectPouv.SelectedIndex = 0;
                 }
+                ComboBoxSelectPouv.Enabled = false;
             }
         }
 

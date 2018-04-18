@@ -504,6 +504,7 @@ namespace CreationArtefact
                 default:
                     break;
             }
+            MagieInnee.GenererCoutPouvoir();
         }
 
         private void majForm()

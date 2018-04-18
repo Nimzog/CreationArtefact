@@ -338,6 +338,7 @@ namespace CreationArtefact
                 }
                 else
                 {
+                    string tmpType = "Non reconnu";
                     switch (artefact.Pouvoirs[ListBoxArtefact.SelectedIndex-1].TypePouvoir)
                     {
                         case TypeFacette.FacetteAugmentation:
@@ -353,35 +354,77 @@ namespace CreationArtefact
                             wasSavePressed = formFacetteAugmentation.CloseSaveCancel;
                             if (wasSavePressed)
                             {
-                                isSavedAdded = artefact.addPouvoir(tempAug);
+                                isSavedAdded = artefact.UpdatePouvoir(formFacetteAugmentation.Augmentation, ListBoxArtefact.SelectedIndex - 1);
                             }
+                            MAJRichTextBoxDescArtefact();
+                            RemplirListBox();
                             break;
                         case TypeFacette.FacetteCombat:
+                            if (formFacetteCombat != null)
+                            {
+                                formFacetteCombat.Dispose();
+                            }
+                            formFacetteCombat = new FormFacetteCombat();
+                            ClassFacetteCombat tempCom =
+                                (ClassFacetteCombat)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+
+                            formFacetteCombat.ShowDialog(tempCom);
+                            wasSavePressed = formFacetteCombat.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                isSavedAdded = artefact.UpdatePouvoir(formFacetteCombat.Combat, ListBoxArtefact.SelectedIndex - 1);
+                            }
+                            MAJRichTextBoxDescArtefact();
+                            RemplirListBox();
                             break;
                         case TypeFacette.FacetteConvocation:
+                            if (formFacetteConvocation != null)
+                            {
+                                formFacetteConvocation.Dispose();
+                            }
+                            formFacetteConvocation = new FormFacetteConvocation();
+                            FormFacetteConvocation tempConvo =
+                                (FormFacetteConvocation)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+
+                            formFacetteConvocation.ShowDialog(tempConvo);
+                            wasSavePressed = formFacetteConvocation.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                isSavedAdded = artefact.UpdatePouvoir(formFacetteConvocation.Convocation, ListBoxArtefact.SelectedIndex - 1);
+                            }
+                            MAJRichTextBoxDescArtefact();
+                            RemplirListBox();
                             break;
                         case TypeFacette.FacetteDefensive:
+                            tmpType = "FacetteDefensive";
                             break;
                         case TypeFacette.FacetteEsoterique:
+                            tmpType = "FacetteEsoterique";
                             break;
                         case TypeFacette.FacetteInnee:
+                            tmpType = "FacetteInnee";
                             break;
                         case TypeFacette.FacetteMagique:
+                            tmpType = "FacetteMagique";
                             break;
                         case TypeFacette.FacetteMaitrise:
+                            tmpType = "FacetteMaitrise";
                             break;
                         case TypeFacette.FacetteProtection:
+                            tmpType = "FacetteProtection";
                             break;
                         case TypeFacette.FacettePsychique:
+                            tmpType = "FacetteAugmentation";
                             break;
                         case TypeFacette.FacetteQualite:
-                            MessageBox.Show("FacetteQualite", "Avertissement",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            ListBoxArtefact.ClearSelected();
+                            tmpType = "FacetteQualite";                            
                             break;
                         default:
                             break;
                     }
+                    MessageBox.Show(tmpType, "Avertissement",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ListBoxArtefact.ClearSelected();
                 }
                 ListBoxArtefact.ClearSelected();
             }
