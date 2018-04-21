@@ -227,6 +227,7 @@
             this.Name = "FormEffetMystique";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette ésotérique: Effet mystique";
+            this.Load += new System.EventHandler(this.FormEffetMystique_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

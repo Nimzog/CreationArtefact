@@ -193,6 +193,7 @@
             this.Name = "FormAjoutSortMagieInnee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormAjoutSortMagieInnee";
+            this.Load += new System.EventHandler(this.FormAjoutSortMagieInnee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownNiveau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownZeon)).EndInit();
             this.ResumeLayout(false);

@@ -14,7 +14,7 @@ namespace CreationArtefact
     {
         public bool CloseSaveCancel, Modification;
 
-        public ClassFacetteConvocation Convocation = null;
+        public ClassFacetteConvocation Convocation = null, importConvocation;
 
         public FormFacetteConvocation()
         {
@@ -36,10 +36,6 @@ namespace CreationArtefact
                 {
                     case 1:
                         LabelModificateur.Visible = false;
-
-                        CheckBoxLienElementaire.Enabled = false;
-                        CheckBoxLienElementaire.Visible = false;
-                        CheckBoxLienElementaire.Checked = false;
 
                         LabelElement.Visible = false;
                         ComboBoxElement.Visible = false;
@@ -74,10 +70,6 @@ namespace CreationArtefact
                     case 2:
                         LabelModificateur.Visible = true;
 
-                        CheckBoxLienElementaire.Enabled = true;
-                        CheckBoxLienElementaire.Visible = true;
-                        CheckBoxLienElementaire.Checked = false;
-
                         LabelElement.Visible = true;
                         ComboBoxElement.Visible = true;
                         ComboBoxElement.Enabled = false;
@@ -111,10 +103,6 @@ namespace CreationArtefact
                     case 3:
                         LabelModificateur.Visible = true;
 
-                        CheckBoxLienElementaire.Enabled = true;
-                        CheckBoxLienElementaire.Visible = true;
-                        CheckBoxLienElementaire.Checked = false;
-
                         LabelElement.Visible = true;
                         ComboBoxElement.Visible = true;
                         ComboBoxElement.Enabled = false;
@@ -147,10 +135,6 @@ namespace CreationArtefact
                         break;
                     default:
                         LabelModificateur.Visible = false;
-
-                        CheckBoxLienElementaire.Enabled = false;
-                        CheckBoxLienElementaire.Visible = false;
-                        CheckBoxLienElementaire.Checked = false;
 
                         LabelElement.Visible = false;
                         ComboBoxElement.Visible = false;
@@ -188,10 +172,6 @@ namespace CreationArtefact
             else
             {
                 LabelModificateur.Visible = false;
-
-                CheckBoxLienElementaire.Enabled = false;
-                CheckBoxLienElementaire.Visible = false;
-                CheckBoxLienElementaire.Checked = false;
 
                 LabelElement.Visible = false;
                 ComboBoxElement.Visible = false;
@@ -231,19 +211,6 @@ namespace CreationArtefact
             majForm();
         }
 
-        private void CheckBoxLienElementaire_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CheckBoxLienElementaire.Checked)
-            {
-                ComboBoxElement.Enabled = true;
-            }
-            else
-            {
-                ComboBoxElement.Enabled = false;
-            }
-            majForm();
-        }
-
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             creerPouvoir();
@@ -270,7 +237,7 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Convocation.GenererCoutPouvoir();
+                coutPouvoir = Convocation.GetCoutPouvoir();
 
                 if (coutPouvoir.PP <= 0)
                 {
@@ -282,25 +249,13 @@ namespace CreationArtefact
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -324,36 +279,16 @@ namespace CreationArtefact
                     break;
                 case 2:
                     Convocation.LienEconome = ComboBoxSelectBonus.SelectedIndex;
-                    if (CheckBoxLienElementaire.Checked)
+                    if (ComboBoxElement.SelectedIndex != 0)
                     {
-                        Convocation.LienElem = true;
-                        if (ComboBoxElement.SelectedIndex != 0)
-                        {
-                            Convocation.ElementLie = ComboBoxElement.SelectedIndex;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Choisissez un élément valide.", "Avertissement",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            ComboBoxElement.Focus();
-                        }
+                        Convocation.ElementLie = ComboBoxElement.SelectedIndex;
                     }
                     break;
                 case 3:
                     Convocation.ConvoAccrue = ComboBoxSelectBonus.SelectedIndex;
-                    if (CheckBoxLienElementaire.Checked)
+                    if (ComboBoxElement.SelectedIndex != 0)
                     {
-                        Convocation.LienElem = true;
-                        if (ComboBoxElement.SelectedIndex != 0)
-                        {
-                            Convocation.ElementLie = ComboBoxElement.SelectedIndex;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Choisissez un élément valide.", "Avertissement",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            ComboBoxElement.Focus();
-                        }
+                        Convocation.ElementLie = ComboBoxElement.SelectedIndex;
                     }
                     if (ComboBoxConvocation.SelectedIndex != 0)
                     {
@@ -430,90 +365,45 @@ namespace CreationArtefact
         {
             if (Modification)
             {
-                if (importCombat.Attaque != 0)
+                if (importConvocation.PresenceAccrue != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 1;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Attaque;
+                    ComboBoxSelectBonus.SelectedIndex = importConvocation.PresenceAccrue;
                 }
-                else if (importCombat.Offensif != 0)
+                else if (importConvocation.LienEconome != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 2;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Offensif;
+                    ComboBoxSelectBonus.SelectedIndex = importConvocation.LienEconome;
+                    if (importConvocation.ElementLie != 0)
+                    {
+                        ComboBoxElement.SelectedIndex = importConvocation.ElementLie;
+                    }
                 }
-                else if (importCombat.BonusDegat != 0)
+                else if (importConvocation.ConvoAccrue != 0)
                 {
                     ComboBoxSelectPouv.SelectedIndex = 3;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.BonusDegat;
-                }
-                else if (importCombat.Enchantee != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 4;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Enchantee;
-                }
-                else if (importCombat.Element != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 5;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Element;
-                    if (importCombat.ElemVariable)
+                    ComboBoxSelectBonus.SelectedIndex = importConvocation.ConvoAccrue;
+                    if (importConvocation.ElementLie != 0)
                     {
-                        RadioButtonMod2.Checked = true;
+                        ComboBoxElement.SelectedIndex = importConvocation.ElementLie;
                     }
-                    if (importCombat.ElemCombine)
+                    ComboBoxConvocation.SelectedIndex = importConvocation.ConvoLie;
+                    if (importConvocation.ConvoSeul)
                     {
-                        RadioButtonMod3.Checked = true;
+                        RadioButtonConvo.Checked = true;
                     }
-                    if (importCombat.ElemPrime)
+                    else if (importConvocation.Invocation)
                     {
-                        RadioButtonMod4.Checked = true;
+                        RadioButtonInvoke.Checked = true;
                     }
-                }
-                else if (importCombat.Exterminateur != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 6;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Exterminateur;
-                    if (importCombat.GrandExterminateur)
+                    else
                     {
-                        CheckBoxMod1.Checked = true;
+                        RadioButtonAucun.Checked = true;
                     }
-                    TextBoxExterminateur.Text = importCombat.DescExterminateur;
-                }
-                else if (importCombat.Assaut != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 7;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Assaut;
-                }
-                else if (importCombat.Munition != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 8;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Munition;
-                    if (importCombat.Firearm)
+                    if (importConvocation.RituelReq)
                     {
-                        CheckBoxMod1.Checked = true;
+                        CheckBoxRituel.Checked = true;
                     }
-                    if (importCombat.MuniCombi)
-                    {
-                        CheckBoxMod2.Checked = true;
-                    }
-                }
-                else if (importCombat.Critique != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 9;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Critique;
-                }
-                else if (importCombat.Recuperation != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 10;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.Recuperation;
-                }
-                else if (importCombat.DestArmure != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 11;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.DestArmure;
-                }
-                else if (importCombat.AutreComp != 0)
-                {
-                    ComboBoxSelectPouv.SelectedIndex = 12;
-                    ComboBoxSelectBonus.SelectedIndex = importCombat.AutreComp;
                 }
                 else
                 {
@@ -521,6 +411,15 @@ namespace CreationArtefact
                 }
                 ComboBoxSelectPouv.Enabled = false;
             }
+        }
+
+        public DialogResult ShowDialog(ClassFacetteConvocation facette)
+        {
+            Modification = true;
+
+            importConvocation = facette;
+
+            return ShowDialog();
         }
     }
 }

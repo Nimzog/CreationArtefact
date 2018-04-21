@@ -179,6 +179,7 @@
             this.Name = "FormFacetteQualite";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette générale de qualité";
+            this.Load += new System.EventHandler(this.FormFacetteQualite_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,7 +13,8 @@ namespace CreationArtefact
     public partial class FormEffetMystique : Form
     {
         public bool CloseSaveCancel;
-        public ClassEffetMystique EffetMystique;
+        public ClassEffetMystique EffetMystique, importEffet;
+        bool modification;
 
         public FormEffetMystique()
         {
@@ -25,6 +26,7 @@ namespace CreationArtefact
             ComboBoxSelectEffet.DataSource = Properties.Settings.Default.EffetMystique;
             ComboBoxSelectResistance.DataSource = Properties.Settings.Default.ResistanceEffet;
             ComboBoxSelectCondition.DataSource = Properties.Settings.Default.ConditionEffet;
+            modification = false;
         }
 
         private void ComboBoxSelectEffet_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,7 +104,7 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = EffetMystique.GenererCoutPouvoir();
+                coutPouvoir = EffetMystique.GetCoutPouvoir();
 
                 if (coutPouvoir.PP <= 0)
                 {
@@ -114,25 +116,13 @@ namespace CreationArtefact
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -143,6 +133,27 @@ namespace CreationArtefact
                 LabelPP.Text = "NA";
                 LabelPres.Text = "NA";
             }
+        }
+
+        private void FormEffetMystique_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                ComboBoxSelectEffet.SelectedIndex = importEffet.Effet;
+                ComboBoxSelectCondition.SelectedIndex = importEffet.Condition;
+                ComboBoxSelectResistance.SelectedIndex = importEffet.Resistance;
+                CheckBoxLimite.Enabled = importEffet.Limite;
+
+            }
+        }
+
+        public DialogResult ShowDialog(ClassEffetMystique facette)
+        {
+            modification = true;
+
+            importEffet = facette;
+
+            return ShowDialog();
         }
     }
 }

@@ -20,6 +20,8 @@ namespace CreationArtefact
         /// 
         /// </summary>
         public ClassFacetteMagique Magique;
+        bool modification;
+        ClassFacetteMagique importMagique;
 
         public FormFacetteMagique()
         {
@@ -30,6 +32,8 @@ namespace CreationArtefact
 
             ComboBoxSelectPouv.DataSource = Properties.Settings.Default.FacetteMagique;
             ComboBoxVoieMagie.DataSource = Properties.Settings.Default.VoieDeMagie;
+
+            modification = false;
         }
 
         private void ComboBoxSelectPouv_SelectedIndexChanged(object sender, EventArgs e)
@@ -311,29 +315,17 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Magique.GenererCoutPouvoir();
+                coutPouvoir = Magique.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -410,6 +402,77 @@ namespace CreationArtefact
             CloseSaveCancel = false;
 
             this.Close();
+        }
+
+        private void FormFacetteMagique_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importMagique.AmpliAMR != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importMagique.AmpliAMR;
+                    if (importMagique.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieMagie.SelectedIndex = importMagique.VoieMagie;
+                    }
+                }
+                else if (importMagique.ProjMagique != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importMagique.ProjMagique;
+                    if (importMagique.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieMagie.SelectedIndex = importMagique.VoieMagie;
+                    }
+                }
+                else if (importMagique.ReceptZeon != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importMagique.ReceptZeon;
+                }
+                else if (importMagique.PuissAjout != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 4;
+                    ComboBoxSelectBonus.SelectedIndex = importMagique.PuissAjout;
+                    if (importMagique.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieMagie.SelectedIndex = importMagique.VoieMagie;
+                    }
+                }
+                else if (importMagique.TestResMysAcc != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 5;
+                    ComboBoxSelectBonus.SelectedIndex = importMagique.TestResMysAcc;
+                    if (importMagique.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieMagie.SelectedIndex = importMagique.VoieMagie;
+                    }
+                }
+                else if (importMagique.RegenZeon != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 6;
+                    ComboBoxSelectBonus.SelectedIndex = importMagique.RegenZeon;
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
+        }
+
+        public DialogResult ShowDialog(ClassFacetteMagique facette)
+        {
+            modification = true;
+
+            importMagique = facette;
+
+            return ShowDialog();
         }
     }
 }

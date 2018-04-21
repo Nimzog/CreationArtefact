@@ -287,6 +287,7 @@
             this.MinimizeBox = false;
             this.Name = "FormFacetteEsoterique";
             this.Text = "Facette ésotérique";
+            this.Load += new System.EventHandler(this.FormFacetteEsoterique_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

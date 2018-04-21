@@ -26,6 +26,7 @@ namespace CreationArtefact
         public List<ClassFacette> Pouvoirs { get; set; } //Listes des pouvoir de cet artefact.
 
         int PresenceRestante, PPlvl1, PPlvl2, PPlvl3, PPlvl4, PPlvl5;
+        ClassAffinite AffiniteBidon;
 
         /// <summary>
         /// 
@@ -42,6 +43,7 @@ namespace CreationArtefact
             PPlvl3 = 0;
             PPlvl4 = 0;
             PPlvl5 = 0;
+            AffiniteBidon = new ClassAffinite(0);
         }
 
         /// <summary>
@@ -103,9 +105,9 @@ namespace CreationArtefact
         /// </summary>
         /// <param name="pouvoir">Le pouvoir à ajouter</param>
         /// <returns>Si l'ajout a été fait avec succès</returns>
-        public bool addPouvoir(ClassFacette pouvoir)
+        public bool AddPouvoir(ClassFacette pouvoir)
         {
-            bool canAdd = false;
+            bool canAdd = true;
 
             //calculer les coûts du pouvoir à ajouter
             pouvoir.GenererCoutPouvoir();
@@ -125,199 +127,193 @@ namespace CreationArtefact
             switch (pouvoir.TypePouvoir)
             {
                 case TypeFacette.FacetteCombat:
-                    if (Contenant.AffiniteAttElement.getAffinite() > 0 && ((ClassFacetteCombat)pouvoir).Element > 0)
+                    if (Contenant.AffiniteAttElement.GetAffinite() > 0 && ((ClassFacetteCombat)pouvoir).Element > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAttElement);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAttElement);
                     }
-                    else if (Contenant.AffiniteAttSpec.getAffinite() > 0 && pouvoir.SubType == SubTypeFacette.AttaqueSpeciale)
+                    else if (Contenant.AffiniteAttSpec.GetAffinite() > 0 && pouvoir.SubType == SubTypeFacette.AttaqueSpeciale)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAttSpec);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAttSpec);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacetteProtection:
-                    if (Contenant.AffiniteImmunite.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).Immunite > 0)
+                    if (Contenant.AffiniteImmunite.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).Immunite > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmunite);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmunite);
                     }
-                    else if (Contenant.AffiniteImmuniteMystique.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteMagique > 0)
+                    else if (Contenant.AffiniteImmuniteMystique.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteMagique > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmuniteMystique);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmuniteMystique);
                     }
-                    else if (Contenant.AffiniteImmunitePsy.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmunitePsychique > 0)
+                    else if (Contenant.AffiniteImmunitePsy.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmunitePsychique > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmunitePsy);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmunitePsy);
                     }
-                    else if (Contenant.AffiniteImmuniteElem.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteElementaire > 0)
+                    else if (Contenant.AffiniteImmuniteElem.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteElementaire > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmuniteElem);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmuniteElem);
                     }
-                    else if (Contenant.AffiniteSeuilInvul.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).SeuilInvul > 0)
+                    else if (Contenant.AffiniteSeuilInvul.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).SeuilInvul > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSeuilInvul);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSeuilInvul);
                     }
-                    else if (Contenant.AffiniteAmelorationRes.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).AugmentRes > 0)
+                    else if (Contenant.AffiniteAmelorationRes.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).AugmentRes > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmelorationRes);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmelorationRes);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacetteMagique:
-                    if (Contenant.AffiniteAmpliAMR.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).AmpliAMR > 0)
+                    if (Contenant.AffiniteAmpliAMR.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).AmpliAMR > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmpliAMR);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmpliAMR);
                     }
-                    else if (Contenant.AffiniteProjMag.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ProjMagique > 0)
+                    else if (Contenant.AffiniteProjMag.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ProjMagique > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteProjMag);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteProjMag);
                     }
-                    else if (Contenant.AffinitePuissAjoutee.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).PuissAjout > 0)
+                    else if (Contenant.AffinitePuissAjoutee.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).PuissAjout > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffinitePuissAjoutee);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffinitePuissAjoutee);
                     }
-                    else if (Contenant.AffiniteReceptacleZeon.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ReceptZeon > 0)
+                    else if (Contenant.AffiniteReceptacleZeon.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ReceptZeon > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteReceptacleZeon);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteReceptacleZeon);
                     }
-                    else if (Contenant.AffiniteRechargeMag.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).RegenZeon > 0)
+                    else if (Contenant.AffiniteRechargeMag.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).RegenZeon > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteRechargeMag);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteRechargeMag);
                     }
-                    else if (Contenant.AffiniteTestResAccrus.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).TestResMysAcc > 0)
+                    else if (Contenant.AffiniteTestResAccrus.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).TestResMysAcc > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTestResAccrus);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTestResAccrus);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacettePsychique:
-                    if (Contenant.AffiniteTalent.getAffinite() > 0 && ((ClassFacettePsychique)pouvoir).Talent > 0)
+                    if (Contenant.AffiniteTalent.GetAffinite() > 0 && ((ClassFacettePsychique)pouvoir).Talent > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTalent);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTalent);
                     }
-                    else if (Contenant.AffiniteTestResAccrus.getAffinite() > 0 && ((ClassFacettePsychique)pouvoir).TestResPsyAccrus > 0)
+                    else if (Contenant.AffiniteTestResAccrus.GetAffinite() > 0 && ((ClassFacettePsychique)pouvoir).TestResPsyAccrus > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTestResAccrus);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTestResAccrus);
                     }
-                    else if (Contenant.AffiniteAmelioMaintPouvoir.getAffinite() > 0 && ((ClassFacettePsychique)pouvoir).MaintPouvoir > 0)
+                    else if (Contenant.AffiniteAmelioMaintPouvoir.GetAffinite() > 0 && ((ClassFacettePsychique)pouvoir).MaintPouvoir > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmelioMaintPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmelioMaintPouvoir);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacetteConvocation:
-                    if (Contenant.AffinitePresAccru.getAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).PresenceAccrue > 0)
+                    if (Contenant.AffinitePresAccru.GetAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).PresenceAccrue > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffinitePresAccru);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffinitePresAccru);
                     }
-                    else if (Contenant.AffiniteConvoAccrue.getAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).ConvoAccrue > 0)
+                    else if (Contenant.AffiniteConvoAccrue.GetAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).ConvoAccrue > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteConvoAccrue);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteConvoAccrue);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacetteInnee:
-                    if (Contenant.AffiniteMagieInnee.getAffinite() > 0)
+                    if (Contenant.AffiniteMagieInnee.GetAffinite() > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteMagieInnee);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteMagieInnee);
                     }
-                    else if (Contenant.AffiniteSortsAuto.getAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).SortAutomatique.Count > 0)
+                    else if (Contenant.AffiniteSortsAuto.GetAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).SortAutomatique.Count > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSortsAuto);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSortsAuto);
                     }
-                    else if (Contenant.AffiniteLanceurSort.getAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).LanceurSort.Count > 0)
+                    else if (Contenant.AffiniteLanceurSort.GetAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).LanceurSort.Count > 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteLanceurSort);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteLanceurSort);
                     }
-                    else if (Contenant.AffiniteCompLancement.getAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).CompLancement != 0)
+                    else if (Contenant.AffiniteCompLancement.GetAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).CompLancement != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteCompLancement);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteCompLancement);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacetteAugmentation:
-                    if (Contenant.AffiniteAugmentDeplacement.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugDeplacement != 0)
+                    if (Contenant.AffiniteAugmentDeplacement.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugDeplacement != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentDeplacement);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentDeplacement);
                     }
-                    else if (Contenant.AffiniteAugmentCompSec.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCompSec != 0)
+                    else if (Contenant.AffiniteAugmentCompSec.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCompSec != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentCompSec);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentCompSec);
                     }
-                    else if (Contenant.AffiniteAugmentCharac.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCarac != 0)
+                    else if (Contenant.AffiniteAugmentCharac.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCarac != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentCharac);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentCharac);
                     }
-                    else if (Contenant.AffiniteSubstiCarac.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).SubstiCarac != 0)
+                    else if (Contenant.AffiniteSubstiCarac.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).SubstiCarac != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSubstiCarac);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSubstiCarac);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacetteMaitrise:
-                    if (Contenant.AffiniteReserveKi.getAffinite() > 0 && ((ClassFacetteMaitrise)pouvoir).ReserveKi != 0)
+                    if (Contenant.AffiniteReserveKi.GetAffinite() > 0 && ((ClassFacetteMaitrise)pouvoir).ReserveKi != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteReserveKi);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteReserveKi);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 case TypeFacette.FacetteEsoterique:
-                    if (Contenant.AffiniteAltDestin.getAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).AlterationDestion != 0)
+                    if (Contenant.AffiniteAltDestin.GetAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).AlterationDestion != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAltDestin);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAltDestin);
                     }
-                    else if (Contenant.AffiniteVision.getAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Vision != 0)
+                    else if (Contenant.AffiniteVision.GetAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Vision != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteVision);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteVision);
                     }
-                    else if (Contenant.AffiniteCreatePortail.getAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Portal != 0)
+                    else if (Contenant.AffiniteCreatePortail.GetAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Portal != 0)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteCreatePortail);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteCreatePortail);
                     }
-                    else if (Contenant.AffiniteEffetMystique.getAffinite() > 0 && pouvoir.SubType == SubTypeFacette.EffetMystique)
+                    else if (Contenant.AffiniteEffetMystique.GetAffinite() > 0 && pouvoir.SubType == SubTypeFacette.EffetMystique)
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteEffetMystique);
+                        UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteEffetMystique);
                     }
                     else
                     {
-                        canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                        UpdatePresence(pouvoir.CoutPouvoir);
                     }
                     break;
                 default:
-                    canAdd = UpdatePresence(pouvoir.CoutPouvoir);
+                    UpdatePresence(pouvoir.CoutPouvoir);
                     break;
-                }
-            
-
-            //
-            if (canAdd)
-            {
-                Pouvoirs.Add(pouvoir);
-                Pouvoirs.Sort(ComparerPouvoir);
             }
+            Pouvoirs.Add(pouvoir);
+            Pouvoirs.Sort(ComparerPouvoir);
 
             return canAdd;
         }
@@ -328,9 +324,9 @@ namespace CreationArtefact
         /// <param name="pouvoir">Le pouvoir à ajouter</param>
         /// /// <param name="pouvoir">Le pouvoir à ajouter</param>
         /// <returns>Si l'ajout a été fait avec succès</returns>
-        public bool addPouvoir(ClassFacetteEsoterique pouvoir, bool flag)
+        public bool AddPouvoir(ClassFacetteEsoterique pouvoir, bool flag)
         {
-            bool canAdd = false;
+            bool canAdd = true;
 
             //calculer les coûts du pouvoir à ajouter
             pouvoir.GenererCoutPouvoir(this);
@@ -369,8 +365,7 @@ namespace CreationArtefact
             bool canAdd = false;
             int affiniteCurrent, extraAffinite, suppose, current, nouveau;
 
-            pouvoir.GenererCoutPouvoir();
-            
+            pouvoir.GenererCoutPouvoir();            
 
             affiniteCurrent = 0;
             extraAffinite = 0;
@@ -385,182 +380,173 @@ namespace CreationArtefact
                 if (current != suppose)
                 {
                     affiniteCurrent = suppose - current;
-                    if (affiniteCurrent > 0)
+                    //vérifie si le nouveau cout est plus élevé que l'affinité
+                    if (affiniteCurrent > nouveau)
                     {
-                        if (affiniteCurrent > nouveau)
+                        extraAffinite = affiniteCurrent - nouveau;
+                        //réassigne la différence
+                        switch (pouvoir.TypePouvoir)
                         {
-                            extraAffinite = affiniteCurrent - nouveau;
-                            //réassigne la différence
-                            switch (pouvoir.TypePouvoir)
-                            {
-                                case TypeFacette.FacetteCombat:
-                                    if (((ClassFacetteCombat)pouvoir).Element > 0)
-                                    {
-                                        Contenant.AffiniteAttElement.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (pouvoir.SubType == SubTypeFacette.AttaqueSpeciale)
-                                    {
-                                        Contenant.AffiniteAttSpec.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                case TypeFacette.FacetteProtection:
-                                    if (((ClassFacetteProtection)pouvoir).Immunite > 0)
-                                    {
-                                        Contenant.AffiniteImmunite.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteProtection)pouvoir).ImmuniteMagique > 0)
-                                    {
-                                        Contenant.AffiniteImmuniteMystique.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteProtection)pouvoir).ImmunitePsychique > 0)
-                                    {
-                                        Contenant.AffiniteImmunitePsy.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteProtection)pouvoir).ImmuniteElementaire > 0)
-                                    {
-                                        Contenant.AffiniteImmuniteElem.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteProtection)pouvoir).SeuilInvul > 0)
-                                    {
-                                        Contenant.AffiniteSeuilInvul.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteProtection)pouvoir).AugmentRes > 0)
-                                    {
-                                        Contenant.AffiniteAmelorationRes.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                case TypeFacette.FacetteMagique:
-                                    if (((ClassFacetteMagique)pouvoir).AmpliAMR > 0)
-                                    {
-                                        Contenant.AffiniteAmpliAMR.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagique)pouvoir).ProjMagique > 0)
-                                    {
-                                        Contenant.AffiniteProjMag.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagique)pouvoir).PuissAjout > 0)
-                                    {
-                                        Contenant.AffinitePuissAjoutee.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagique)pouvoir).ReceptZeon > 0)
-                                    {
-                                        Contenant.AffiniteReceptacleZeon.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagique)pouvoir).RegenZeon > 0)
-                                    {
-                                        Contenant.AffiniteRechargeMag.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagique)pouvoir).TestResMysAcc > 0)
-                                    {
-                                        Contenant.AffiniteTestResAccrus.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                case TypeFacette.FacettePsychique:
-                                    if (((ClassFacettePsychique)pouvoir).Talent > 0)
-                                    {
-                                        Contenant.AffiniteTalent.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacettePsychique)pouvoir).TestResPsyAccrus > 0)
-                                    {
-                                        Contenant.AffiniteTestResAccrus.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacettePsychique)pouvoir).MaintPouvoir > 0)
-                                    {
-                                        Contenant.AffiniteAmelioMaintPouvoir.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                case TypeFacette.FacetteConvocation:
-                                    if (((ClassFacetteConvocation)pouvoir).PresenceAccrue > 0)
-                                    {
-                                        Contenant.AffinitePresAccru.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteConvocation)pouvoir).ConvoAccrue > 0)
-                                    {
-                                        Contenant.AffiniteConvoAccrue.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                case TypeFacette.FacetteInnee:
-                                    if (Contenant.AffiniteMagieInnee.hasAffinite())
-                                    {
-                                        Contenant.AffiniteMagieInnee.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagieInnee)pouvoir).SortAutomatique.Count > 0)
-                                    {
-                                        Contenant.AffiniteSortsAuto.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagieInnee)pouvoir).LanceurSort.Count > 0)
-                                    {
-                                        Contenant.AffiniteLanceurSort.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteMagieInnee)pouvoir).CompLancement != 0)
-                                    {
-                                        Contenant.AffiniteCompLancement.setAffinite(Math.Abs(extraAffinite));
-                                    }
+                            case TypeFacette.FacetteCombat:
+                                if (((ClassFacetteCombat)pouvoir).Element > 0)
+                                {
+                                    Contenant.AffiniteAttElement.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (pouvoir.SubType == SubTypeFacette.AttaqueSpeciale)
+                                {
+                                    Contenant.AffiniteAttSpec.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            case TypeFacette.FacetteProtection:
+                                if (((ClassFacetteProtection)pouvoir).Immunite > 0)
+                                {
+                                    Contenant.AffiniteImmunite.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteProtection)pouvoir).ImmuniteMagique > 0)
+                                {
+                                    Contenant.AffiniteImmuniteMystique.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteProtection)pouvoir).ImmunitePsychique > 0)
+                                {
+                                    Contenant.AffiniteImmunitePsy.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteProtection)pouvoir).ImmuniteElementaire > 0)
+                                {
+                                    Contenant.AffiniteImmuniteElem.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteProtection)pouvoir).SeuilInvul > 0)
+                                {
+                                    Contenant.AffiniteSeuilInvul.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteProtection)pouvoir).AugmentRes > 0)
+                                {
+                                    Contenant.AffiniteAmelorationRes.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            case TypeFacette.FacetteMagique:
+                                if (((ClassFacetteMagique)pouvoir).AmpliAMR > 0)
+                                {
+                                    Contenant.AffiniteAmpliAMR.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagique)pouvoir).ProjMagique > 0)
+                                {
+                                    Contenant.AffiniteProjMag.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagique)pouvoir).PuissAjout > 0)
+                                {
+                                    Contenant.AffinitePuissAjoutee.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagique)pouvoir).ReceptZeon > 0)
+                                {
+                                    Contenant.AffiniteReceptacleZeon.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagique)pouvoir).RegenZeon > 0)
+                                {
+                                    Contenant.AffiniteRechargeMag.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagique)pouvoir).TestResMysAcc > 0)
+                                {
+                                    Contenant.AffiniteTestResAccrus.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            case TypeFacette.FacettePsychique:
+                                if (((ClassFacettePsychique)pouvoir).Talent > 0)
+                                {
+                                    Contenant.AffiniteTalent.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacettePsychique)pouvoir).TestResPsyAccrus > 0)
+                                {
+                                    Contenant.AffiniteTestResAccrus.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacettePsychique)pouvoir).MaintPouvoir > 0)
+                                {
+                                    Contenant.AffiniteAmelioMaintPouvoir.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            case TypeFacette.FacetteConvocation:
+                                if (((ClassFacetteConvocation)pouvoir).PresenceAccrue > 0)
+                                {
+                                    Contenant.AffinitePresAccru.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteConvocation)pouvoir).ConvoAccrue > 0)
+                                {
+                                    Contenant.AffiniteConvoAccrue.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            case TypeFacette.FacetteInnee:
+                                if (Contenant.AffiniteMagieInnee.HasAffinite())
+                                {
+                                    Contenant.AffiniteMagieInnee.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagieInnee)pouvoir).SortAutomatique.Count > 0)
+                                {
+                                    Contenant.AffiniteSortsAuto.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagieInnee)pouvoir).LanceurSort.Count > 0)
+                                {
+                                    Contenant.AffiniteLanceurSort.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteMagieInnee)pouvoir).CompLancement != 0)
+                                {
+                                    Contenant.AffiniteCompLancement.IncremeteAffinite(extraAffinite);
+                                }
 
-                                    break;
-                                case TypeFacette.FacetteAugmentation:
-                                    if (((ClassFacetteAugmentation)pouvoir).AugDeplacement != 0)
-                                    {
-                                        Contenant.AffiniteAugmentDeplacement.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteAugmentation)pouvoir).AugCompSec != 0)
-                                    {
-                                        Contenant.AffiniteAugmentCompSec.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteAugmentation)pouvoir).AugCarac != 0)
-                                    {
-                                        Contenant.AffiniteAugmentCharac.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteAugmentation)pouvoir).SubstiCarac != 0)
-                                    {
-                                        Contenant.AffiniteSubstiCarac.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                case TypeFacette.FacetteMaitrise:
-                                    if (((ClassFacetteMaitrise)pouvoir).ReserveKi != 0)
-                                    {
-                                        Contenant.AffiniteReserveKi.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                case TypeFacette.FacetteEsoterique:
-                                    if (((ClassFacetteEsoterique)pouvoir).AlterationDestion != 0)
-                                    {
-                                        Contenant.AffiniteAltDestin.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteEsoterique)pouvoir).Vision != 0)
-                                    {
-                                        Contenant.AffiniteVision.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (((ClassFacetteEsoterique)pouvoir).Portal != 0)
-                                    {
-                                        Contenant.AffiniteCreatePortail.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    else if (pouvoir.SubType == SubTypeFacette.EffetMystique)
-                                    {
-                                        Contenant.AffiniteEffetMystique.setAffinite(Math.Abs(extraAffinite));
-                                    }
-                                    break;
-                                default:
+                                break;
+                            case TypeFacette.FacetteAugmentation:
+                                if (((ClassFacetteAugmentation)pouvoir).AugDeplacement != 0)
+                                {
+                                    Contenant.AffiniteAugmentDeplacement.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteAugmentation)pouvoir).AugCompSec != 0)
+                                {
+                                    Contenant.AffiniteAugmentCompSec.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteAugmentation)pouvoir).AugCarac != 0)
+                                {
+                                    Contenant.AffiniteAugmentCharac.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteAugmentation)pouvoir).SubstiCarac != 0)
+                                {
+                                    Contenant.AffiniteSubstiCarac.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            case TypeFacette.FacetteMaitrise:
+                                if (((ClassFacetteMaitrise)pouvoir).ReserveKi != 0)
+                                {
+                                    Contenant.AffiniteReserveKi.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            case TypeFacette.FacetteEsoterique:
+                                if (((ClassFacetteEsoterique)pouvoir).AlterationDestion != 0)
+                                {
+                                    Contenant.AffiniteAltDestin.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteEsoterique)pouvoir).Vision != 0)
+                                {
+                                    Contenant.AffiniteVision.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (((ClassFacetteEsoterique)pouvoir).Portal != 0)
+                                {
+                                    Contenant.AffiniteCreatePortail.IncremeteAffinite(extraAffinite);
+                                }
+                                else if (pouvoir.SubType == SubTypeFacette.EffetMystique)
+                                {
+                                    Contenant.AffiniteEffetMystique.IncremeteAffinite(extraAffinite);
+                                }
+                                break;
+                            default:
 
-                                    break;
-                            }
-                            affiniteCurrent -= extraAffinite;
+                                break;
                         }
-                        nouveau -= affiniteCurrent;
+                        affiniteCurrent -= extraAffinite;
                     }
+                    nouveau -= affiniteCurrent;
                 }
-                if (PresenceRestante >= pouvoir.CoutPouvoir.Presence - extraAffinite)
-                {                    
-                    pouvoir.CoutPouvoir.Presence = nouveau;
-                    canAdd = true;
-                }
+                pouvoir.CoutPouvoir.Presence = nouveau;
             }
 
-            if (canAdd)
-            {
-                Pouvoirs[index] = pouvoir;
-                MAJPpointPouvoirPresence();
-            }
+            Pouvoirs[index] = pouvoir;
+            MAJPpointPouvoirPresence();
 
             return canAdd;
         }
@@ -573,152 +559,82 @@ namespace CreationArtefact
         /// <returns></returns>
         private bool UpdatePresence(ClassCoutPouvoir coutPouvoir, ClassAffinite affinite)
         {
-            bool canAdd = false;
+            bool canAdd = true;
+            int tempAff = affinite.GetAffinite();
 
             //verifie s'il y a assé de présence restante dans l'objet
             switch (coutPouvoir.Niveau)
             {
                 case 1:
-                    if (PresenceRestante - affinite.getAffinite() - 10 >= 0)
+                    if (tempAff <= 10 && tempAff > 0)
                     {
-                        if (affinite.getAffinite() == 10)
-                        {
-                            affinite.setAffinite(0);
-                            coutPouvoir.Presence = 0;
-                            canAdd = true;
-                        }
-                        else if (affinite.getAffinite() < 10 && affinite.getAffinite() > 0)
-                        {
-                            if (PresenceRestante >= (10 - affinite.getAffinite()))
-                            {
-                                coutPouvoir.Presence = (10 - affinite.getAffinite());
-                                affinite.setAffinite(0);
-                                canAdd = true;
-                            }
-                        }
-                        else if (affinite.getAffinite() == 0)
-                        {
-                            if (PresenceRestante >= 10)
-                            {
-                                coutPouvoir.Presence = 10;
-                                canAdd = true;
-                            }
-                        }
-                        else if (affinite.getAffinite() > 10)
-                        {
-                            affinite.setAffinite(affinite.getAffinite() - 10);
-                            coutPouvoir.Presence = 0;
-                            canAdd = true;
-                        }
+                        coutPouvoir.Presence = (10 - tempAff);
+                        affinite.UpdateAffinite(tempAff);
+                    }
+                    else if (tempAff == 0)
+                    {
+                        coutPouvoir.Presence = 10;
+                    }
+                    else if (tempAff > 10)
+                    {
+                        affinite.UpdateAffinite(10);
+                        coutPouvoir.Presence = 0;
                     }
                     break;
                 case 2:
-                    if (PresenceRestante - affinite.getAffinite() - 15 >= 0)
+                    if (tempAff <= 15 && tempAff > 0)
                     {
-                        if (affinite.getAffinite() == 15)
-                        {
-                            affinite.setAffinite(0);
-                            coutPouvoir.Presence = 0;
-                            canAdd = true;
-                        }
-                        else if (affinite.getAffinite() < 15 && affinite.getAffinite() > 0)
-                        {
-                            if (PresenceRestante >= (15 - affinite.getAffinite()))
-                            {
-                                coutPouvoir.Presence = (15 - affinite.getAffinite());
-                                affinite.setAffinite(0);
-                                canAdd = true;
-                            }
-                        }
-                        else if (affinite.getAffinite() == 0)
-                        {
-                            if (PresenceRestante >= 15)
-                            {
-                                coutPouvoir.Presence = 15;
-                                canAdd = true;
-                            }
-                        }
-                        else if (affinite.getAffinite() > 15)
-                        {
-                            affinite.setAffinite(affinite.getAffinite() - 15);
-                            coutPouvoir.Presence = 0;
-                            canAdd = true;
-                        }
+                        coutPouvoir.Presence = (15 - tempAff);
+                        affinite.UpdateAffinite(tempAff);
+                    }
+                    else if (tempAff == 0)
+                    {
+                        coutPouvoir.Presence = 15;
+                    }
+                    else if (tempAff > 15)
+                    {
+                        affinite.UpdateAffinite(15);
+                        coutPouvoir.Presence = 0;
                     }
                     break;
                 case 3:
-                    if (PresenceRestante - affinite.getAffinite() - 25 >= 0)
+                    if (tempAff <= 20 && tempAff > 0)
                     {
-                        if (affinite.getAffinite() == 20)
-                        {
-                            affinite.setAffinite(0);
-                            coutPouvoir.Presence = 5;
-                            canAdd = true;
-                        }
-                        else if (affinite.getAffinite() < 20 && affinite.getAffinite() > 0)
-                        {
-                            if (PresenceRestante >= (25 - affinite.getAffinite()))
-                            {
-                                coutPouvoir.Presence = (25 - affinite.getAffinite());
-                                affinite.setAffinite(0);
-                                canAdd = true;
-                            }
-                        }
-                        else if (affinite.getAffinite() == 0)
-                        {
-                            if (PresenceRestante >= 25)
-                            {
-                                coutPouvoir.Presence = 25;
-                                canAdd = true;
-                            }
-                        }
+                        coutPouvoir.Presence = (25 - tempAff);
+                        affinite.UpdateAffinite(tempAff);
+                    }
+                    else if (tempAff == 0)
+                    {
+                        coutPouvoir.Presence = 25;
                     }
                     break;
                 case 4:
-                    if (PresenceRestante - affinite.getAffinite() - 60 >= 0)
+                    if (PresenceRestante - (60 - tempAff) >= 0)
                     {
-                        if (affinite.getAffinite() <= 20 && affinite.getAffinite() > 0)
+                        if (tempAff <= 20 && tempAff > 0)
                         {
-                            if (PresenceRestante >= (60 - affinite.getAffinite()))
-                            {
-                                coutPouvoir.Presence = (60 - affinite.getAffinite());
-                                affinite.setAffinite(0);
-                                canAdd = true;
-                            }
+                            coutPouvoir.Presence = (60 - tempAff);
+                            affinite.UpdateAffinite(tempAff);
                         }
-                        else if (affinite.getAffinite() == 0)
+                        else if (tempAff == 0)
                         {
-                            if (PresenceRestante >= 60)
-                            {
-                                coutPouvoir.Presence = 60;
-                                canAdd = true;
-                            }
+                            coutPouvoir.Presence = 60;
                         }
                     }
                     break;
                 case 5:
-                    if (PresenceRestante - affinite.getAffinite() - 100 >= 0)
+                    if (tempAff <= 20 && tempAff > 0)
                     {
-                        if (affinite.getAffinite() <= 20 && affinite.getAffinite() > 0)
-                        {
-                            if (PresenceRestante >= (100 - affinite.getAffinite()))
-                            {
-                                coutPouvoir.Presence = (100 - affinite.getAffinite());
-                                affinite.setAffinite(0);
-                                canAdd = true;
-                            }
-                        }
-                        else if (affinite.getAffinite() == 0)
-                        {
-                            if (PresenceRestante >= 100)
-                            {
-                                coutPouvoir.Presence = 100;
-                                canAdd = true;
-                            }
-                        }
+                        coutPouvoir.Presence = (100 - tempAff);
+                        affinite.UpdateAffinite(tempAff);
+                    }
+                    else if (tempAff == 0)
+                    {
+                        coutPouvoir.Presence = 100;
                     }
                     break;
                 default:
+                    coutPouvoir.Presence = -1;
                     break;
             }
 
@@ -738,41 +654,22 @@ namespace CreationArtefact
             switch (coutPouvoir.Niveau)
             {
                 case 1:
-                    if (PresenceRestante >= 10)
-                    {
-                        coutPouvoir.Presence = 10;
-                        canAdd = true;
-                    }
+                    coutPouvoir.Presence = 10;
                     break;
                 case 2:
-                    if (PresenceRestante >= 15)
-                    {
-                        coutPouvoir.Presence = 15;
-                        canAdd = true;
-                    }
+                    coutPouvoir.Presence = 15;
                     break;
                 case 3:
-                    if (PresenceRestante >= 25)
-                    {
-                        coutPouvoir.Presence = 25;
-                        canAdd = true;
-                    }
+                    coutPouvoir.Presence = 25;
                     break;
                 case 4:
-                    if (PresenceRestante >= 60)
-                    {
-                        coutPouvoir.Presence = 60;
-                        canAdd = true;
-                    }
+                    coutPouvoir.Presence = 60;
                     break;
                 case 5:
-                    if (PresenceRestante >= 100)
-                    {
-                        coutPouvoir.Presence = 100;
-                        canAdd = true;
-                    }
+                    coutPouvoir.Presence = 100;
                     break;
                 default:
+                    coutPouvoir.Presence = -1;
                     break;
             }
 
@@ -845,11 +742,11 @@ namespace CreationArtefact
                 switch (pouvoir.TypePouvoir)
                 {
                     case TypeFacette.FacetteCombat:
-                        if (Contenant.AffiniteAttElement.getAffinite() > 0 && ((ClassFacetteCombat)pouvoir).Element > 0)
+                        if (Contenant.AffiniteAttElement.GetAffinite() > 0 && ((ClassFacetteCombat)pouvoir).Element > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAttElement);
                         }
-                        else if (Contenant.AffiniteAttSpec.getAffinite() > 0 && pouvoir.SubType == SubTypeFacette.AttaqueSpeciale)
+                        else if (Contenant.AffiniteAttSpec.GetAffinite() > 0 && pouvoir.SubType == SubTypeFacette.AttaqueSpeciale)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAttSpec);
                         }
@@ -859,27 +756,27 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacetteProtection:
-                        if (Contenant.AffiniteImmunite.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).Immunite > 0)
+                        if (Contenant.AffiniteImmunite.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).Immunite > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmunite);
                         }
-                        else if (Contenant.AffiniteImmuniteMystique.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteMagique > 0)
+                        else if (Contenant.AffiniteImmuniteMystique.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteMagique > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmuniteMystique);
                         }
-                        else if (Contenant.AffiniteImmunitePsy.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmunitePsychique > 0)
+                        else if (Contenant.AffiniteImmunitePsy.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmunitePsychique > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmunitePsy);
                         }
-                        else if (Contenant.AffiniteImmuniteElem.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteElementaire > 0)
+                        else if (Contenant.AffiniteImmuniteElem.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).ImmuniteElementaire > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteImmuniteElem);
                         }
-                        else if (Contenant.AffiniteSeuilInvul.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).SeuilInvul > 0)
+                        else if (Contenant.AffiniteSeuilInvul.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).SeuilInvul > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSeuilInvul);
                         }
-                        else if (Contenant.AffiniteAmelorationRes.getAffinite() > 0 && ((ClassFacetteProtection)pouvoir).AugmentRes > 0)
+                        else if (Contenant.AffiniteAmelorationRes.GetAffinite() > 0 && ((ClassFacetteProtection)pouvoir).AugmentRes > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmelorationRes);
                         }
@@ -889,27 +786,27 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacetteMagique:
-                        if (Contenant.AffiniteAmpliAMR.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).AmpliAMR > 0)
+                        if (Contenant.AffiniteAmpliAMR.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).AmpliAMR > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmpliAMR);
                         }
-                        else if (Contenant.AffiniteProjMag.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ProjMagique > 0)
+                        else if (Contenant.AffiniteProjMag.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ProjMagique > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteProjMag);
                         }
-                        else if (Contenant.AffinitePuissAjoutee.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).PuissAjout > 0)
+                        else if (Contenant.AffinitePuissAjoutee.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).PuissAjout > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffinitePuissAjoutee);
                         }
-                        else if (Contenant.AffiniteReceptacleZeon.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ReceptZeon > 0)
+                        else if (Contenant.AffiniteReceptacleZeon.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).ReceptZeon > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteReceptacleZeon);
                         }
-                        else if (Contenant.AffiniteRechargeMag.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).RegenZeon > 0)
+                        else if (Contenant.AffiniteRechargeMag.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).RegenZeon > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteRechargeMag);
                         }
-                        else if (Contenant.AffiniteTestResAccrus.getAffinite() > 0 && ((ClassFacetteMagique)pouvoir).TestResMysAcc > 0)
+                        else if (Contenant.AffiniteTestResAccrus.GetAffinite() > 0 && ((ClassFacetteMagique)pouvoir).TestResMysAcc > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTestResAccrus);
                         }
@@ -919,15 +816,15 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacettePsychique:
-                        if (Contenant.AffiniteTalent.getAffinite() > 0 && ((ClassFacettePsychique)pouvoir).Talent > 0)
+                        if (Contenant.AffiniteTalent.GetAffinite() > 0 && ((ClassFacettePsychique)pouvoir).Talent > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTalent);
                         }
-                        else if (Contenant.AffiniteTestResAccrus.getAffinite() > 0 && ((ClassFacettePsychique)pouvoir).TestResPsyAccrus > 0)
+                        else if (Contenant.AffiniteTestResAccrus.GetAffinite() > 0 && ((ClassFacettePsychique)pouvoir).TestResPsyAccrus > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteTestResAccrus);
                         }
-                        else if (Contenant.AffiniteAmelioMaintPouvoir.getAffinite() > 0 && ((ClassFacettePsychique)pouvoir).MaintPouvoir > 0)
+                        else if (Contenant.AffiniteAmelioMaintPouvoir.GetAffinite() > 0 && ((ClassFacettePsychique)pouvoir).MaintPouvoir > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAmelioMaintPouvoir);
                         }
@@ -937,11 +834,11 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacetteConvocation:
-                        if (Contenant.AffinitePresAccru.getAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).PresenceAccrue > 0)
+                        if (Contenant.AffinitePresAccru.GetAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).PresenceAccrue > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffinitePresAccru);
                         }
-                        else if (Contenant.AffiniteConvoAccrue.getAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).ConvoAccrue > 0)
+                        else if (Contenant.AffiniteConvoAccrue.GetAffinite() > 0 && ((ClassFacetteConvocation)pouvoir).ConvoAccrue > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteConvoAccrue);
                         }
@@ -951,19 +848,19 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacetteInnee:
-                        if (Contenant.AffiniteMagieInnee.getAffinite() > 0)
+                        if (Contenant.AffiniteMagieInnee.GetAffinite() > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteMagieInnee);
                         }
-                        else if (Contenant.AffiniteSortsAuto.getAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).SortAutomatique.Count > 0)
+                        else if (Contenant.AffiniteSortsAuto.GetAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).SortAutomatique.Count > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSortsAuto);
                         }
-                        else if (Contenant.AffiniteLanceurSort.getAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).LanceurSort.Count > 0)
+                        else if (Contenant.AffiniteLanceurSort.GetAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).LanceurSort.Count > 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteLanceurSort);
                         }
-                        else if (Contenant.AffiniteCompLancement.getAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).CompLancement != 0)
+                        else if (Contenant.AffiniteCompLancement.GetAffinite() > 0 && ((ClassFacetteMagieInnee)pouvoir).CompLancement != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteCompLancement);
                         }
@@ -973,19 +870,19 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacetteAugmentation:
-                        if (Contenant.AffiniteAugmentDeplacement.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugDeplacement != 0)
+                        if (Contenant.AffiniteAugmentDeplacement.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugDeplacement != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentDeplacement);
                         }
-                        else if (Contenant.AffiniteAugmentCompSec.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCompSec != 0)
+                        else if (Contenant.AffiniteAugmentCompSec.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCompSec != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentCompSec);
                         }
-                        else if (Contenant.AffiniteAugmentCharac.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCarac != 0)
+                        else if (Contenant.AffiniteAugmentCharac.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).AugCarac != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAugmentCharac);
                         }
-                        else if (Contenant.AffiniteSubstiCarac.getAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).SubstiCarac != 0)
+                        else if (Contenant.AffiniteSubstiCarac.GetAffinite() > 0 && ((ClassFacetteAugmentation)pouvoir).SubstiCarac != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteSubstiCarac);
                         }
@@ -995,7 +892,7 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacetteMaitrise:
-                        if (Contenant.AffiniteReserveKi.getAffinite() > 0 && ((ClassFacetteMaitrise)pouvoir).ReserveKi != 0)
+                        if (Contenant.AffiniteReserveKi.GetAffinite() > 0 && ((ClassFacetteMaitrise)pouvoir).ReserveKi != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteReserveKi);
                         }
@@ -1005,19 +902,19 @@ namespace CreationArtefact
                         }
                         break;
                     case TypeFacette.FacetteEsoterique:
-                        if (Contenant.AffiniteAltDestin.getAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).AlterationDestion != 0)
+                        if (Contenant.AffiniteAltDestin.GetAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).AlterationDestion != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteAltDestin);
                         }
-                        else if (Contenant.AffiniteVision.getAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Vision != 0)
+                        else if (Contenant.AffiniteVision.GetAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Vision != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteVision);
                         }
-                        else if (Contenant.AffiniteCreatePortail.getAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Portal != 0)
+                        else if (Contenant.AffiniteCreatePortail.GetAffinite() > 0 && ((ClassFacetteEsoterique)pouvoir).Portal != 0)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteCreatePortail);
                         }
-                        else if (Contenant.AffiniteEffetMystique.getAffinite() > 0 && pouvoir.SubType == SubTypeFacette.EffetMystique)
+                        else if (Contenant.AffiniteEffetMystique.GetAffinite() > 0 && pouvoir.SubType == SubTypeFacette.EffetMystique)
                         {
                             itemValide = UpdatePresence(pouvoir.CoutPouvoir, Contenant.AffiniteEffetMystique);
                         }
@@ -1042,6 +939,11 @@ namespace CreationArtefact
             MAJPpointPouvoirPresence();
 
             return indexPasErreur;
+        }
+
+        public int GetPresence()
+        {
+            return PresenceRestante;
         }
 
         /// <summary>
@@ -1178,22 +1080,36 @@ namespace CreationArtefact
         /// 
         /// </summary>
         /// <param name="affinite"></param>
-        public void setAffinite(int affinite)
+        public void SetAffinite(int affinite)
         {
-            Affinite += affinite;
+            Affinite = affinite;
             Selected = true;
         }
 
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="mod"></param>
+        public void UpdateAffinite(int mod)
+        {
+            Affinite -= mod;
+        }
+
+        public void IncremeteAffinite(int inc)
+        {
+            Affinite += inc;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
-        public int getAffinite()
+        public int GetAffinite()
         {
             return Affinite;
         }
 
-        public bool hasAffinite()
+        public bool HasAffinite()
         {
             return Selected;
         }
@@ -1416,162 +1332,162 @@ namespace CreationArtefact
 
             description.Add("Affinité :");
             string temp = "     Aucune.";
-            if (AffiniteSortsAuto.hasAffinite())
+            if (AffiniteSortsAuto.HasAffinite())
             {
                 temp = "     Sort Automatique.";
                 description.Add(temp);
             }
-            if (AffiniteMagieInnee.hasAffinite())
+            if (AffiniteMagieInnee.HasAffinite())
             {
                 temp = "     Magie innée.";
                 description.Add(temp);
             }
-            if (AffiniteCompLancement.hasAffinite())
+            if (AffiniteCompLancement.HasAffinite())
             {
                 temp = "     Compétence de lancement.";
                 description.Add(temp);
             }
-            if (AffiniteAmelorationRes.hasAffinite())
+            if (AffiniteAmelorationRes.HasAffinite())
             {
                 temp = "     Amélioration de s resistances.";
                 description.Add(temp);
             }
-            if (AffiniteReceptacleZeon.hasAffinite())
+            if (AffiniteReceptacleZeon.HasAffinite())
             {
                 temp = "     Réceptacle de Zéon.";
                 description.Add(temp);
             }
-            if (AffiniteRechargeMag.hasAffinite())
+            if (AffiniteRechargeMag.HasAffinite())
             {
                 temp = "     Recharge magique.";
                 description.Add(temp);
             }
-            if (AffiniteAmpliAMR.hasAffinite())
+            if (AffiniteAmpliAMR.HasAffinite())
             {
                 temp = "     Amplification de l'AMR.";
                 description.Add(temp);
             }
-            if (AffiniteProjMag.hasAffinite())
+            if (AffiniteProjMag.HasAffinite())
             {
                 temp = "     Projection magique.";
                 description.Add(temp);
             }
-            if (AffinitePuissAjoutee.hasAffinite())
+            if (AffinitePuissAjoutee.HasAffinite())
             {
                 temp = "     Puissance ajouté.";
                 description.Add(temp);
             }
-            if (AffiniteAltDestin.hasAffinite())
+            if (AffiniteAltDestin.HasAffinite())
             {
                 temp = "     Altération du destin.";
                 description.Add(temp);
             }
-            if (AffiniteMagieInnee.hasAffinite())
+            if (AffiniteMagieInnee.HasAffinite())
             {
                 temp = "     Magie innée.";
                 description.Add(temp);
             }
-            if (AffiniteAugmentCharac.hasAffinite())
+            if (AffiniteAugmentCharac.HasAffinite())
             {
                 temp = "     Augmentation des caractéristiques.";
                 description.Add(temp);
             }
-            if (AffiniteAugmentCompSec.hasAffinite())
+            if (AffiniteAugmentCompSec.HasAffinite())
             {
                 temp = "     Augementation des compétences secondaires.";
                 description.Add(temp);
             }
-            if (AffiniteImmunite.hasAffinite())
+            if (AffiniteImmunite.HasAffinite())
             {
                 temp = "     Immunité.";
                 description.Add(temp);
             }
-            if (AffiniteAmelioMaintPouvoir.hasAffinite())
+            if (AffiniteAmelioMaintPouvoir.HasAffinite())
             {
                 temp = "     Amélioration du maintien des pouvoirs.";
                 description.Add(temp);
             }
-            if (AffiniteAugmentDeplacement.hasAffinite())
+            if (AffiniteAugmentDeplacement.HasAffinite())
             {
                 temp = "     Augmentation du déplacement.";
                 description.Add(temp);
             }
-            if (AffiniteImmuniteElem.hasAffinite())
+            if (AffiniteImmuniteElem.HasAffinite())
             {
                 temp = "     Imunité élémentaire.";
                 description.Add(temp);
             }
-            if (AffinitePresAccru.hasAffinite())
+            if (AffinitePresAccru.HasAffinite())
             {
                 temp = "     Présence accrue.";
                 description.Add(temp);
             }
-            if (AffiniteConvoAccrue.hasAffinite())
+            if (AffiniteConvoAccrue.HasAffinite())
             {
                 temp = "     Convocation accrue.";
                 description.Add(temp);
             }
-            if (AffiniteEffetMystique.hasAffinite())
+            if (AffiniteEffetMystique.HasAffinite())
             {
                 temp = "     Effet mystique.";
                 description.Add(temp);
             }
-            if (AffiniteReserveKi.hasAffinite())
+            if (AffiniteReserveKi.HasAffinite())
             {
                 temp = "     Réserve de ki.";
                 description.Add(temp);
             }
-            if (AffiniteTalent.hasAffinite())
+            if (AffiniteTalent.HasAffinite())
             {
                 temp = "     Talent.";
                 description.Add(temp);
             }
-            if (AffiniteAttElement.hasAffinite())
+            if (AffiniteAttElement.HasAffinite())
             {
                 temp = "     Attaques élémentaires.";
                 description.Add(temp);
             }
-            if (AffiniteSubstiCarac.hasAffinite())
+            if (AffiniteSubstiCarac.HasAffinite())
             {
                 temp = "     Substitution de caractéristique.";
                 description.Add(temp);
             }
-            if (AffiniteAttSpec.hasAffinite())
+            if (AffiniteAttSpec.HasAffinite())
             {
                 temp = "     Attaque spéciale.";
                 description.Add(temp);
             }
-            if (AffiniteSeuilInvul.hasAffinite())
+            if (AffiniteSeuilInvul.HasAffinite())
             {
                 temp = "     Seuil d'invulnérabilté.";
                 description.Add(temp);
             }
-            if (AffiniteImmuniteMystique.hasAffinite())
+            if (AffiniteImmuniteMystique.HasAffinite())
             {
                 temp = "     Immunité magique.";
                 description.Add(temp);
             }
-            if (AffiniteImmunitePsy.hasAffinite())
+            if (AffiniteImmunitePsy.HasAffinite())
             {
                 temp = "     Immunité psychique.";
                 description.Add(temp);
             }
-            if (AffiniteTestResAccrus.hasAffinite())
+            if (AffiniteTestResAccrus.HasAffinite())
             {
                 temp = "     Test de résistance mystique et/ou psychique accrus.";
                 description.Add(temp);
             }
-            if (AffiniteCreatePortail.hasAffinite())
+            if (AffiniteCreatePortail.HasAffinite())
             {
                 temp = "     Créateur de portail.";
                 description.Add(temp);
             }
-            if (AffiniteLanceurSort.hasAffinite())
+            if (AffiniteLanceurSort.HasAffinite())
             {
                 temp = "     Lanceur de sorts.";
                 description.Add(temp);
             }
-            if (AffiniteVision.hasAffinite())
+            if (AffiniteVision.HasAffinite())
             {
                 temp = "     Moyens spéciaux de vision.";
                 description.Add(temp);
@@ -1611,184 +1527,184 @@ namespace CreationArtefact
                 writer.WriteValue(Exclusif);
                 writer.WriteEndElement();
             }
-            if (AffiniteSortsAuto.getAffinite() != 0)
+            if (AffiniteSortsAuto.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteSortsAuto");
-                writer.WriteValue(AffiniteSortsAuto.getAffinite());
+                writer.WriteValue(AffiniteSortsAuto.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteMagieInnee.getAffinite() != 0)
+            if (AffiniteMagieInnee.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteMagieInnee");
-                writer.WriteValue(AffiniteMagieInnee.getAffinite());
+                writer.WriteValue(AffiniteMagieInnee.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteCompLancement.getAffinite() != 0)
+            if (AffiniteCompLancement.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteCompLancement");
-                writer.WriteValue(AffiniteCompLancement.getAffinite());
+                writer.WriteValue(AffiniteCompLancement.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAmelorationRes.getAffinite() != 0)
+            if (AffiniteAmelorationRes.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAmelorationRes");
                 writer.WriteValue(AffiniteAmelorationRes);
                 writer.WriteEndElement();
             }
-            if (AffiniteReceptacleZeon.getAffinite() != 0)
+            if (AffiniteReceptacleZeon.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteReceptacleZeon");
-                writer.WriteValue(AffiniteReceptacleZeon.getAffinite());
+                writer.WriteValue(AffiniteReceptacleZeon.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteRechargeMag.getAffinite() != 0)
+            if (AffiniteRechargeMag.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteRechargeMag");
-                writer.WriteValue(AffiniteRechargeMag.getAffinite());
+                writer.WriteValue(AffiniteRechargeMag.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAmpliAMR.getAffinite() != 0)
+            if (AffiniteAmpliAMR.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAmpliAMR");
-                writer.WriteValue(AffiniteAmpliAMR.getAffinite());
+                writer.WriteValue(AffiniteAmpliAMR.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteProjMag.getAffinite() != 0)
+            if (AffiniteProjMag.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteProjMag");
-                writer.WriteValue(AffiniteProjMag.getAffinite());
+                writer.WriteValue(AffiniteProjMag.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffinitePuissAjoutee.getAffinite() != 0)
+            if (AffinitePuissAjoutee.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffinitePuissAjoutee");
-                writer.WriteValue(AffinitePuissAjoutee.getAffinite());
+                writer.WriteValue(AffinitePuissAjoutee.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAltDestin.getAffinite() != 0)
+            if (AffiniteAltDestin.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAltDestin");
-                writer.WriteValue(AffiniteAltDestin.getAffinite());
+                writer.WriteValue(AffiniteAltDestin.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAugmentCharac.getAffinite() != 0)
+            if (AffiniteAugmentCharac.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAugmentCharac");
-                writer.WriteValue(AffiniteAugmentCharac.getAffinite());
+                writer.WriteValue(AffiniteAugmentCharac.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAugmentCompSec.getAffinite() != 0)
+            if (AffiniteAugmentCompSec.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAugmentCompSec");
-                writer.WriteValue(AffiniteAugmentCompSec.getAffinite());
+                writer.WriteValue(AffiniteAugmentCompSec.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteImmunitePsy.getAffinite() != 0)
+            if (AffiniteImmunitePsy.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteImmunitePsy");
-                writer.WriteValue(AffiniteImmunitePsy.getAffinite());
+                writer.WriteValue(AffiniteImmunitePsy.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteImmunite.getAffinite() != 0)
+            if (AffiniteImmunite.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteImmunite");
-                writer.WriteValue(AffiniteImmunite.getAffinite());
+                writer.WriteValue(AffiniteImmunite.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAmelioMaintPouvoir.getAffinite() != 0)
+            if (AffiniteAmelioMaintPouvoir.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAmelioMaintPouvoir");
-                writer.WriteValue(AffiniteAmelioMaintPouvoir.getAffinite());
+                writer.WriteValue(AffiniteAmelioMaintPouvoir.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAugmentDeplacement.getAffinite() != 0)
+            if (AffiniteAugmentDeplacement.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAugmentDeplacement");
-                writer.WriteValue(AffiniteAugmentDeplacement.getAffinite());
+                writer.WriteValue(AffiniteAugmentDeplacement.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffinitePresAccru.getAffinite() != 0)
+            if (AffinitePresAccru.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffinitePresAccru");
-                writer.WriteValue(AffinitePresAccru.getAffinite());
+                writer.WriteValue(AffinitePresAccru.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteConvoAccrue.getAffinite() != 0)
+            if (AffiniteConvoAccrue.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteConvoAccrue");
-                writer.WriteValue(AffiniteConvoAccrue.getAffinite());
+                writer.WriteValue(AffiniteConvoAccrue.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteEffetMystique.getAffinite() != 0)
+            if (AffiniteEffetMystique.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteEffetMystique");
-                writer.WriteValue(AffiniteEffetMystique.getAffinite());
+                writer.WriteValue(AffiniteEffetMystique.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteReserveKi.getAffinite() != 0)
+            if (AffiniteReserveKi.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteReserveKi");
-                writer.WriteValue(AffiniteReserveKi.getAffinite());
+                writer.WriteValue(AffiniteReserveKi.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteTalent.getAffinite() != 0)
+            if (AffiniteTalent.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteTalent");
-                writer.WriteValue(AffiniteTalent.getAffinite());
+                writer.WriteValue(AffiniteTalent.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAttElement.getAffinite() != 0)
+            if (AffiniteAttElement.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAttElement");
-                writer.WriteValue(AffiniteAttElement.getAffinite());
+                writer.WriteValue(AffiniteAttElement.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteSubstiCarac.getAffinite() != 0)
+            if (AffiniteSubstiCarac.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteSubstiCarac");
-                writer.WriteValue(AffiniteSubstiCarac.getAffinite());
+                writer.WriteValue(AffiniteSubstiCarac.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteAttSpec.getAffinite() != 0)
+            if (AffiniteAttSpec.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteAttSpec");
-                writer.WriteValue(AffiniteAttSpec.getAffinite());
+                writer.WriteValue(AffiniteAttSpec.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteSeuilInvul.getAffinite() != 0)
+            if (AffiniteSeuilInvul.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteSeuilInvul");
-                writer.WriteValue(AffiniteSeuilInvul.getAffinite());
+                writer.WriteValue(AffiniteSeuilInvul.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteImmuniteMystique.getAffinite() != 0)
+            if (AffiniteImmuniteMystique.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteImmuniteMystique");
-                writer.WriteValue(AffiniteImmuniteMystique.getAffinite());
+                writer.WriteValue(AffiniteImmuniteMystique.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteTestResAccrus.getAffinite() != 0)
+            if (AffiniteTestResAccrus.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteTestResAccrus");
-                writer.WriteValue(AffiniteTestResAccrus.getAffinite());
+                writer.WriteValue(AffiniteTestResAccrus.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteCreatePortail.getAffinite() != 0)
+            if (AffiniteCreatePortail.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteCreatePortail");
-                writer.WriteValue(AffiniteCreatePortail.getAffinite());
+                writer.WriteValue(AffiniteCreatePortail.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteLanceurSort.getAffinite() != 0)
+            if (AffiniteLanceurSort.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteLanceurSort");
-                writer.WriteValue(AffiniteLanceurSort.getAffinite());
+                writer.WriteValue(AffiniteLanceurSort.GetAffinite());
                 writer.WriteEndElement();
             }
-            if (AffiniteVision.getAffinite() != 0)
+            if (AffiniteVision.GetAffinite() != 0)
             {
                 writer.WriteStartElement("AffiniteVision");
-                writer.WriteValue(AffiniteVision.getAffinite());
+                writer.WriteValue(AffiniteVision.GetAffinite());
                 writer.WriteEndElement();
             }
         }
@@ -1798,127 +1714,127 @@ namespace CreationArtefact
         /// </summary>
         public void ResetAffinite()
         {
-            if (AffiniteAltDestin.hasAffinite())
+            if (AffiniteAltDestin.HasAffinite())
             {
                 AffiniteAltDestin = new ClassAffinite(20);
             }
-            if (AffiniteAmelioMaintPouvoir.hasAffinite())
+            if (AffiniteAmelioMaintPouvoir.HasAffinite())
             {
                 AffiniteAmelioMaintPouvoir = new ClassAffinite(20);
             }
-            if (AffiniteAmelorationRes.hasAffinite())
+            if (AffiniteAmelorationRes.HasAffinite())
             {
                 AffiniteAmelorationRes = new ClassAffinite(20);
             }
-            if (AffiniteAmpliAMR.hasAffinite())
+            if (AffiniteAmpliAMR.HasAffinite())
             {
                 AffiniteAmpliAMR = new ClassAffinite(20);
             }
-            if (AffiniteAttElement.hasAffinite())
+            if (AffiniteAttElement.HasAffinite())
             {
                 AffiniteAttElement = new ClassAffinite(20);
             }
-            if (AffiniteAttSpec.hasAffinite())
+            if (AffiniteAttSpec.HasAffinite())
             {
                 AffiniteAttSpec = new ClassAffinite(20);
             }
-            if (AffiniteAugmentCharac.hasAffinite())
+            if (AffiniteAugmentCharac.HasAffinite())
             {
                 AffiniteAugmentCharac = new ClassAffinite(20);
             }
-            if (AffiniteAugmentCompSec.hasAffinite())
+            if (AffiniteAugmentCompSec.HasAffinite())
             {
                 AffiniteAugmentCompSec = new ClassAffinite(20);
             }
-            if (AffiniteAugmentDeplacement.hasAffinite())
+            if (AffiniteAugmentDeplacement.HasAffinite())
             {
                 AffiniteAugmentDeplacement = new ClassAffinite(20);
             }
-            if (AffiniteCompLancement.hasAffinite())
+            if (AffiniteCompLancement.HasAffinite())
             {
                 AffiniteCompLancement = new ClassAffinite(20);
             }
-            if (AffiniteConvoAccrue.hasAffinite())
+            if (AffiniteConvoAccrue.HasAffinite())
             {
                 AffiniteConvoAccrue = new ClassAffinite(20);
             }
-            if (AffiniteCreatePortail.hasAffinite())
+            if (AffiniteCreatePortail.HasAffinite())
             {
                 AffiniteCreatePortail = new ClassAffinite(20);
             }
-            if (AffiniteEffetMystique.hasAffinite())
+            if (AffiniteEffetMystique.HasAffinite())
             {
                 AffiniteEffetMystique = new ClassAffinite(20);
             }
-            if (AffiniteImmunite.hasAffinite())
+            if (AffiniteImmunite.HasAffinite())
             {
                 AffiniteImmunite = new ClassAffinite(20);
             }
-            if (AffiniteImmuniteElem.hasAffinite())
+            if (AffiniteImmuniteElem.HasAffinite())
             {
                 AffiniteImmuniteElem = new ClassAffinite(20);
             }
-            if (AffiniteImmuniteMystique.hasAffinite())
+            if (AffiniteImmuniteMystique.HasAffinite())
             {
                 AffiniteImmuniteMystique = new ClassAffinite(20);
             }
-            if (AffiniteImmunitePsy.hasAffinite())
+            if (AffiniteImmunitePsy.HasAffinite())
             {
                 AffiniteImmunitePsy = new ClassAffinite(20);
             }
-            if (AffiniteLanceurSort.hasAffinite())
+            if (AffiniteLanceurSort.HasAffinite())
             {
                 AffiniteLanceurSort = new ClassAffinite(20);
             }
-            if (AffiniteMagieInnee.hasAffinite())
+            if (AffiniteMagieInnee.HasAffinite())
             {
                 AffiniteMagieInnee = new ClassAffinite(20);
             }
-            if (AffinitePresAccru.hasAffinite())
+            if (AffinitePresAccru.HasAffinite())
             {
                 AffinitePresAccru = new ClassAffinite(20);
             }
-            if (AffiniteProjMag.hasAffinite())
+            if (AffiniteProjMag.HasAffinite())
             {
                 AffiniteProjMag = new ClassAffinite(20);
             }
-            if (AffinitePuissAjoutee.hasAffinite())
+            if (AffinitePuissAjoutee.HasAffinite())
             {
                 AffinitePuissAjoutee = new ClassAffinite(20);
             }
-            if (AffiniteReceptacleZeon.hasAffinite())
+            if (AffiniteReceptacleZeon.HasAffinite())
             {
                 AffiniteReceptacleZeon = new ClassAffinite(20);
             }
-            if (AffiniteRechargeMag.hasAffinite())
+            if (AffiniteRechargeMag.HasAffinite())
             {
                 AffiniteRechargeMag = new ClassAffinite(20);
             }
-            if (AffiniteReserveKi.hasAffinite())
+            if (AffiniteReserveKi.HasAffinite())
             {
                 AffiniteReserveKi = new ClassAffinite(20);
             }
-            if (AffiniteSeuilInvul.hasAffinite())
+            if (AffiniteSeuilInvul.HasAffinite())
             {
                 AffiniteSeuilInvul = new ClassAffinite(20);
             }
-            if (AffiniteSortsAuto.hasAffinite())
+            if (AffiniteSortsAuto.HasAffinite())
             {
                 AffiniteSortsAuto = new ClassAffinite(20);
             }
-            if (AffiniteSubstiCarac.hasAffinite())
+            if (AffiniteSubstiCarac.HasAffinite())
             {
                 AffiniteSubstiCarac = new ClassAffinite(20);
             }
-            if (AffiniteTalent.hasAffinite())
+            if (AffiniteTalent.HasAffinite())
             {
                 AffiniteTalent = new ClassAffinite(20);
             }
-            if (AffiniteTestResAccrus.hasAffinite())
+            if (AffiniteTestResAccrus.HasAffinite())
             {
                 AffiniteTestResAccrus = new ClassAffinite(20);
             }
-            if (AffiniteVision.hasAffinite())
+            if (AffiniteVision.HasAffinite())
             {
                 AffiniteVision = new ClassAffinite(20);
             }
@@ -1992,33 +1908,36 @@ namespace CreationArtefact
             Presence = presence;
         }
 
+        /// <summary>
+        /// Génère la cout en présence pour le niveau
+        /// </summary>
+        /// <returns>La présence si niveau valide, -1 sinon</returns>
         public int GeneratePresence()
         {
-            int pres = 0;
-
             switch(Niveau)
             {
                 case 1:
-                    pres = 10;
+                    Presence = 10;
                     break;
                 case 2:
-                    pres = 15;
+                    Presence = 15;
                     break;
                 case 3:
-                    pres = 25;
+                    Presence = 25;
                     break;
                 case 4:
-                    pres = 60;
+                    Presence = 60;
                     break;
                 case 5:
-                    pres = 100;
+                    Presence = 100;
                     break;
                 default:
+                    Presence = -1;
                     break;
 
             }
 
-            return pres;
+            return Presence;
         }
     }
 
@@ -2052,9 +1971,9 @@ namespace CreationArtefact
         /// <returns>Le cout du pouvoir</returns>
         public ClassCoutPouvoir GetCoutPouvoir()
         {
-            if (CoutPouvoir.Niveau == 0 && CoutPouvoir.PP == 0)
+            if (CoutPouvoir.Niveau == 0)
             {
-                CoutPouvoir = GenererCoutPouvoir();
+                GenererCoutPouvoir();
             }
 
             return CoutPouvoir;
@@ -2064,7 +1983,7 @@ namespace CreationArtefact
         /// Génère le cout du pouvoir.
         /// </summary>
         /// <returns>Le cout du pouvoir.</returns>
-        public abstract ClassCoutPouvoir GenererCoutPouvoir();
+        public abstract void GenererCoutPouvoir();
 
         /// <summary>
         /// Construit le XML a exporter
@@ -2168,7 +2087,7 @@ namespace CreationArtefact
         /// 
         /// </summary>
         /// <returns></returns>
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
 
@@ -2233,8 +2152,6 @@ namespace CreationArtefact
                 CoutPouvoir.PP = 0;
                 CoutPouvoir.Niveau = 0;
             }
-
-            return CoutPouvoir;
         }
 
         /// <summary>
@@ -2817,7 +2734,7 @@ namespace CreationArtefact
         /// 
         /// </summary>
         /// <returns></returns>
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -3177,8 +3094,6 @@ namespace CreationArtefact
                         break;
                 }
             }
-
-            return CoutPouvoir;
         }
 
         /// <summary>
@@ -3893,7 +3808,7 @@ namespace CreationArtefact
         /// 
         /// </summary>
         /// <returns></returns>
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
             
@@ -4131,8 +4046,6 @@ namespace CreationArtefact
             {
                 CoutPouvoir.Niveau = 0;
             }
-
-            return CoutPouvoir;
         }
 
         /// <summary>
@@ -4527,7 +4440,7 @@ namespace CreationArtefact
             }
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -4597,7 +4510,7 @@ namespace CreationArtefact
             writer.WriteEndElement();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
 
@@ -4738,8 +4651,6 @@ namespace CreationArtefact
                         break;
                 }
             }
-
-            return CoutPouvoir;
         }
 
         public override string DescriptionPouvoirUneLigne()
@@ -5364,7 +5275,7 @@ namespace CreationArtefact
             }
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -5644,7 +5555,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -5966,8 +5877,6 @@ namespace CreationArtefact
                     CoutPouvoir.PP -= 20;
                 }
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -6243,7 +6152,7 @@ namespace CreationArtefact
 
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -6445,7 +6354,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -6685,8 +6594,6 @@ namespace CreationArtefact
                         break;
                 }
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -6896,7 +6803,7 @@ namespace CreationArtefact
 
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -7015,7 +6922,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -7151,8 +7058,6 @@ namespace CreationArtefact
                         break;
                 }
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -7354,7 +7259,7 @@ namespace CreationArtefact
             }
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -7455,14 +7360,19 @@ namespace CreationArtefact
             return tempDesc;
         }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
         public override void ExportXML(XmlWriter writer)
         {
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
-            CoutPouvoir = new ClassCoutPouvoir(0, 0);
+            CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
 
             if (PresenceAccrue != 0)
             {
@@ -7588,8 +7498,16 @@ namespace CreationArtefact
                     CoutPouvoir.PP -= 20;
                 }
             }
+        }
 
-            return CoutPouvoir;
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 
@@ -7824,7 +7742,7 @@ namespace CreationArtefact
             }
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence:" + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -7901,7 +7819,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
 
@@ -7909,7 +7827,7 @@ namespace CreationArtefact
             {
                 foreach (ClassSort sort in SortAutomatique)
                 {
-                    sort.CoutPouvoir = new ClassCoutPouvoir(0, 0);
+                    sort.CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
                     sort.CoutPouvoir.PP = 5 * (int)Math.Round(sort.CoutZeon / 2 / 5.0, MidpointRounding.ToEven);
                     if (sort.NiveauSort >= 2 && sort.NiveauSort <= 10)
                     {
@@ -8039,8 +7957,6 @@ namespace CreationArtefact
                     CoutPouvoir.Niveau -= 1;
                 }
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -8484,7 +8400,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -8706,8 +8622,6 @@ namespace CreationArtefact
                         break;
                 }
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -8903,7 +8817,7 @@ namespace CreationArtefact
             }
             description.Add(tempDesc);
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -8998,7 +8912,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -9142,8 +9056,6 @@ namespace CreationArtefact
                     CoutPouvoir.PP -= 25;
                 }
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -9473,7 +9385,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -9633,8 +9545,6 @@ namespace CreationArtefact
             {
                 CoutPouvoir.PP -= 20;
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -9946,7 +9856,7 @@ namespace CreationArtefact
                 description.Add(tempDesc);
             }
 
-            tempDesc = "PP: " + CoutPouvoir.PP + " niveau: " + CoutPouvoir.Niveau + ".";
+            tempDesc = "PP: " + CoutPouvoir.PP + " Niveau: " + CoutPouvoir.Niveau + " Presence: " + CoutPouvoir.Presence + ".";
             description.Add(tempDesc);
         }
 
@@ -10141,7 +10051,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -10366,7 +10276,6 @@ namespace CreationArtefact
                         break;
                 }
             }
-            return CoutPouvoir;
         }
 
         /// <summary>
@@ -10374,7 +10283,7 @@ namespace CreationArtefact
         /// </summary>
         /// <param name="artefact"></param>
         /// <returns></returns>
-        public ClassCoutPouvoir GenererCoutPouvoir(ClassArtefact artefact)
+        public void GenererCoutPouvoir(ClassArtefact artefact)
         {
             CoutPouvoir = new ClassCoutPouvoir(0, 0);
 
@@ -10412,8 +10321,6 @@ namespace CreationArtefact
                 }
                 CoutPouvoir.Niveau = tmpNiveau;
             }
-
-            return CoutPouvoir;
         }
     }
 
@@ -10439,7 +10346,7 @@ namespace CreationArtefact
             throw new NotImplementedException();
         }
 
-        public override ClassCoutPouvoir GenererCoutPouvoir()
+        public override void GenererCoutPouvoir()
         {
             throw new NotImplementedException();
         }

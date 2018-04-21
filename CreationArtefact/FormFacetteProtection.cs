@@ -14,6 +14,8 @@ namespace CreationArtefact
     {
         public ClassFacetteProtection Protection;
         public bool CloseSaveCancel;
+        ClassFacetteProtection importProt;
+        bool modification;
 
         public FormFacetteProtection()
         {
@@ -24,6 +26,8 @@ namespace CreationArtefact
 
             ComboBoxSelectPouv.DataSource = Properties.Settings.Default.FacetteProtection;
             ComboBoxResistance.DataSource = Properties.Settings.Default.TypeAmelioRes;
+
+            modification = false;
         }
 
         private void ComboBoxSelectPouv_SelectedIndexChanged(object sender, EventArgs e)
@@ -382,7 +386,7 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Protection.GenererCoutPouvoir();
+                coutPouvoir = Protection.GetCoutPouvoir();
 
                 if (coutPouvoir.PP <= 0)
                 {
@@ -394,25 +398,13 @@ namespace CreationArtefact
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -571,6 +563,96 @@ namespace CreationArtefact
             CloseSaveCancel = false;
 
             this.Close();
+        }
+
+        private void FormFacetteProtection_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importProt.Immunite != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importProt.Immunite;
+                }
+                else if (importProt.ImmuniteMagique != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importProt.ImmuniteMagique;
+                    if (importProt.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieDisciplineElementaire.SelectedIndex = importProt.VoieDisciplineElement;
+                    }
+                }
+                else if (importProt.ImmunitePsychique != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importProt.ImmunitePsychique;
+                    if (importProt.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieDisciplineElementaire.SelectedIndex = importProt.VoieDisciplineElement;
+                    }
+                }
+                else if (importProt.ImmuniteElementaire != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 4;
+                    ComboBoxSelectBonus.SelectedIndex = importProt.ImmuniteElementaire;
+                    if (importProt.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieDisciplineElementaire.SelectedIndex = importProt.VoieDisciplineElement;
+                    }
+                }
+                else if (importProt.ReductionDegat != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 5;
+                    ComboBoxSelectBonus.SelectedIndex = importProt.ReductionDegat;
+                    if (importProt.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        TextBoxAttaque.Text = importProt.TypeAtt;
+                    }
+                }
+                else if (importProt.SeuilInvul != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 6;
+                    ComboBoxSelectBonus.SelectedIndex = importProt.SeuilInvul;
+                }
+                else if (importProt.AugmentRes != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 7;
+                    ComboBoxSelectBonus.SelectedIndex = importProt.AugmentRes;
+                    if (importProt.TypeResistance != 0)
+                    {
+                        ComboBoxResistance.SelectedIndex = importProt.TypeResistance;
+                    }
+                    if (importProt.TypeMagieUnique)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieDisciplineElementaire.SelectedIndex = importProt.VoieDisciplineElement;
+                    }
+                    if (importProt.TypePsyUnique)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxVoieDisciplineElementaire.SelectedIndex = importProt.VoieDisciplineElement;
+                    }
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
+        }
+
+        public DialogResult ShowDialog(ClassFacetteProtection facette)
+        {
+            modification = true;
+
+            importProt = facette;
+
+            return ShowDialog();
         }
     }
 }

@@ -29,15 +29,11 @@ namespace CreationArtefact
 
         public DialogResult ShowDialog(ClassFacetteAugmentation augmentation)
         {
-            DialogResult result;
-
             Modification = true;
 
             importAgmentation = augmentation;
-
-            result = ShowDialog();
             
-            return result;
+            return ShowDialog();
         }
 
         private void ComboBoxSelectPouv_SelectedIndexChanged(object sender, EventArgs e)
@@ -373,25 +369,13 @@ namespace CreationArtefact
 
                 LabelNiveau.Text = "" + Augmentation.CoutPouvoir.Niveau;
                 LabelPP.Text = "" + Augmentation.CoutPouvoir.PP;
-                switch (Augmentation.CoutPouvoir.Niveau)
+                if (Augmentation.CoutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + Augmentation.CoutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else

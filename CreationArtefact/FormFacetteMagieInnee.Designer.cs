@@ -58,8 +58,11 @@
             this.CheckBoxInne = new System.Windows.Forms.CheckBox();
             this.CheckBoxCoutReduit = new System.Windows.Forms.CheckBox();
             this.CheckBoxAutonomie = new System.Windows.Forms.CheckBox();
+            this.LabelPrep = new System.Windows.Forms.Label();
+            this.NumericUpDownPrep = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownUtilisation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownCondition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownPrep)).BeginInit();
             this.SuspendLayout();
             // 
             // LabelPres
@@ -302,7 +305,7 @@
             0,
             0,
             0});
-            this.NumericUpDownCondition.Location = new System.Drawing.Point(184, 190);
+            this.NumericUpDownCondition.Location = new System.Drawing.Point(184, 188);
             this.NumericUpDownCondition.Maximum = new decimal(new int[] {
             40,
             0,
@@ -389,11 +392,35 @@
             this.CheckBoxAutonomie.UseVisualStyleBackColor = true;
             this.CheckBoxAutonomie.CheckedChanged += new System.EventHandler(this.CheckBoxAutonomie_CheckedChanged);
             // 
+            // LabelPrep
+            // 
+            this.LabelPrep.AutoSize = true;
+            this.LabelPrep.Location = new System.Drawing.Point(12, 216);
+            this.LabelPrep.Name = "LabelPrep";
+            this.LabelPrep.Size = new System.Drawing.Size(61, 13);
+            this.LabelPrep.TabIndex = 92;
+            this.LabelPrep.Text = "Préparation";
+            // 
+            // NumericUpDownPrep
+            // 
+            this.NumericUpDownPrep.Location = new System.Drawing.Point(79, 214);
+            this.NumericUpDownPrep.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumericUpDownPrep.Name = "NumericUpDownPrep";
+            this.NumericUpDownPrep.Size = new System.Drawing.Size(56, 20);
+            this.NumericUpDownPrep.TabIndex = 93;
+            this.NumericUpDownPrep.ValueChanged += new System.EventHandler(this.NumericUpDownPrep_ValueChanged);
+            // 
             // FormFacetteMagieInnee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 276);
+            this.Controls.Add(this.NumericUpDownPrep);
+            this.Controls.Add(this.LabelPrep);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.CheckBoxIllimite);
@@ -430,8 +457,10 @@
             this.Name = "FormFacetteMagieInnee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette magie innée";
+            this.Load += new System.EventHandler(this.FormFacetteMagieInnee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownUtilisation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownCondition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownPrep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,5 +496,7 @@
         private System.Windows.Forms.CheckBox CheckBoxInne;
         private System.Windows.Forms.CheckBox CheckBoxCoutReduit;
         private System.Windows.Forms.CheckBox CheckBoxAutonomie;
+        private System.Windows.Forms.Label LabelPrep;
+        private System.Windows.Forms.NumericUpDown NumericUpDownPrep;
     }
 }

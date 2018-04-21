@@ -272,6 +272,7 @@
             this.Name = "FormFacetteDefensive";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette défensive";
+            this.Load += new System.EventHandler(this.FormFacetteDefensive_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

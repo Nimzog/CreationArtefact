@@ -20,6 +20,9 @@ namespace CreationArtefact
         /// 
         /// </summary>
         public ClassFacettePsychique Psychique;
+        bool modification;
+        ClassFacettePsychique importPsy;
+
 
         public FormFacettePsychique()
         {
@@ -30,6 +33,8 @@ namespace CreationArtefact
 
             ComboBoxSelectPouv.DataSource = Properties.Settings.Default.FacettePsychique;
             ComboBoxDiscipline.DataSource = Properties.Settings.Default.DiscplinePsy;
+
+            modification = false;
         }
 
         private void ComboBoxSelectPouv_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,29 +306,17 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Psychique.GenererCoutPouvoir();
+                coutPouvoir = Psychique.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -334,6 +327,62 @@ namespace CreationArtefact
                 LabelPP.Text = "NA";
                 LabelPres.Text = "NA";
             }
+        }
+
+        private void FormFacettePsychique_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importPsy.Talent != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importPsy.Talent;
+                    if (importPsy.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxDiscipline.SelectedIndex = importPsy.Discipline;
+                    }
+                }
+                else if (importPsy.ProjectionPsy != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importPsy.ProjectionPsy;
+                    if (importPsy.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxDiscipline.SelectedIndex = importPsy.Discipline;
+                    }
+                }
+                else if (importPsy.TestResPsyAccrus != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importPsy.TestResPsyAccrus;
+                    if (importPsy.Limite)
+                    {
+                        CheckBoxLimite.Checked = true;
+                        ComboBoxDiscipline.SelectedIndex = importPsy.Discipline;
+                    }
+                }
+                else if (importPsy.MaintPouvoir != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 4;
+                    ComboBoxSelectBonus.SelectedIndex = importPsy.MaintPouvoir;
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
+        }
+
+        public DialogResult ShowDialog(ClassFacettePsychique facette)
+        {
+            modification = true;
+
+            importPsy = facette;
+
+            return ShowDialog();
         }
     }
 }

@@ -19,7 +19,9 @@ namespace CreationArtefact
         /// <summary>
         /// 
         /// </summary>
-        public ClassFacetteDefensive Defense;
+        public ClassFacetteDefensive Defense, importDefense;
+
+        bool modification;
 
         public FormFacetteDefensive()
         {
@@ -30,6 +32,8 @@ namespace CreationArtefact
 
             ComboBoxSelectPouv.DataSource = Properties.Settings.Default.FacetteDefensive;
             ComboBoxType.DataSource = Properties.Settings.Default.TypeArmure;
+
+            modification = false;
         }
 
         private void ComboBoxSelectPouv_SelectedIndexChanged(object sender, EventArgs e)
@@ -240,7 +244,7 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Defense.GenererCoutPouvoir();
+                coutPouvoir = Defense.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
@@ -385,6 +389,67 @@ namespace CreationArtefact
         private void RadioButtonNormal_CheckedChanged(object sender, EventArgs e)
         {
             majForm();
+        }
+
+        private void FormFacetteDefensive_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importDefense.QualiteArmure != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importDefense.QualiteArmure;
+                    if (importDefense.Ouverture)
+                    {
+                        CheckBoxOuverture.Enabled = true;
+                    }
+                }
+                else if (importDefense.ArmureInnee != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importDefense.ArmureInnee;
+                    if (importDefense.TypeArmure != 0)
+                    {
+                        ComboBoxType.SelectedIndex = importDefense.TypeArmure;
+                    }
+                    if (importDefense.ArmureConcentre)
+                    {
+                        RadioButtonConcentre.Enabled = true;
+                    }
+                    else if (importDefense.ArmureComplete)
+                    {
+                        RadioButtonComplete.Enabled = true;
+                    }
+                    else
+                    {
+                        RadioButtonNormal.Enabled = true;
+                    }
+                }
+                else if (importDefense.RenforcementDef != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importDefense.RenforcementDef;
+                }
+                else if (importDefense.ArmeDefAccrue != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 4;
+                    ComboBoxSelectBonus.SelectedIndex = importDefense.ArmeDefAccrue;
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
+        }
+
+        public DialogResult ShowDialog(ClassFacetteDefensive facette)
+        {
+            modification = true;
+
+            importDefense = facette;
+
+            return ShowDialog();
         }
     }
 }

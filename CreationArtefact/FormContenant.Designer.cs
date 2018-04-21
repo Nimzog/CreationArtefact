@@ -89,6 +89,7 @@
             // labelTypeObjet
             // 
             this.labelTypeObjet.AutoSize = true;
+            this.labelTypeObjet.CausesValidation = false;
             this.labelTypeObjet.Location = new System.Drawing.Point(12, 9);
             this.labelTypeObjet.Name = "labelTypeObjet";
             this.labelTypeObjet.Size = new System.Drawing.Size(65, 13);
@@ -98,6 +99,7 @@
             // labelMateriel
             // 
             this.labelMateriel.AutoSize = true;
+            this.labelMateriel.CausesValidation = false;
             this.labelMateriel.Location = new System.Drawing.Point(12, 35);
             this.labelMateriel.Name = "labelMateriel";
             this.labelMateriel.Size = new System.Drawing.Size(44, 13);
@@ -107,6 +109,7 @@
             // labelQualite
             // 
             this.labelQualite.AutoSize = true;
+            this.labelQualite.CausesValidation = false;
             this.labelQualite.Location = new System.Drawing.Point(12, 62);
             this.labelQualite.Name = "labelQualite";
             this.labelQualite.Size = new System.Drawing.Size(40, 13);
@@ -116,6 +119,7 @@
             // labelPresenceBase
             // 
             this.labelPresenceBase.AutoSize = true;
+            this.labelPresenceBase.CausesValidation = false;
             this.labelPresenceBase.Location = new System.Drawing.Point(12, 90);
             this.labelPresenceBase.Name = "labelPresenceBase";
             this.labelPresenceBase.Size = new System.Drawing.Size(93, 13);
@@ -125,6 +129,7 @@
             // labelPresenceTotal
             // 
             this.labelPresenceTotal.AutoSize = true;
+            this.labelPresenceTotal.CausesValidation = false;
             this.labelPresenceTotal.Location = new System.Drawing.Point(12, 117);
             this.labelPresenceTotal.Name = "labelPresenceTotal";
             this.labelPresenceTotal.Size = new System.Drawing.Size(81, 13);
@@ -136,7 +141,7 @@
             this.TextBoxTypeObjet.Location = new System.Drawing.Point(111, 6);
             this.TextBoxTypeObjet.Name = "TextBoxTypeObjet";
             this.TextBoxTypeObjet.Size = new System.Drawing.Size(218, 20);
-            this.TextBoxTypeObjet.TabIndex = 6;
+            this.TextBoxTypeObjet.TabIndex = 0;
             this.TextBoxTypeObjet.TextChanged += new System.EventHandler(this.TextBoxTypeObjet_TextChanged);
             // 
             // ComboBoxMateriel
@@ -145,7 +150,7 @@
             this.ComboBoxMateriel.Location = new System.Drawing.Point(111, 32);
             this.ComboBoxMateriel.Name = "ComboBoxMateriel";
             this.ComboBoxMateriel.Size = new System.Drawing.Size(218, 21);
-            this.ComboBoxMateriel.TabIndex = 7;
+            this.ComboBoxMateriel.TabIndex = 1;
             this.ComboBoxMateriel.SelectedIndexChanged += new System.EventHandler(this.ComboBoxMateriel_SelectedIndexChanged);
             // 
             // ComboBoxQualite
@@ -154,7 +159,7 @@
             this.ComboBoxQualite.Location = new System.Drawing.Point(111, 59);
             this.ComboBoxQualite.Name = "ComboBoxQualite";
             this.ComboBoxQualite.Size = new System.Drawing.Size(218, 21);
-            this.ComboBoxQualite.TabIndex = 8;
+            this.ComboBoxQualite.TabIndex = 2;
             this.ComboBoxQualite.SelectedIndexChanged += new System.EventHandler(this.ComboBoxQualite_SelectedIndexChanged);
             // 
             // TextBoxPresBase
@@ -162,7 +167,7 @@
             this.TextBoxPresBase.Location = new System.Drawing.Point(111, 87);
             this.TextBoxPresBase.Name = "TextBoxPresBase";
             this.TextBoxPresBase.Size = new System.Drawing.Size(100, 20);
-            this.TextBoxPresBase.TabIndex = 9;
+            this.TextBoxPresBase.TabIndex = 3;
             this.TextBoxPresBase.Text = "0";
             this.TextBoxPresBase.TextChanged += new System.EventHandler(this.TextBoxPresBase_TextChanged);
             // 
@@ -190,6 +195,7 @@
             // labelAffinite
             // 
             this.labelAffinite.AutoSize = true;
+            this.labelAffinite.CausesValidation = false;
             this.labelAffinite.Location = new System.Drawing.Point(12, 148);
             this.labelAffinite.Name = "labelAffinite";
             this.labelAffinite.Size = new System.Drawing.Size(157, 13);
@@ -202,7 +208,7 @@
             this.CheckBoxSortAuto.Location = new System.Drawing.Point(130, 360);
             this.CheckBoxSortAuto.Name = "CheckBoxSortAuto";
             this.CheckBoxSortAuto.Size = new System.Drawing.Size(116, 17);
-            this.CheckBoxSortAuto.TabIndex = 13;
+            this.CheckBoxSortAuto.TabIndex = 24;
             this.CheckBoxSortAuto.Text = "Sorts automatiques";
             this.CheckBoxSortAuto.UseVisualStyleBackColor = true;
             // 
@@ -212,7 +218,7 @@
             this.CheckBoxMagieInnee.Location = new System.Drawing.Point(40, 360);
             this.CheckBoxMagieInnee.Name = "CheckBoxMagieInnee";
             this.CheckBoxMagieInnee.Size = new System.Drawing.Size(84, 17);
-            this.CheckBoxMagieInnee.TabIndex = 14;
+            this.CheckBoxMagieInnee.TabIndex = 23;
             this.CheckBoxMagieInnee.Text = "Magie innée";
             this.CheckBoxMagieInnee.UseVisualStyleBackColor = true;
             // 
@@ -222,7 +228,7 @@
             this.CheckBoxCompLancement.Location = new System.Drawing.Point(358, 360);
             this.CheckBoxCompLancement.Name = "CheckBoxCompLancement";
             this.CheckBoxCompLancement.Size = new System.Drawing.Size(153, 17);
-            this.CheckBoxCompLancement.TabIndex = 15;
+            this.CheckBoxCompLancement.TabIndex = 26;
             this.CheckBoxCompLancement.Text = "Compétence de lancement";
             this.CheckBoxCompLancement.UseVisualStyleBackColor = true;
             // 
@@ -232,7 +238,7 @@
             this.CheckBoxAmelorationRes.Location = new System.Drawing.Point(614, 216);
             this.CheckBoxAmelorationRes.Name = "CheckBoxAmelorationRes";
             this.CheckBoxAmelorationRes.Size = new System.Drawing.Size(159, 17);
-            this.CheckBoxAmelorationRes.TabIndex = 16;
+            this.CheckBoxAmelorationRes.TabIndex = 11;
             this.CheckBoxAmelorationRes.Text = "Amélioration des résistances";
             this.CheckBoxAmelorationRes.UseVisualStyleBackColor = true;
             // 
@@ -242,7 +248,7 @@
             this.CheckBoxReceptacleZeon.Location = new System.Drawing.Point(288, 252);
             this.CheckBoxReceptacleZeon.Name = "CheckBoxReceptacleZeon";
             this.CheckBoxReceptacleZeon.Size = new System.Drawing.Size(124, 17);
-            this.CheckBoxReceptacleZeon.TabIndex = 17;
+            this.CheckBoxReceptacleZeon.TabIndex = 14;
             this.CheckBoxReceptacleZeon.Text = "Réceptacle de Zéon";
             this.CheckBoxReceptacleZeon.UseVisualStyleBackColor = true;
             // 
@@ -252,7 +258,7 @@
             this.CheckBoxRechargeMag.Location = new System.Drawing.Point(696, 252);
             this.CheckBoxRechargeMag.Name = "CheckBoxRechargeMag";
             this.CheckBoxRechargeMag.Size = new System.Drawing.Size(116, 17);
-            this.CheckBoxRechargeMag.TabIndex = 18;
+            this.CheckBoxRechargeMag.TabIndex = 17;
             this.CheckBoxRechargeMag.Text = "Recharge magique";
             this.CheckBoxRechargeMag.UseVisualStyleBackColor = true;
             // 
@@ -262,7 +268,7 @@
             this.CheckBoxAmpliAMR.Location = new System.Drawing.Point(40, 252);
             this.CheckBoxAmpliAMR.Name = "CheckBoxAmpliAMR";
             this.CheckBoxAmpliAMR.Size = new System.Drawing.Size(120, 17);
-            this.CheckBoxAmpliAMR.TabIndex = 19;
+            this.CheckBoxAmpliAMR.TabIndex = 12;
             this.CheckBoxAmpliAMR.Text = "Amplification d\'AMR";
             this.CheckBoxAmpliAMR.UseVisualStyleBackColor = true;
             // 
@@ -272,7 +278,7 @@
             this.CheckBoxProjMag.Location = new System.Drawing.Point(166, 252);
             this.CheckBoxProjMag.Name = "CheckBoxProjMag";
             this.CheckBoxProjMag.Size = new System.Drawing.Size(116, 17);
-            this.CheckBoxProjMag.TabIndex = 20;
+            this.CheckBoxProjMag.TabIndex = 13;
             this.CheckBoxProjMag.Text = "Projection magique";
             this.CheckBoxProjMag.UseVisualStyleBackColor = true;
             // 
@@ -282,7 +288,7 @@
             this.CheckBoxPuisAjoutee.Location = new System.Drawing.Point(418, 252);
             this.CheckBoxPuisAjoutee.Name = "CheckBoxPuisAjoutee";
             this.CheckBoxPuisAjoutee.Size = new System.Drawing.Size(113, 17);
-            this.CheckBoxPuisAjoutee.TabIndex = 21;
+            this.CheckBoxPuisAjoutee.TabIndex = 15;
             this.CheckBoxPuisAjoutee.Text = "Puissance ajoutée";
             this.CheckBoxPuisAjoutee.UseVisualStyleBackColor = true;
             // 
@@ -292,7 +298,7 @@
             this.CheckBoxAltDestin.Location = new System.Drawing.Point(40, 493);
             this.CheckBoxAltDestin.Name = "CheckBoxAltDestin";
             this.CheckBoxAltDestin.Size = new System.Drawing.Size(116, 17);
-            this.CheckBoxAltDestin.TabIndex = 22;
+            this.CheckBoxAltDestin.TabIndex = 32;
             this.CheckBoxAltDestin.Text = "Altération du destin";
             this.CheckBoxAltDestin.UseVisualStyleBackColor = true;
             // 
@@ -302,7 +308,7 @@
             this.CheckBoxAugmentCharac.Location = new System.Drawing.Point(460, 396);
             this.CheckBoxAugmentCharac.Name = "CheckBoxAugmentCharac";
             this.CheckBoxAugmentCharac.Size = new System.Drawing.Size(194, 17);
-            this.CheckBoxAugmentCharac.TabIndex = 23;
+            this.CheckBoxAugmentCharac.TabIndex = 29;
             this.CheckBoxAugmentCharac.Text = "Augmentation des charactéristiques";
             this.CheckBoxAugmentCharac.UseVisualStyleBackColor = true;
             // 
@@ -312,7 +318,7 @@
             this.CheckBoxAugmentComSec.Location = new System.Drawing.Point(216, 396);
             this.CheckBoxAugmentComSec.Name = "CheckBoxAugmentComSec";
             this.CheckBoxAugmentComSec.Size = new System.Drawing.Size(238, 17);
-            this.CheckBoxAugmentComSec.TabIndex = 24;
+            this.CheckBoxAugmentComSec.TabIndex = 28;
             this.CheckBoxAugmentComSec.Text = "Augmentation des compétences secondaires";
             this.CheckBoxAugmentComSec.UseVisualStyleBackColor = true;
             // 
@@ -322,7 +328,7 @@
             this.CheckBoxImmunitePsy.Location = new System.Drawing.Point(228, 216);
             this.CheckBoxImmunitePsy.Name = "CheckBoxImmunitePsy";
             this.CheckBoxImmunitePsy.Size = new System.Drawing.Size(119, 17);
-            this.CheckBoxImmunitePsy.TabIndex = 25;
+            this.CheckBoxImmunitePsy.TabIndex = 8;
             this.CheckBoxImmunitePsy.Text = "Immunité psychique";
             this.CheckBoxImmunitePsy.UseVisualStyleBackColor = true;
             // 
@@ -332,7 +338,7 @@
             this.CheckBoxImmunite.Location = new System.Drawing.Point(40, 216);
             this.CheckBoxImmunite.Name = "CheckBoxImmunite";
             this.CheckBoxImmunite.Size = new System.Drawing.Size(68, 17);
-            this.CheckBoxImmunite.TabIndex = 26;
+            this.CheckBoxImmunite.TabIndex = 6;
             this.CheckBoxImmunite.Text = "Immunité";
             this.CheckBoxImmunite.UseVisualStyleBackColor = true;
             // 
@@ -342,7 +348,7 @@
             this.CheckBoxAmelioMaintPouvoir.Location = new System.Drawing.Point(261, 288);
             this.CheckBoxAmelioMaintPouvoir.Name = "CheckBoxAmelioMaintPouvoir";
             this.CheckBoxAmelioMaintPouvoir.Size = new System.Drawing.Size(203, 17);
-            this.CheckBoxAmelioMaintPouvoir.TabIndex = 27;
+            this.CheckBoxAmelioMaintPouvoir.TabIndex = 20;
             this.CheckBoxAmelioMaintPouvoir.Text = "Amélioration du maintien des pouvoirs";
             this.CheckBoxAmelioMaintPouvoir.UseVisualStyleBackColor = true;
             // 
@@ -352,7 +358,7 @@
             this.CheckBoxAugmentDep.Location = new System.Drawing.Point(40, 396);
             this.CheckBoxAugmentDep.Name = "CheckBoxAugmentDep";
             this.CheckBoxAugmentDep.Size = new System.Drawing.Size(170, 17);
-            this.CheckBoxAugmentDep.TabIndex = 28;
+            this.CheckBoxAugmentDep.TabIndex = 27;
             this.CheckBoxAugmentDep.Text = "Augmentation du déplacement";
             this.CheckBoxAugmentDep.UseVisualStyleBackColor = true;
             // 
@@ -362,7 +368,7 @@
             this.CheckBoxImmuniteElem.Location = new System.Drawing.Point(353, 216);
             this.CheckBoxImmuniteElem.Name = "CheckBoxImmuniteElem";
             this.CheckBoxImmuniteElem.Size = new System.Drawing.Size(125, 17);
-            this.CheckBoxImmuniteElem.TabIndex = 29;
+            this.CheckBoxImmuniteElem.TabIndex = 9;
             this.CheckBoxImmuniteElem.Text = "Immunité élémentaire";
             this.CheckBoxImmuniteElem.UseVisualStyleBackColor = true;
             // 
@@ -372,7 +378,7 @@
             this.CheckBoxPresAccru.Location = new System.Drawing.Point(40, 324);
             this.CheckBoxPresAccru.Name = "CheckBoxPresAccru";
             this.CheckBoxPresAccru.Size = new System.Drawing.Size(107, 17);
-            this.CheckBoxPresAccru.TabIndex = 30;
+            this.CheckBoxPresAccru.TabIndex = 21;
             this.CheckBoxPresAccru.Text = "Présence accrue";
             this.CheckBoxPresAccru.UseVisualStyleBackColor = true;
             // 
@@ -382,7 +388,7 @@
             this.CheckBoxConvoAccrue.Location = new System.Drawing.Point(153, 324);
             this.CheckBoxConvoAccrue.Name = "CheckBoxConvoAccrue";
             this.CheckBoxConvoAccrue.Size = new System.Drawing.Size(122, 17);
-            this.CheckBoxConvoAccrue.TabIndex = 31;
+            this.CheckBoxConvoAccrue.TabIndex = 22;
             this.CheckBoxConvoAccrue.Text = "Convocation accrue";
             this.CheckBoxConvoAccrue.UseVisualStyleBackColor = true;
             // 
@@ -392,7 +398,7 @@
             this.CheckBoxEffetMystique.Location = new System.Drawing.Point(445, 493);
             this.CheckBoxEffetMystique.Name = "CheckBoxEffetMystique";
             this.CheckBoxEffetMystique.Size = new System.Drawing.Size(92, 17);
-            this.CheckBoxEffetMystique.TabIndex = 32;
+            this.CheckBoxEffetMystique.TabIndex = 35;
             this.CheckBoxEffetMystique.Text = "Effet mystique";
             this.CheckBoxEffetMystique.UseVisualStyleBackColor = true;
             // 
@@ -402,7 +408,7 @@
             this.CheckBoxReserveKi.Location = new System.Drawing.Point(40, 455);
             this.CheckBoxReserveKi.Name = "CheckBoxReserveKi";
             this.CheckBoxReserveKi.Size = new System.Drawing.Size(93, 17);
-            this.CheckBoxReserveKi.TabIndex = 33;
+            this.CheckBoxReserveKi.TabIndex = 31;
             this.CheckBoxReserveKi.Text = "Réserve de Ki";
             this.CheckBoxReserveKi.UseVisualStyleBackColor = true;
             // 
@@ -412,7 +418,7 @@
             this.CheckBoxTalent.Location = new System.Drawing.Point(40, 288);
             this.CheckBoxTalent.Name = "CheckBoxTalent";
             this.CheckBoxTalent.Size = new System.Drawing.Size(56, 17);
-            this.CheckBoxTalent.TabIndex = 34;
+            this.CheckBoxTalent.TabIndex = 18;
             this.CheckBoxTalent.Text = "Talent";
             this.CheckBoxTalent.UseVisualStyleBackColor = true;
             // 
@@ -422,7 +428,7 @@
             this.CheckBoxAttElem.Location = new System.Drawing.Point(40, 180);
             this.CheckBoxAttElem.Name = "CheckBoxAttElem";
             this.CheckBoxAttElem.Size = new System.Drawing.Size(124, 17);
-            this.CheckBoxAttElem.TabIndex = 35;
+            this.CheckBoxAttElem.TabIndex = 4;
             this.CheckBoxAttElem.Text = "Attaques élémetaires";
             this.CheckBoxAttElem.UseVisualStyleBackColor = true;
             // 
@@ -432,7 +438,7 @@
             this.CheckBoxSubstiCarac.Location = new System.Drawing.Point(40, 419);
             this.CheckBoxSubstiCarac.Name = "CheckBoxSubstiCarac";
             this.CheckBoxSubstiCarac.Size = new System.Drawing.Size(173, 17);
-            this.CheckBoxSubstiCarac.TabIndex = 36;
+            this.CheckBoxSubstiCarac.TabIndex = 30;
             this.CheckBoxSubstiCarac.Text = "Substitution de caractéristiques";
             this.CheckBoxSubstiCarac.UseVisualStyleBackColor = true;
             // 
@@ -442,7 +448,7 @@
             this.CheckBoxAttSpec.Location = new System.Drawing.Point(170, 180);
             this.CheckBoxAttSpec.Name = "CheckBoxAttSpec";
             this.CheckBoxAttSpec.Size = new System.Drawing.Size(105, 17);
-            this.CheckBoxAttSpec.TabIndex = 37;
+            this.CheckBoxAttSpec.TabIndex = 5;
             this.CheckBoxAttSpec.Text = "Attaque spéciale";
             this.CheckBoxAttSpec.UseVisualStyleBackColor = true;
             // 
@@ -452,7 +458,7 @@
             this.CheckBoxSeuilInvul.Location = new System.Drawing.Point(484, 216);
             this.CheckBoxSeuilInvul.Name = "CheckBoxSeuilInvul";
             this.CheckBoxSeuilInvul.Size = new System.Drawing.Size(124, 17);
-            this.CheckBoxSeuilInvul.TabIndex = 38;
+            this.CheckBoxSeuilInvul.TabIndex = 10;
             this.CheckBoxSeuilInvul.Text = "Seuil d\'invulnérabilité";
             this.CheckBoxSeuilInvul.UseVisualStyleBackColor = true;
             // 
@@ -462,7 +468,7 @@
             this.CheckBoxImmuniteMag.Location = new System.Drawing.Point(111, 216);
             this.CheckBoxImmuniteMag.Name = "CheckBoxImmuniteMag";
             this.CheckBoxImmuniteMag.Size = new System.Drawing.Size(111, 17);
-            this.CheckBoxImmuniteMag.TabIndex = 39;
+            this.CheckBoxImmuniteMag.TabIndex = 7;
             this.CheckBoxImmuniteMag.Text = "Immunité magique";
             this.CheckBoxImmuniteMag.UseVisualStyleBackColor = true;
             // 
@@ -472,7 +478,7 @@
             this.CheckBoxTestResAccru1.Location = new System.Drawing.Point(537, 252);
             this.CheckBoxTestResAccru1.Name = "CheckBoxTestResAccru1";
             this.CheckBoxTestResAccru1.Size = new System.Drawing.Size(153, 17);
-            this.CheckBoxTestResAccru1.TabIndex = 40;
+            this.CheckBoxTestResAccru1.TabIndex = 16;
             this.CheckBoxTestResAccru1.Text = "Test de Résistance accrus";
             this.CheckBoxTestResAccru1.UseVisualStyleBackColor = true;
             // 
@@ -482,7 +488,7 @@
             this.CheckBoxCreateProtail.Location = new System.Drawing.Point(322, 493);
             this.CheckBoxCreateProtail.Name = "CheckBoxCreateProtail";
             this.CheckBoxCreateProtail.Size = new System.Drawing.Size(117, 17);
-            this.CheckBoxCreateProtail.TabIndex = 41;
+            this.CheckBoxCreateProtail.TabIndex = 34;
             this.CheckBoxCreateProtail.Text = "Créateur de protails";
             this.CheckBoxCreateProtail.UseVisualStyleBackColor = true;
             // 
@@ -492,7 +498,7 @@
             this.CheckBoxLanceurSort.Location = new System.Drawing.Point(252, 360);
             this.CheckBoxLanceurSort.Name = "CheckBoxLanceurSort";
             this.CheckBoxLanceurSort.Size = new System.Drawing.Size(100, 17);
-            this.CheckBoxLanceurSort.TabIndex = 42;
+            this.CheckBoxLanceurSort.TabIndex = 25;
             this.CheckBoxLanceurSort.Text = "Lanceur de sort";
             this.CheckBoxLanceurSort.UseVisualStyleBackColor = true;
             // 
@@ -502,7 +508,7 @@
             this.CheckBoxVision.Location = new System.Drawing.Point(168, 493);
             this.CheckBoxVision.Name = "CheckBoxVision";
             this.CheckBoxVision.Size = new System.Drawing.Size(148, 17);
-            this.CheckBoxVision.TabIndex = 43;
+            this.CheckBoxVision.TabIndex = 33;
             this.CheckBoxVision.Text = "Moyen spéciaux de vision";
             this.CheckBoxVision.UseVisualStyleBackColor = true;
             // 
@@ -512,7 +518,7 @@
             this.ButtonSave.Location = new System.Drawing.Point(12, 516);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(75, 23);
-            this.ButtonSave.TabIndex = 44;
+            this.ButtonSave.TabIndex = 36;
             this.ButtonSave.Text = "Sauvegarder";
             this.ButtonSave.UseVisualStyleBackColor = true;
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
@@ -522,7 +528,7 @@
             this.ButtonAnnuler.Location = new System.Drawing.Point(93, 516);
             this.ButtonAnnuler.Name = "ButtonAnnuler";
             this.ButtonAnnuler.Size = new System.Drawing.Size(75, 23);
-            this.ButtonAnnuler.TabIndex = 45;
+            this.ButtonAnnuler.TabIndex = 37;
             this.ButtonAnnuler.Text = "Annuler";
             this.ButtonAnnuler.UseVisualStyleBackColor = true;
             this.ButtonAnnuler.Click += new System.EventHandler(this.ButtonAnnuler_Click);
@@ -530,6 +536,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.CausesValidation = false;
             this.label1.Location = new System.Drawing.Point(22, 164);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
@@ -539,6 +546,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.CausesValidation = false;
             this.label2.Location = new System.Drawing.Point(22, 236);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 13);
@@ -551,7 +559,7 @@
             this.CheckBoxTestResAccru2.Location = new System.Drawing.Point(102, 288);
             this.CheckBoxTestResAccru2.Name = "CheckBoxTestResAccru2";
             this.CheckBoxTestResAccru2.Size = new System.Drawing.Size(153, 17);
-            this.CheckBoxTestResAccru2.TabIndex = 48;
+            this.CheckBoxTestResAccru2.TabIndex = 19;
             this.CheckBoxTestResAccru2.Text = "Test de Résistance accrus";
             this.CheckBoxTestResAccru2.UseVisualStyleBackColor = true;
             this.CheckBoxTestResAccru2.CheckedChanged += new System.EventHandler(this.CheckBoxTestResAccru2_CheckedChanged);
@@ -559,6 +567,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.CausesValidation = false;
             this.label3.Location = new System.Drawing.Point(22, 200);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 13);
@@ -568,6 +577,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.CausesValidation = false;
             this.label4.Location = new System.Drawing.Point(22, 272);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(174, 13);
@@ -577,6 +587,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.CausesValidation = false;
             this.label5.Location = new System.Drawing.Point(22, 308);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(211, 13);
@@ -586,6 +597,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.CausesValidation = false;
             this.label6.Location = new System.Drawing.Point(22, 344);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 13);
@@ -595,6 +607,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.CausesValidation = false;
             this.label7.Location = new System.Drawing.Point(22, 380);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 13);
@@ -604,6 +617,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.CausesValidation = false;
             this.label8.Location = new System.Drawing.Point(22, 439);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 13);
@@ -613,6 +627,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.CausesValidation = false;
             this.label9.Location = new System.Drawing.Point(25, 475);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 13);
@@ -623,6 +638,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(813, 551);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);

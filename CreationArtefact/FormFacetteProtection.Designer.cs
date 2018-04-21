@@ -267,6 +267,7 @@
             this.Name = "FormFacetteProtection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette de protection";
+            this.Load += new System.EventHandler(this.FormFacetteProtection_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

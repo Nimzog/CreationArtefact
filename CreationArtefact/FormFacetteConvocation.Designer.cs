@@ -36,7 +36,6 @@
             this.LabelPP = new System.Windows.Forms.Label();
             this.labelLBLNiveau = new System.Windows.Forms.Label();
             this.labelLBLPP = new System.Windows.Forms.Label();
-            this.CheckBoxLienElementaire = new System.Windows.Forms.CheckBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.ButtonSave = new System.Windows.Forms.Button();
             this.ComboBoxSelectBonus = new System.Windows.Forms.ComboBox();
@@ -119,19 +118,6 @@
             this.labelLBLPP.Size = new System.Drawing.Size(21, 13);
             this.labelLBLPP.TabIndex = 71;
             this.labelLBLPP.Text = "PP";
-            // 
-            // CheckBoxLienElementaire
-            // 
-            this.CheckBoxLienElementaire.AutoSize = true;
-            this.CheckBoxLienElementaire.Enabled = false;
-            this.CheckBoxLienElementaire.Location = new System.Drawing.Point(15, 105);
-            this.CheckBoxLienElementaire.Name = "CheckBoxLienElementaire";
-            this.CheckBoxLienElementaire.Size = new System.Drawing.Size(103, 17);
-            this.CheckBoxLienElementaire.TabIndex = 2;
-            this.CheckBoxLienElementaire.Text = "Lien élémentaire";
-            this.CheckBoxLienElementaire.UseVisualStyleBackColor = true;
-            this.CheckBoxLienElementaire.Visible = false;
-            this.CheckBoxLienElementaire.CheckedChanged += new System.EventHandler(this.CheckBoxLienElementaire_CheckedChanged);
             // 
             // buttonCancel
             // 
@@ -235,7 +221,7 @@
             // 
             this.RadioButtonAucun.AutoSize = true;
             this.RadioButtonAucun.Checked = true;
-            this.RadioButtonAucun.Location = new System.Drawing.Point(15, 141);
+            this.RadioButtonAucun.Location = new System.Drawing.Point(15, 122);
             this.RadioButtonAucun.Name = "RadioButtonAucun";
             this.RadioButtonAucun.Size = new System.Drawing.Size(45, 17);
             this.RadioButtonAucun.TabIndex = 5;
@@ -247,7 +233,7 @@
             // RadioButtonConvo
             // 
             this.RadioButtonConvo.AutoSize = true;
-            this.RadioButtonConvo.Location = new System.Drawing.Point(15, 166);
+            this.RadioButtonConvo.Location = new System.Drawing.Point(15, 147);
             this.RadioButtonConvo.Name = "RadioButtonConvo";
             this.RadioButtonConvo.Size = new System.Drawing.Size(113, 17);
             this.RadioButtonConvo.TabIndex = 6;
@@ -258,7 +244,7 @@
             // RadioButtonInvoke
             // 
             this.RadioButtonInvoke.AutoSize = true;
-            this.RadioButtonInvoke.Location = new System.Drawing.Point(15, 189);
+            this.RadioButtonInvoke.Location = new System.Drawing.Point(15, 170);
             this.RadioButtonInvoke.Name = "RadioButtonInvoke";
             this.RadioButtonInvoke.Size = new System.Drawing.Size(103, 17);
             this.RadioButtonInvoke.TabIndex = 7;
@@ -269,7 +255,7 @@
             // LabelLimiteConvoInvo
             // 
             this.LabelLimiteConvoInvo.AutoSize = true;
-            this.LabelLimiteConvoInvo.Location = new System.Drawing.Point(12, 125);
+            this.LabelLimiteConvoInvo.Location = new System.Drawing.Point(12, 106);
             this.LabelLimiteConvoInvo.Name = "LabelLimiteConvoInvo";
             this.LabelLimiteConvoInvo.Size = new System.Drawing.Size(107, 13);
             this.LabelLimiteConvoInvo.TabIndex = 82;
@@ -326,7 +312,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ComboBoxConvocation);
             this.Controls.Add(this.ComboBoxElement);
-            this.Controls.Add(this.CheckBoxLienElementaire);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -349,7 +334,6 @@
         private System.Windows.Forms.Label LabelPP;
         private System.Windows.Forms.Label labelLBLNiveau;
         private System.Windows.Forms.Label labelLBLPP;
-        private System.Windows.Forms.CheckBox CheckBoxLienElementaire;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button ButtonSave;
         private System.Windows.Forms.ComboBox ComboBoxSelectBonus;

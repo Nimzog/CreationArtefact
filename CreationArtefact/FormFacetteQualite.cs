@@ -23,6 +23,8 @@ namespace CreationArtefact
         /// 
         /// </summary>
         public bool CloseSaveCancel;
+        bool modification;
+        ClassFacetteQualite importQualite;
 
         /// <summary>
         /// 
@@ -83,29 +85,17 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Qualite.GenererCoutPouvoir();
+                coutPouvoir = Qualite.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -133,6 +123,37 @@ namespace CreationArtefact
                     Qualite.Combat = 0;
                     break;
             }
+        }
+
+        private void FormFacetteQualite_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importQualite.Combat != 0)
+                {
+                    ComboBoxSelectPouvoir.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importQualite.Combat;
+                }
+                else if (importQualite.Generale != 0)
+                {
+                    ComboBoxSelectPouvoir.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importQualite.Generale;
+                }
+                else
+                {
+                    ComboBoxSelectPouvoir.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouvoir.Enabled = false;
+            }
+        }
+
+        public DialogResult ShowDialog(ClassFacetteQualite facette)
+        {
+            modification = true;
+
+            importQualite = facette;
+
+            return ShowDialog();
         }
     }
 }

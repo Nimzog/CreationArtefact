@@ -14,6 +14,8 @@ namespace CreationArtefact
     {
         public bool CloseSaveCancel;
         public ClassFacetteMaitrise Maitrise;
+        ClassFacetteMaitrise importMaitrise;
+        bool modification;
 
         public FormFacetteMaitrise()
         {
@@ -540,29 +542,17 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Maitrise.GenererCoutPouvoir();
+                coutPouvoir = Maitrise.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -598,6 +588,78 @@ namespace CreationArtefact
         private void RadioButtonAucune_CheckedChanged(object sender, EventArgs e)
         {
             majForm();
+        }
+
+        private void FormFacetteMaitrise_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importMaitrise.AccumulationKi != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importMaitrise.AccumulationKi;
+                    if (importMaitrise.BadRecuperate)
+                    {
+                        RadioButtonBadRecup.Checked = true;
+                    }
+                    else if (importMaitrise.RecupOnly)
+                    {
+                        RadioButtonRecupOnly.Checked = true;
+                    }
+                    else
+                    {
+                        RadioButtonAucune.Checked = true;
+                    }
+                }
+                else if (importMaitrise.TechKi != null)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importMaitrise.TechKi.Niveau;
+                    if (importMaitrise.NBUtil != 0)
+                    {
+                        NumericUpDownUtilisation.Value = importMaitrise.NBUtil + 1;
+                    }
+                    else if (importMaitrise.Illimite)
+                    {
+                        CheckBoxIllimite.Checked = true;
+                    }
+                    if (importMaitrise.Consommation)
+                    {
+                        CheckBoxConsomation.Checked = true;
+                    }
+                    if (importMaitrise.RechargeReduite)
+                    {
+                        CheckBoxModRecharge.Checked = true;
+                    }
+                }
+                else if (importMaitrise.ReserveKi != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importMaitrise.ReserveKi;
+                    if (importMaitrise.Filtre)
+                    {
+                        CheckBoxModFiltre.Checked = true;
+                    }
+                    if (importMaitrise.Fuite)
+                    {
+                        CheckBoxModFuite.Checked = true;
+                    }
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
+        }
+
+        public DialogResult ShowDialog(ClassFacetteMaitrise facette)
+        {
+            modification = true;
+
+            importMaitrise = facette;
+
+            return ShowDialog();
         }
     }
 }

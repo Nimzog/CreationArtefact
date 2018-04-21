@@ -137,35 +137,23 @@ namespace CreationArtefact
                 CreerSpecAtt();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = AttaqueSpec.GenererCoutPouvoir();
+                coutPouvoir = AttaqueSpec.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        if (coutPouvoir.PP <= 0 && this.Visible)
-                        {
-                            ButtonSave.Enabled = false;
-                            MessageBox.Show("Cout en points de pouvoirs(PP) nul ou négatif.", Properties.Settings.Default.Erreur,
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
+                }
+                if (coutPouvoir.PP <= 0 && this.Visible)
+                {
+                    ButtonSave.Enabled = false;
+                    MessageBox.Show("Cout en points de pouvoirs(PP) nul ou négatif.", Properties.Settings.Default.Erreur,
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else

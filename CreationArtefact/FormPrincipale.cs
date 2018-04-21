@@ -37,6 +37,7 @@ namespace CreationArtefact
         bool saved;
         bool DissimulationAdded = false;
         bool modificationActive = false;
+        bool modificationContenant = false;
         
         /// <summary>
         /// 
@@ -107,7 +108,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteQualite.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteQualite.Qualite);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteQualite.Qualite);
                         }
                         break;
                     case 2:
@@ -120,7 +121,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteCombat.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteCombat.Combat);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteCombat.Combat);
                         }
                         break;
                     case 3:
@@ -133,7 +134,7 @@ namespace CreationArtefact
                         wasSavePressed = formAttaqueSpeciale.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formAttaqueSpeciale.AttaqueSpec);
+                            isSavedAdded = artefact.AddPouvoir(formAttaqueSpeciale.AttaqueSpec);
                         }
                         break;
                     case 4:
@@ -146,7 +147,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteDefensive.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteDefensive.Defense);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteDefensive.Defense);
                         }
                         break;
                     case 5:
@@ -159,7 +160,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteProtection.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteProtection.Protection);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteProtection.Protection);
                         }
                         break;
                     case 6:
@@ -172,7 +173,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteMagique.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteMagique.Magique);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteMagique.Magique);
                         }
                         break;
                     case 7:
@@ -185,7 +186,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacettePsychique.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacettePsychique.Psychique);
+                            isSavedAdded = artefact.AddPouvoir(formFacettePsychique.Psychique);
                         }
                         break;
                     case 8:
@@ -198,7 +199,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteConvocation.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteConvocation.Convocation);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteConvocation.Convocation);
                         }
                         break;
                     case 9:
@@ -211,7 +212,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteMagieInnee.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteMagieInnee.MagieInnee);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteMagieInnee.MagieInnee);
                         }
                         break;
                     case 10:
@@ -224,7 +225,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteAugmentation.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteAugmentation.Augmentation);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteAugmentation.Augmentation);
                         }
                         break;
                     case 11:
@@ -237,7 +238,7 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteMaitrise.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formFacetteMaitrise.Maitrise);
+                            isSavedAdded = artefact.AddPouvoir(formFacetteMaitrise.Maitrise);
                         }
                         break;
                     case 12:
@@ -250,7 +251,8 @@ namespace CreationArtefact
                         wasSavePressed = formFacetteEsoterique.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            if (formFacetteEsoterique.Esoterique.Dissimulation != 0)
+                            isSavedAdded = artefact.AddPouvoir(formFacetteEsoterique.Esoterique);
+                            /*if (formFacetteEsoterique.Esoterique.Dissimulation != 0)
                             {
                                 DissimulationAdded = true;
                             }
@@ -259,7 +261,7 @@ namespace CreationArtefact
                                 if (MessageBox.Show("En ajoutant le pouvoir de dissimulation \nvous ne pourrez plus ajouter d'autre pouvoir.",
                                     "Avertissement", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                                 {
-                                    isSavedAdded = artefact.addPouvoir(formFacetteEsoterique.Esoterique, true);
+                                    isSavedAdded = artefact.AddPouvoir(formFacetteEsoterique.Esoterique, true);
                                 }
                                 else
                                 {
@@ -268,8 +270,8 @@ namespace CreationArtefact
                             }
                             else
                             {
-                                isSavedAdded = artefact.addPouvoir(formFacetteEsoterique.Esoterique);
-                            }
+                                isSavedAdded = artefact.AddPouvoir(formFacetteEsoterique.Esoterique);
+                            }*/
                         }
                         break;
                     case 13:
@@ -282,14 +284,13 @@ namespace CreationArtefact
                         wasSavePressed = formEffetMystique.CloseSaveCancel;
                         if (wasSavePressed)
                         {
-                            isSavedAdded = artefact.addPouvoir(formEffetMystique.EffetMystique);
+                            isSavedAdded = artefact.AddPouvoir(formEffetMystique.EffetMystique);
                         }
                         break;
                     default:
                         break;
                 }
-
-                if (!isSavedAdded && wasSavePressed)
+                /*if (!isSavedAdded && wasSavePressed)
                 {
                     MessageBox.Show("Ajout de pouvoir impossible.\nPrésence potentiellement insufisante.",
                         Properties.Settings.Default.Erreur, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -298,28 +299,31 @@ namespace CreationArtefact
                         DissimulationAdded = false;
                     }
                 }
-                else if (isSavedAdded && wasSavePressed)
+                else*/ if (wasSavePressed)
                 {
-
-
                     MAJRichTextBoxDescArtefact();
-                    ButtonSave.Enabled = true;
+                    RemplirListBox();
                     ButtonModifier.Enabled = true;
-                    SauvegarderToolStripMenuItem.Enabled = true;
-                    if (!saved)
+                    if (artefact.GetPresence() < 0)
                     {
-                        SauvegarderSousToolStripMenuItem.Enabled = true;
+                        ButtonSave.Enabled = false;
+                        SauvegarderSousToolStripMenuItem.Enabled = false;
+                        SauvegarderToolStripMenuItem.Enabled = false;
+                    }
+                    else
+                    {
+                        ButtonSave.Enabled = true;
+                        SauvegarderToolStripMenuItem.Enabled = true;
+                        if (!saved)
+                        {
+                            SauvegarderSousToolStripMenuItem.Enabled = true;
+                        }
                     }
                 }
 
-
-                if (DissimulationAdded)
-                {
-                    ComboBoxFacette.Enabled = false;
-                }
                 ComboBoxFacette.SelectedIndex = 0;
                 ComboBoxFacette.Focus();
-                ButtonContenant.Enabled = false;
+                ButtonContenant.Enabled = false;                
             }
             else
             {
@@ -329,16 +333,11 @@ namespace CreationArtefact
 
                     if (formContenant.CloseSaveCancel)
                     {
-                        artefact.SetContenant(formContenant.Contenant);
-                        MAJRichTextBoxDescArtefact();
-                        ComboBoxFacette.Enabled = true;
-                        ButtonContenant.Enabled = false;
-                        NouveauToolStripMenuItem.Enabled = true;
+                        artefact.SetContenant(formContenant.Contenant);                        
                     }
                 }
                 else
                 {
-                    string tmpType = "Non reconnu";
                     switch (artefact.Pouvoirs[ListBoxArtefact.SelectedIndex-1].TypePouvoir)
                     {
                         case TypeFacette.FacetteAugmentation:
@@ -347,17 +346,12 @@ namespace CreationArtefact
                                 formFacetteAugmentation.Dispose();
                             }
                             formFacetteAugmentation = new FormFacetteAugmentation();
-                            ClassFacetteAugmentation tempAug = 
-                                (ClassFacetteAugmentation)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
-
-                            formFacetteAugmentation.ShowDialog(tempAug);
+                            formFacetteAugmentation.ShowDialog((ClassFacetteAugmentation)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]));
                             wasSavePressed = formFacetteAugmentation.CloseSaveCancel;
                             if (wasSavePressed)
                             {
-                                isSavedAdded = artefact.UpdatePouvoir(formFacetteAugmentation.Augmentation, ListBoxArtefact.SelectedIndex - 1);
+                                artefact.UpdatePouvoir(formFacetteAugmentation.Augmentation, ListBoxArtefact.SelectedIndex - 1);
                             }
-                            MAJRichTextBoxDescArtefact();
-                            RemplirListBox();
                             break;
                         case TypeFacette.FacetteCombat:
                             if (formFacetteCombat != null)
@@ -365,17 +359,12 @@ namespace CreationArtefact
                                 formFacetteCombat.Dispose();
                             }
                             formFacetteCombat = new FormFacetteCombat();
-                            ClassFacetteCombat tempCom =
-                                (ClassFacetteCombat)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
-
-                            formFacetteCombat.ShowDialog(tempCom);
+                            formFacetteCombat.ShowDialog((ClassFacetteCombat)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]));
                             wasSavePressed = formFacetteCombat.CloseSaveCancel;
                             if (wasSavePressed)
                             {
-                                isSavedAdded = artefact.UpdatePouvoir(formFacetteCombat.Combat, ListBoxArtefact.SelectedIndex - 1);
+                                artefact.UpdatePouvoir(formFacetteCombat.Combat, ListBoxArtefact.SelectedIndex - 1);
                             }
-                            MAJRichTextBoxDescArtefact();
-                            RemplirListBox();
                             break;
                         case TypeFacette.FacetteConvocation:
                             if (formFacetteConvocation != null)
@@ -383,49 +372,141 @@ namespace CreationArtefact
                                 formFacetteConvocation.Dispose();
                             }
                             formFacetteConvocation = new FormFacetteConvocation();
-                            FormFacetteConvocation tempConvo =
-                                (FormFacetteConvocation)(artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
-
-                            formFacetteConvocation.ShowDialog(tempConvo);
+                            formFacetteConvocation.ShowDialog((ClassFacetteConvocation)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
                             wasSavePressed = formFacetteConvocation.CloseSaveCancel;
                             if (wasSavePressed)
                             {
-                                isSavedAdded = artefact.UpdatePouvoir(formFacetteConvocation.Convocation, ListBoxArtefact.SelectedIndex - 1);
+                                artefact.UpdatePouvoir(formFacetteConvocation.Convocation, ListBoxArtefact.SelectedIndex - 1);
                             }
-                            MAJRichTextBoxDescArtefact();
-                            RemplirListBox();
                             break;
                         case TypeFacette.FacetteDefensive:
-                            tmpType = "FacetteDefensive";
+                            if (formFacetteDefensive != null)
+                            {
+                                formFacetteDefensive.Dispose();
+                            }
+                            formFacetteDefensive = new FormFacetteDefensive();
+                            formFacetteDefensive.ShowDialog((ClassFacetteDefensive)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                            wasSavePressed = formFacetteDefensive.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                artefact.UpdatePouvoir(formFacetteDefensive.Defense, ListBoxArtefact.SelectedIndex - 1);
+                            }
                             break;
                         case TypeFacette.FacetteEsoterique:
-                            tmpType = "FacetteEsoterique";
+                            if (artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1].SubType != SubTypeFacette.EffetMystique)
+                            {
+                                if (formFacetteEsoterique != null)
+                                {
+                                    formFacetteEsoterique.Dispose();
+                                }
+                                formFacetteEsoterique = new FormFacetteEsoterique();
+                                formFacetteEsoterique.ShowDialog((ClassFacetteEsoterique)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                                wasSavePressed = formFacetteEsoterique.CloseSaveCancel;
+                                if (wasSavePressed)
+                                {
+                                    artefact.UpdatePouvoir(formFacetteEsoterique.Esoterique, ListBoxArtefact.SelectedIndex - 1);
+                                }
+                            }
+                            else
+                            {
+                                if (formEffetMystique != null)
+                                {
+                                    formEffetMystique.Dispose();
+                                }
+                                formEffetMystique = new FormEffetMystique();
+                                formEffetMystique.ShowDialog((ClassEffetMystique)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                                wasSavePressed = formEffetMystique.CloseSaveCancel;
+                                if (wasSavePressed)
+                                {
+                                    artefact.UpdatePouvoir(formEffetMystique.EffetMystique, ListBoxArtefact.SelectedIndex - 1);
+                                }
+                            }
                             break;
                         case TypeFacette.FacetteInnee:
-                            tmpType = "FacetteInnee";
+                            if (formFacetteMagieInnee != null)
+                            {
+                                formFacetteMagieInnee.Dispose();
+                            }
+                            formFacetteMagieInnee = new FormFacetteMagieInnee();
+                            formFacetteMagieInnee.ShowDialog((ClassFacetteMagieInnee)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                            wasSavePressed = formFacetteMagieInnee.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                artefact.UpdatePouvoir(formFacetteMagieInnee.MagieInnee, ListBoxArtefact.SelectedIndex - 1);
+                            }
                             break;
                         case TypeFacette.FacetteMagique:
-                            tmpType = "FacetteMagique";
+                            if (formFacetteMagique != null)
+                            {
+                                formFacetteMagique.Dispose();
+                            }
+                            formFacetteMagique = new FormFacetteMagique();
+                            formFacetteMagique.ShowDialog((ClassFacetteMagique)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                            wasSavePressed = formFacetteMagique.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                artefact.UpdatePouvoir(formFacetteMagique.Magique, ListBoxArtefact.SelectedIndex - 1);
+                            }
                             break;
                         case TypeFacette.FacetteMaitrise:
-                            tmpType = "FacetteMaitrise";
+                            if (formFacetteMaitrise != null)
+                            {
+                                formFacetteMaitrise.Dispose();
+                            }
+                            formFacetteMaitrise = new FormFacetteMaitrise();
+                            formFacetteMaitrise.ShowDialog((ClassFacetteMaitrise)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                            wasSavePressed = formFacetteMaitrise.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                artefact.UpdatePouvoir(formFacetteMaitrise.Maitrise, ListBoxArtefact.SelectedIndex - 1);
+                            }
                             break;
                         case TypeFacette.FacetteProtection:
-                            tmpType = "FacetteProtection";
+                            if (formFacetteProtection != null)
+                            {
+                                formFacetteProtection.Dispose();
+                            }
+                            formFacetteProtection = new FormFacetteProtection();
+                            formFacetteProtection.ShowDialog((ClassFacetteProtection)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                            wasSavePressed = formFacetteProtection.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                artefact.UpdatePouvoir(formFacetteProtection.Protection, ListBoxArtefact.SelectedIndex - 1);
+                            }
                             break;
                         case TypeFacette.FacettePsychique:
-                            tmpType = "FacetteAugmentation";
+                            if (formFacettePsychique != null)
+                            {
+                                formFacettePsychique.Dispose();
+                            }
+                            formFacettePsychique = new FormFacettePsychique();
+                            formFacettePsychique.ShowDialog((ClassFacettePsychique)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                            wasSavePressed = formFacetteProtection.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                artefact.UpdatePouvoir(formFacettePsychique.Psychique, ListBoxArtefact.SelectedIndex - 1);
+                            }
                             break;
                         case TypeFacette.FacetteQualite:
-                            tmpType = "FacetteQualite";                            
+                            if (formFacetteQualite != null)
+                            {
+                                formFacetteQualite.Dispose();
+                            }
+                            formFacetteQualite = new FormFacetteQualite();
+                            formFacetteQualite.ShowDialog((ClassFacetteQualite)artefact.Pouvoirs[ListBoxArtefact.SelectedIndex - 1]);
+                            wasSavePressed = formFacetteQualite.CloseSaveCancel;
+                            if (wasSavePressed)
+                            {
+                                artefact.UpdatePouvoir(formFacetteQualite.Qualite, ListBoxArtefact.SelectedIndex - 1);
+                            }
                             break;
                         default:
                             break;
                     }
-                    MessageBox.Show(tmpType, "Avertissement",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ListBoxArtefact.ClearSelected();
                 }
+                artefact.RecalculePresence();
+                MAJRichTextBoxDescArtefact();
+                RemplirListBox();
                 ListBoxArtefact.ClearSelected();
             }
         }
@@ -438,10 +519,15 @@ namespace CreationArtefact
             {
                 artefact.SetContenant(formContenant.Contenant);
                 MAJRichTextBoxDescArtefact();
+                RemplirListBox();
                 ComboBoxFacette.Enabled = true;
-                ButtonContenant.Enabled = false;
                 NouveauToolStripMenuItem.Enabled = true;
                 ButtonContenant.Text = "Modifier";
+                modificationContenant = true;
+            }
+            if (modificationContenant)
+            {
+                artefact.RecalculePresence();
             }
         }
 
@@ -463,11 +549,13 @@ namespace CreationArtefact
 
             artefact = new ClassArtefact();
             richTextBoxDescArtefact.Text = "";
-            //ListBoxArtefact.Items.Clear();
+            ListBoxArtefact.Items.Clear();
 
             ComboBoxFacette.Enabled = false;
             ButtonAjouterPouvoir.Enabled = false;
             ButtonContenant.Enabled = true;
+            ButtonContenant.Text = "Créer";
+            modificationActive = false;
             NouveauToolStripMenuItem.Enabled = false;
             SauvegarderSousToolStripMenuItem.Enabled = false;
             SauvegarderToolStripMenuItem.Enabled = false;

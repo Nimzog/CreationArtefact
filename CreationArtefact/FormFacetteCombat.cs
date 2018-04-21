@@ -41,15 +41,11 @@ namespace CreationArtefact
 
         public DialogResult ShowDialog(ClassFacetteCombat combat)
         {
-            DialogResult result;
-
             Modification = true;
 
             importCombat = combat;
 
-            result = ShowDialog();
-
-            return result;
+            return ShowDialog();
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -631,29 +627,17 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = Combat.GenererCoutPouvoir();
+                coutPouvoir = Combat.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else
@@ -713,13 +697,17 @@ namespace CreationArtefact
                     {
                         RadioButtonMod2.Checked = true;
                     }
-                    if (importCombat.ElemCombine)
+                    else if (importCombat.ElemCombine)
                     {
                         RadioButtonMod3.Checked = true;
                     }
-                    if (importCombat.ElemPrime)
+                    else  if (importCombat.ElemPrime)
                     {
                         RadioButtonMod4.Checked = true;
+                    }
+                    else
+                    {
+                        RadioButtonMod1.Checked = true;
                     }
                 }
                 else if (importCombat.Exterminateur != 0)

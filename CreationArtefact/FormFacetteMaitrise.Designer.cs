@@ -469,6 +469,7 @@
             this.Name = "FormFacetteMaitrise";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facette de maitrîse";
+            this.Load += new System.EventHandler(this.FormFacetteMaitrise_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownUtilisation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownPrep)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownDI)).EndInit();

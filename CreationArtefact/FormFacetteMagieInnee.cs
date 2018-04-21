@@ -13,9 +13,10 @@ namespace CreationArtefact
     public partial class FormFacetteMagieInnee : Form
     {
         public bool CloseSaveCancel;
-        public ClassFacetteMagieInnee MagieInnee;
+        public ClassFacetteMagieInnee MagieInnee, importMag;
         FormAjoutSortMagieInnee ajoutSortMagieInnee = null;
-        int previousIndexPouv;
+        int previousIndexPouv, voiePrecedente;
+        bool modification;
 
         public FormFacetteMagieInnee()
         {
@@ -24,6 +25,9 @@ namespace CreationArtefact
             CloseSaveCancel = false;
             MagieInnee = new ClassFacetteMagieInnee();
             previousIndexPouv = 0;
+            modification = false;
+            voiePrecedente = 0;
+
 
             ComboBoxSelectPouv.DataSource = Properties.Settings.Default.FacetteMagieInnee;
 
@@ -124,6 +128,9 @@ namespace CreationArtefact
                         TextBoxCondition.Enabled = true;
                         NumericUpDownCondition.Visible = true;
                         NumericUpDownCondition.Enabled = true;
+                        LabelPrep.Visible = true;
+                        NumericUpDownPrep.Visible = true;
+                        NumericUpDownPrep.Enabled = true;
 
                         //commun sort auto et lanceur
                         LabelListeSorts.Visible = true;
@@ -135,9 +142,9 @@ namespace CreationArtefact
                         ComboBoxSelectBonus.Text = "Choisir...";
                         ComboBoxSelectBonus.Enabled = false;
 
-                        buttonCancel.Location = new Point(129, 214);
-                        ButtonSave.Location = new Point(12, 214);
-                        this.Size = new Size(554, 285);
+                        buttonCancel.Location = new Point(129, 249);
+                        ButtonSave.Location = new Point(12, 249);
+                        this.Size = new Size(554, 320);
 
                         //generer les couts et mettre a jour les labels
                         majForm();
@@ -174,6 +181,9 @@ namespace CreationArtefact
                         TextBoxCondition.Enabled = false;
                         NumericUpDownCondition.Visible = false;
                         NumericUpDownCondition.Enabled = false;
+                        LabelPrep.Visible = false;
+                        NumericUpDownPrep.Visible = false;
+                        NumericUpDownPrep.Enabled = false;
 
                         //commun sort auto et lanceur
                         LabelListeSorts.Visible = true;
@@ -224,6 +234,9 @@ namespace CreationArtefact
                         TextBoxCondition.Enabled = false;
                         NumericUpDownCondition.Visible = false;
                         NumericUpDownCondition.Enabled = false;
+                        LabelPrep.Visible = false;
+                        NumericUpDownPrep.Visible = false;
+                        NumericUpDownPrep.Enabled = false;
 
                         //commun sort auto et lanceur
                         LabelListeSorts.Visible = false;
@@ -274,6 +287,9 @@ namespace CreationArtefact
                         TextBoxCondition.Enabled = false;
                         NumericUpDownCondition.Visible = false;
                         NumericUpDownCondition.Enabled = false;
+                        LabelPrep.Visible = false;
+                        NumericUpDownPrep.Visible = false;
+                        NumericUpDownPrep.Enabled = false;
 
                         //commun sort auto et lanceur
                         LabelListeSorts.Visible = false;
@@ -333,6 +349,9 @@ namespace CreationArtefact
                 TextBoxCondition.Enabled = false;
                 NumericUpDownCondition.Visible = false;
                 NumericUpDownCondition.Enabled = false;
+                LabelPrep.Visible = false;
+                NumericUpDownPrep.Visible = false;
+                NumericUpDownPrep.Enabled = false;
 
                 //commun sort auto et lanceur
                 LabelListeSorts.Visible = false;
@@ -451,6 +470,12 @@ namespace CreationArtefact
                     {
                         MagieInnee.RechargeReduite = true;
                     }
+                    if (TextBoxCondition.Text.Length != 0)
+                    {
+                        MagieInnee.DescCondition = TextBoxCondition.Text;
+                        MagieInnee.CoutCondition = (int)NumericUpDownCondition.Value;
+                    }
+                    MagieInnee.PrepTime = (int)NumericUpDownPrep.Value;
                     break;
                 case 2:
                     if (CheckBoxAMRDouble.Checked)
@@ -516,7 +541,7 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                coutPouvoir = MagieInnee.GenererCoutPouvoir();
+                coutPouvoir = MagieInnee.GetCoutPouvoir();
 
                 if (coutPouvoir.PP > 0 && coutPouvoir.Niveau > 0)
                 {
@@ -524,25 +549,13 @@ namespace CreationArtefact
 
                     LabelNiveau.Text = "" + coutPouvoir.Niveau;
                     LabelPP.Text = "" + coutPouvoir.PP;
-                    switch (coutPouvoir.Niveau)
+                    if (coutPouvoir.GeneratePresence() > 0)
                     {
-                        case 1:
-                            LabelPres.Text = "10";
-                            break;
-                        case 2:
-                            LabelPres.Text = "15";
-                            break;
-                        case 3:
-                            LabelPres.Text = "25";
-                            break;
-                        case 4:
-                            LabelPres.Text = "60";
-                            break;
-                        case 5:
-                            LabelPres.Text = "100";
-                            break;
-                        default:
-                            break;
+                        LabelPres.Text = "" + coutPouvoir.Presence;
+                    }
+                    else
+                    {
+                        LabelPres.Text = "NA";
                     }
 
                     if (ComboBoxSelectPouv.SelectedIndex == 1)
@@ -613,11 +626,12 @@ namespace CreationArtefact
                 ajoutSortMagieInnee.Dispose();
             }
             ajoutSortMagieInnee = new FormAjoutSortMagieInnee();
-            ajoutSortMagieInnee.ShowDialog(this);
+            ajoutSortMagieInnee.ShowDialog(voiePrecedente);
             if (ajoutSortMagieInnee.CloseSaveCancel)
             {
+                voiePrecedente = ajoutSortMagieInnee.Sort.Voie;
                 if (ComboBoxSelectPouv.SelectedIndex == 1)
-                {
+                {                    
                     MagieInnee.SortAutomatique.Add(ajoutSortMagieInnee.Sort);
                 }
                 else if (ComboBoxSelectPouv.SelectedIndex == 2)
@@ -626,6 +640,99 @@ namespace CreationArtefact
                 }
             }
             majForm();
+        }
+
+        private void FormFacetteMagieInnee_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importMag.SortAutomatique.Count() != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    MagieInnee.SortAutomatique.Clear();
+                    foreach (ClassSort sort in importMag.SortAutomatique)
+                        MagieInnee.SortAutomatique.Add(sort);
+                    voiePrecedente = MagieInnee.SortAutomatique[0].Voie;
+                    majForm();
+                    if (importMag.Illimite)
+                    {
+                        CheckBoxIllimite.Checked = true;
+                    }
+                    else
+                    {
+                        NumericUpDownUtilisation.Value = importMag.NBUtil + 1;
+                    }
+                    if (importMag.DescCondition.Length != 0)
+                    {
+                        TextBoxCondition.Text = importMag.DescCondition;
+                        NumericUpDownCondition.Value = importMag.CoutCondition;
+                    }
+                    if (importMag.RechargeReduite)
+                    {
+                        CheckBoxRechargeReduite.Checked = true;
+                    }
+                    if (importMag.PrepTime != 0)
+                    {
+                        NumericUpDownPrep.Value = importMag.PrepTime;
+                    }
+                }
+                else if (importMag.LanceurSort.Count() != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    foreach (ClassSort sort in importMag.LanceurSort)
+                        MagieInnee.LanceurSort.Add(sort);
+                    voiePrecedente = MagieInnee.LanceurSort[0].Voie;
+                    majForm();
+                    if (importMag.SansDon)
+                    {
+                        CheckBoxSansLeDon.Checked = true;
+                    }
+                    if (importMag.AMRDouble)
+                    {
+                        CheckBoxAMRDouble.Checked = true;
+                    }
+                    if (importMag.Inne)
+                    {
+                        CheckBoxInne.Checked = true;
+                    }
+                    if (importMag.CoutReduit)
+                    {
+                        CheckBoxCoutReduit.Checked = true;
+                    }
+                    if (importMag.Autonomie)
+                    {
+                        CheckBoxAutonomie.Checked = true;
+                    }
+                }
+                else if (importMag.CompLancement != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importMag.CompLancement;
+                    if (importMag.ResulatFinal)
+                    {
+                        CheckBoxResultat.Checked = true;
+                    }
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
+        }
+
+        private void NumericUpDownPrep_ValueChanged(object sender, EventArgs e)
+        {
+            majForm();
+        }
+
+        public DialogResult ShowDialog(ClassFacetteMagieInnee facette)
+        {
+            modification = true;
+
+            importMag = facette;
+
+            return ShowDialog();
         }
     }
 }

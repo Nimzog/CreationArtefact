@@ -116,7 +116,7 @@
             // 
             this.NouveauToolStripMenuItem.Enabled = false;
             this.NouveauToolStripMenuItem.Name = "NouveauToolStripMenuItem";
-            this.NouveauToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.NouveauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.NouveauToolStripMenuItem.Text = "Nouveau";
             this.NouveauToolStripMenuItem.Click += new System.EventHandler(this.NouveauToolStripMenuItem_Click);
             // 
@@ -124,7 +124,7 @@
             // 
             this.SauvegarderToolStripMenuItem.Enabled = false;
             this.SauvegarderToolStripMenuItem.Name = "SauvegarderToolStripMenuItem";
-            this.SauvegarderToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.SauvegarderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SauvegarderToolStripMenuItem.Text = "Sauvegarder";
             this.SauvegarderToolStripMenuItem.Click += new System.EventHandler(this.SauvegarderToolStripMenuItem_Click);
             // 
@@ -132,14 +132,14 @@
             // 
             this.SauvegarderSousToolStripMenuItem.Enabled = false;
             this.SauvegarderSousToolStripMenuItem.Name = "SauvegarderSousToolStripMenuItem";
-            this.SauvegarderSousToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.SauvegarderSousToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SauvegarderSousToolStripMenuItem.Text = "Sauvegarder sous";
             this.SauvegarderSousToolStripMenuItem.Click += new System.EventHandler(this.SauvegarderSousToolStripMenuItem_Click);
             // 
             // QuitterToolStripMenuItem
             // 
             this.QuitterToolStripMenuItem.Name = "QuitterToolStripMenuItem";
-            this.QuitterToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.QuitterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.QuitterToolStripMenuItem.Text = "Quitter";
             this.QuitterToolStripMenuItem.Click += new System.EventHandler(this.QuitterToolStripMenuItem_Click);
             // 
@@ -180,11 +180,12 @@
             // 
             // richTextBoxDescArtefact
             // 
+            this.richTextBoxDescArtefact.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBoxDescArtefact.Location = new System.Drawing.Point(265, 24);
             this.richTextBoxDescArtefact.Name = "richTextBoxDescArtefact";
             this.richTextBoxDescArtefact.ReadOnly = true;
             this.richTextBoxDescArtefact.Size = new System.Drawing.Size(393, 498);
-            this.richTextBoxDescArtefact.TabIndex = 10;
+            this.richTextBoxDescArtefact.TabIndex = 7;
             this.richTextBoxDescArtefact.Text = "";
             this.richTextBoxDescArtefact.TextChanged += new System.EventHandler(this.richTextBoxDescArtefact_TextChanged);
             // 
@@ -202,10 +203,11 @@
             // 
             this.ListBoxArtefact.Enabled = false;
             this.ListBoxArtefact.FormattingEnabled = true;
+            this.ListBoxArtefact.HorizontalScrollbar = true;
             this.ListBoxArtefact.Location = new System.Drawing.Point(265, 24);
             this.ListBoxArtefact.Name = "ListBoxArtefact";
             this.ListBoxArtefact.Size = new System.Drawing.Size(393, 498);
-            this.ListBoxArtefact.TabIndex = 11;
+            this.ListBoxArtefact.TabIndex = 6;
             this.ListBoxArtefact.Visible = false;
             this.ListBoxArtefact.SelectedIndexChanged += new System.EventHandler(this.ListBoxArtefact_SelectedIndexChanged);
             // 
@@ -215,7 +217,7 @@
             this.ButtonModifier.Location = new System.Drawing.Point(142, 113);
             this.ButtonModifier.Name = "ButtonModifier";
             this.ButtonModifier.Size = new System.Drawing.Size(117, 23);
-            this.ButtonModifier.TabIndex = 12;
+            this.ButtonModifier.TabIndex = 3;
             this.ButtonModifier.Text = "Modifier";
             this.ButtonModifier.UseVisualStyleBackColor = true;
             this.ButtonModifier.Click += new System.EventHandler(this.ButtonModifier_Click);
@@ -234,8 +236,8 @@
             this.Controls.Add(this.ButtonAjouterPouvoir);
             this.Controls.Add(this.LabelPouvoir);
             this.Controls.Add(this.MenuStripArtefact);
-            this.Controls.Add(this.ListBoxArtefact);
             this.Controls.Add(this.richTextBoxDescArtefact);
+            this.Controls.Add(this.ListBoxArtefact);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStripArtefact;

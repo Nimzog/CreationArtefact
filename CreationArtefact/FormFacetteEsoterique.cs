@@ -13,8 +13,8 @@ namespace CreationArtefact
     public partial class FormFacetteEsoterique : Form
     {
         public bool CloseSaveCancel;
-        public ClassFacetteEsoterique Esoterique;
-
+        public ClassFacetteEsoterique Esoterique, importEsoterique;
+        bool modification;
 
         public FormFacetteEsoterique()
         {
@@ -25,6 +25,8 @@ namespace CreationArtefact
 
             ComboBoxNBUtil.DataSource = Properties.Settings.Default.NBUtilsPortal;
             ComboBoxSelectPouv.DataSource = Properties.Settings.Default.FacetteEsoterique;
+
+            modification = false;
         }
 
         private void ComboBoxSelectPouv_SelectedIndexChanged(object sender, EventArgs e)
@@ -542,6 +544,7 @@ namespace CreationArtefact
                     break;
                 case 3:
                     Esoterique.Dissimulation = ComboBoxSelectBonus.SelectedIndex;
+
                     /**/
                     break;
                 case 4:
@@ -580,6 +583,107 @@ namespace CreationArtefact
                 default:
                     break;
             }
+            //calculer les coûts du pouvoir à ajouter
+            if (ComboBoxSelectPouv.SelectedIndex == 3)
+            {
+                Esoterique.GenererCoutPouvoir(((FormPrincipale)this.Owner).artefact);
+            }
+            else
+            {
+                Esoterique.GenererCoutPouvoir();
+            }
+        }
+
+        private void FormFacetteEsoterique_Load(object sender, EventArgs e)
+        {
+            if (modification)
+            {
+                if (importEsoterique.Prothese != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 1;
+                    ComboBoxSelectBonus.SelectedIndex = importEsoterique.Prothese;
+                    if (importEsoterique.Toucher)
+                    {
+                        CheckBoxMod1.Enabled = true;
+                    }
+                    if (importEsoterique.ArmeNauturel)
+                    {
+                        CheckBoxMod2.Enabled = true;
+                    }
+                }
+                else if (importEsoterique.AlterationDestion != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 2;
+                    ComboBoxSelectBonus.SelectedIndex = importEsoterique.AlterationDestion;
+                    if (importEsoterique.UtilReduite)
+                    {
+                        CheckBoxMod1.Enabled = true;
+                    }
+                }
+                else if (importEsoterique.Dissimulation != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 3;
+                    ComboBoxSelectBonus.SelectedIndex = importEsoterique.Dissimulation;
+                }
+                else if (importEsoterique.Vision != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 4;
+                    ComboBoxSelectBonus.SelectedIndex = importEsoterique.Vision;
+                }
+                else if (importEsoterique.EffetMineur != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 5;
+                    ComboBoxSelectBonus.SelectedIndex = importEsoterique.EffetMineur;
+                }
+                else if (importEsoterique.Ego != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 6;
+                    ComboBoxSelectBonus.SelectedIndex = importEsoterique.Ego;
+                    if (importEsoterique.Communication)
+                    {
+                        CheckBoxMod1.Enabled = true;
+                    }
+                    if (importEsoterique.Genie)
+                    {
+                        CheckBoxMod2.Enabled = true;
+                    }
+                    if (importEsoterique.PersoDetermine)
+                    {
+                        CheckBoxModPersDetermine.Enabled = true;
+                    }
+                    if (importEsoterique.Ordre)
+                    {
+                        CheckBoxOrdre.Enabled = true;
+                    }
+                }
+                else if (importEsoterique.Portal != 0)
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 7;
+                    ComboBoxSelectBonus.SelectedIndex = importEsoterique.Portal;
+                    if (importEsoterique.Divise)
+                    {
+                        CheckBoxMod1.Enabled = true;
+                    }
+                    if (importEsoterique.NBUtil != 0)
+                    {
+                        ComboBoxNBUtil.SelectedIndex = importEsoterique.NBUtil;
+                    }
+                }
+                else
+                {
+                    ComboBoxSelectPouv.SelectedIndex = 0;
+                }
+                ComboBoxSelectPouv.Enabled = false;
+            }
+        }
+
+        public DialogResult ShowDialog(ClassFacetteEsoterique facette)
+        {
+            modification = true;
+
+            importEsoterique = facette;
+
+            return ShowDialog();
         }
 
         private void majForm()
@@ -592,36 +696,17 @@ namespace CreationArtefact
                 creerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
-                if (ComboBoxSelectPouv.SelectedIndex == 3)
-                {
-                    coutPouvoir = Esoterique.GenererCoutPouvoir(((FormPrincipale)this.Owner).artefact);
-                }
-                else
-                {
-                    coutPouvoir = Esoterique.GenererCoutPouvoir();
-                }
+               coutPouvoir = Esoterique.GetCoutPouvoir();
 
                 LabelNiveau.Text = "" + coutPouvoir.Niveau;
                 LabelPP.Text = "" + coutPouvoir.PP;
-                switch (coutPouvoir.Niveau)
+                if (coutPouvoir.GeneratePresence() > 0)
                 {
-                    case 1:
-                        LabelPres.Text = "10";
-                        break;
-                    case 2:
-                        LabelPres.Text = "15";
-                        break;
-                    case 3:
-                        LabelPres.Text = "25";
-                        break;
-                    case 4:
-                        LabelPres.Text = "60";
-                        break;
-                    case 5:
-                        LabelPres.Text = "100";
-                        break;
-                    default:
-                        break;
+                    LabelPres.Text = "" + coutPouvoir.Presence;
+                }
+                else
+                {
+                    LabelPres.Text = "NA";
                 }
             }
             else

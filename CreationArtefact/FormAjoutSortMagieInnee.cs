@@ -20,6 +20,7 @@ namespace CreationArtefact
         /// 
         /// </summary>
         public ClassSort Sort;
+        int voiePrecedente;
 
         public FormAjoutSortMagieInnee()
         {
@@ -27,6 +28,8 @@ namespace CreationArtefact
 
             CloseSaveCancel = false;
             Sort = null;
+
+            voiePrecedente = 0;
 
             ComboBoxVoieMagie.DataSource = Properties.Settings.Default.VoieDeMagie;
         }
@@ -71,6 +74,24 @@ namespace CreationArtefact
             else
             {
                 ButtonSave.Enabled = false;
+            }
+        }
+
+        public void ShowDialog(int ajout)
+        {
+            if (ajout > 0)
+            {
+                voiePrecedente = ajout;
+            }
+            ShowDialog();
+        }
+
+        private void FormAjoutSortMagieInnee_Load(object sender, EventArgs e)
+        {
+            if (voiePrecedente > 0)
+            {
+                ComboBoxVoieMagie.Enabled = false;
+                ComboBoxVoieMagie.SelectedIndex = voiePrecedente;
             }
         }
     }
