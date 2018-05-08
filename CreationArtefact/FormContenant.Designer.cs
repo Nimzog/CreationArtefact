@@ -84,6 +84,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.ButtonAjouterMat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelTypeObjet
@@ -104,7 +105,7 @@
             this.labelMateriel.Name = "labelMateriel";
             this.labelMateriel.Size = new System.Drawing.Size(44, 13);
             this.labelMateriel.TabIndex = 1;
-            this.labelMateriel.Text = "Materiel";
+            this.labelMateriel.Text = "Matériel";
             // 
             // labelQualite
             // 
@@ -634,6 +635,16 @@
             this.label9.TabIndex = 55;
             this.label9.Text = "Facette ésotérique";
             // 
+            // ButtonAjouterMat
+            // 
+            this.ButtonAjouterMat.Location = new System.Drawing.Point(335, 32);
+            this.ButtonAjouterMat.Name = "ButtonAjouterMat";
+            this.ButtonAjouterMat.Size = new System.Drawing.Size(157, 23);
+            this.ButtonAjouterMat.TabIndex = 56;
+            this.ButtonAjouterMat.Text = "Ajouter un Matériel";
+            this.ButtonAjouterMat.UseVisualStyleBackColor = true;
+            this.ButtonAjouterMat.Click += new System.EventHandler(this.ButtonAjouterMat_Click);
+            // 
             // FormContenant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -641,6 +652,7 @@
             this.AutoSize = true;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(813, 551);
+            this.Controls.Add(this.ButtonAjouterMat);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -765,5 +777,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button ButtonAjouterMat;
     }
 }

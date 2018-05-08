@@ -47,6 +47,7 @@
             this.ComboBoxFacette = new System.Windows.Forms.ComboBox();
             this.ListBoxArtefact = new System.Windows.Forms.ListBox();
             this.ButtonModifier = new System.Windows.Forms.Button();
+            this.ButtonSupprimer = new System.Windows.Forms.Button();
             this.MenuStripArtefact.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +117,7 @@
             // 
             this.NouveauToolStripMenuItem.Enabled = false;
             this.NouveauToolStripMenuItem.Name = "NouveauToolStripMenuItem";
-            this.NouveauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.NouveauToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.NouveauToolStripMenuItem.Text = "Nouveau";
             this.NouveauToolStripMenuItem.Click += new System.EventHandler(this.NouveauToolStripMenuItem_Click);
             // 
@@ -124,7 +125,7 @@
             // 
             this.SauvegarderToolStripMenuItem.Enabled = false;
             this.SauvegarderToolStripMenuItem.Name = "SauvegarderToolStripMenuItem";
-            this.SauvegarderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SauvegarderToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.SauvegarderToolStripMenuItem.Text = "Sauvegarder";
             this.SauvegarderToolStripMenuItem.Click += new System.EventHandler(this.SauvegarderToolStripMenuItem_Click);
             // 
@@ -132,14 +133,14 @@
             // 
             this.SauvegarderSousToolStripMenuItem.Enabled = false;
             this.SauvegarderSousToolStripMenuItem.Name = "SauvegarderSousToolStripMenuItem";
-            this.SauvegarderSousToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SauvegarderSousToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.SauvegarderSousToolStripMenuItem.Text = "Sauvegarder sous";
             this.SauvegarderSousToolStripMenuItem.Click += new System.EventHandler(this.SauvegarderSousToolStripMenuItem_Click);
             // 
             // QuitterToolStripMenuItem
             // 
             this.QuitterToolStripMenuItem.Name = "QuitterToolStripMenuItem";
-            this.QuitterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.QuitterToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.QuitterToolStripMenuItem.Text = "Quitter";
             this.QuitterToolStripMenuItem.Click += new System.EventHandler(this.QuitterToolStripMenuItem_Click);
             // 
@@ -222,11 +223,24 @@
             this.ButtonModifier.UseVisualStyleBackColor = true;
             this.ButtonModifier.Click += new System.EventHandler(this.ButtonModifier_Click);
             // 
+            // ButtonSupprimer
+            // 
+            this.ButtonSupprimer.Enabled = false;
+            this.ButtonSupprimer.Location = new System.Drawing.Point(15, 143);
+            this.ButtonSupprimer.Name = "ButtonSupprimer";
+            this.ButtonSupprimer.Size = new System.Drawing.Size(244, 23);
+            this.ButtonSupprimer.TabIndex = 9;
+            this.ButtonSupprimer.Text = "Supprimer Pouvoir";
+            this.ButtonSupprimer.UseVisualStyleBackColor = true;
+            this.ButtonSupprimer.Visible = false;
+            this.ButtonSupprimer.Click += new System.EventHandler(this.ButtonSupprimer_Click);
+            // 
             // FormPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 563);
+            this.Controls.Add(this.ButtonSupprimer);
             this.Controls.Add(this.ButtonModifier);
             this.Controls.Add(this.ComboBoxFacette);
             this.Controls.Add(this.ButtonContenant);
@@ -236,8 +250,8 @@
             this.Controls.Add(this.ButtonAjouterPouvoir);
             this.Controls.Add(this.LabelPouvoir);
             this.Controls.Add(this.MenuStripArtefact);
-            this.Controls.Add(this.richTextBoxDescArtefact);
             this.Controls.Add(this.ListBoxArtefact);
+            this.Controls.Add(this.richTextBoxDescArtefact);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStripArtefact;
@@ -271,6 +285,7 @@
         private System.Windows.Forms.ToolStripMenuItem AProposToolStripMenuItem;
         private System.Windows.Forms.ListBox ListBoxArtefact;
         private System.Windows.Forms.Button ButtonModifier;
+        private System.Windows.Forms.Button ButtonSupprimer;
     }
 }
 

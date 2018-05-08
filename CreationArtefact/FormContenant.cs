@@ -24,22 +24,35 @@ namespace CreationArtefact
         /// </summary>
         public ClassContenant Contenant { get; set; }
         int presBase, presTotal;
+        bool init;
+        BindingList<string> bindinglist;
+        BindingSource bSource;
 
         /// <summary>
         /// 
         /// </summary>
         public FormContenant()
         {
+            init = true;
             InitializeComponent();
             Contenant = new ClassContenant();
             CloseSaveCancel = false;
             presBase = 0;
             presTotal = 0;
-            CalculerPresenceTotal();
             ComboBoxQualite.DataSource = Properties.Settings.Default.BonusQualiteItem;
             ComboBoxQualite.SelectedIndex = 1;
-            ComboBoxMateriel.DataSource = Properties.Settings.Default.Materiel;
+            bindinglist = new BindingList<string>();
+            foreach (string mat in Properties.Settings.Default.Materiel)
+            {
+                bindinglist.Add(mat);
+            }
+            bSource = new BindingSource();
+            bSource.DataSource = bindinglist;
+            ComboBoxMateriel.DataSource = bSource;
             ComboBoxMateriel.SelectedIndex = 3;
+            if (!init)
+                CalculerPresenceTotal();
+            init = false;
         }
 
         /// <summary>
@@ -56,7 +69,8 @@ namespace CreationArtefact
 
             result = this.ShowDialog();
 
-            CalculerPresenceTotal();
+            if (!init)
+                CalculerPresenceTotal();
 
             return result;
         }
@@ -151,7 +165,8 @@ namespace CreationArtefact
             if ((Int32.TryParse(TextBoxPresBase.Text, out j)) == true)
             {
                 presBase = j;
-                CalculerPresenceTotal();
+                if (!init)
+                    CalculerPresenceTotal();
             }
             else if (TextBoxPresBase.Text.Length > 0)
             {
@@ -167,17 +182,20 @@ namespace CreationArtefact
 
         private void CheckBoxExclusif_CheckedChanged(object sender, EventArgs e)
         {
-            CalculerPresenceTotal();
+            if (!init)
+                CalculerPresenceTotal();
         }
 
         private void ComboBoxMateriel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CalculerPresenceTotal();
+            if (!init)
+                CalculerPresenceTotal();
         }
 
         private void ComboBoxQualite_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CalculerPresenceTotal();
+            if (!init)
+                CalculerPresenceTotal();
         }
 
         private void CheckBoxTestResAccru2_CheckedChanged(object sender, EventArgs e)
@@ -214,7 +232,15 @@ namespace CreationArtefact
                     break;
             }
 
-            switch (ComboBoxMateriel.SelectedIndex)
+            int number;
+            bool res = int.TryParse(Properties.Settings.Default.PresenceMateriel[ComboBoxMateriel.SelectedIndex], out number);
+
+            if (res)
+            {
+                presTemp += number;
+            }
+
+            /*switch (ComboBoxMateriel.SelectedIndex)
             {
                 case 2:
                 case 4:
@@ -245,11 +271,29 @@ namespace CreationArtefact
                     break;
                 default:
                     break;
-            }
+            }*/
 
             presTotal = presTemp;
 
             TextBoxPresTotal.Text = "" + presTotal;
+        }
+
+        private void ButtonAjouterMat_Click(object sender, EventArgs e)
+        {
+            FormAjouterMat formAjouterMat = new FormAjouterMat();
+
+            formAjouterMat.ShowDialog();
+
+            if (formAjouterMat.CloseSaveCancel)
+            {
+                bindinglist = new BindingList<string>();
+                foreach (string mat in Properties.Settings.Default.Materiel)
+                {
+                    bindinglist.Add(mat);
+                }
+                bSource.DataSource = bindinglist;
+                ComboBoxMateriel.DataSource = bSource;
+            }
         }
 
         private void majForm()

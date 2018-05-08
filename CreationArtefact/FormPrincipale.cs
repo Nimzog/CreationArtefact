@@ -35,7 +35,7 @@ namespace CreationArtefact
         public ClassArtefact artefact = null;
         List<string> descriptionLigne;
         bool saved;
-        bool DissimulationAdded = false;
+        //bool DissimulationAdded = false;
         bool modificationActive = false;
         bool modificationContenant = false;
         
@@ -563,7 +563,7 @@ namespace CreationArtefact
             ButtonSave.Text = "Sauvegarder sous...";
             ButtonModifier.Enabled = false;
             saved = false;
-            DissimulationAdded = false;
+            //DissimulationAdded = false;
         }
 
         private void SauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -661,10 +661,16 @@ namespace CreationArtefact
             if (ListBoxArtefact.SelectedIndex >= 0)
             {
                 ButtonAjouterPouvoir.Enabled = true;
+                if (ListBoxArtefact.SelectedIndex > 0)
+                    ButtonSupprimer.Enabled = true;
+                else
+                    ButtonSupprimer.Enabled = false;
+
             }
             else
             {
                 ButtonAjouterPouvoir.Enabled = false;
+                ButtonSupprimer.Enabled = false;
             }
         }
 
@@ -680,6 +686,8 @@ namespace CreationArtefact
                 ButtonAjouterPouvoir.Enabled = false;
                 ButtonAjouterPouvoir.Text = "Modifier";
                 ButtonModifier.Text = "Terminer";
+                ButtonSupprimer.Enabled = false;
+                ButtonSupprimer.Visible = true;
 
                 ButtonSave.Enabled = false;
                 ButtonContenant.Enabled = false;
@@ -700,6 +708,8 @@ namespace CreationArtefact
                 ButtonAjouterPouvoir.Enabled = true;
                 ButtonAjouterPouvoir.Text = "Ajouter";
                 ButtonModifier.Text = "Modifier";
+                ButtonSupprimer.Enabled = false;
+                ButtonSupprimer.Visible = false;
 
                 ButtonSave.Enabled = true;
                 ButtonContenant.Enabled = true;
@@ -729,6 +739,16 @@ namespace CreationArtefact
         private void richTextBoxDescArtefact_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ButtonSupprimer_Click(object sender, EventArgs e)
+        {
+            if (ListBoxArtefact.SelectedIndex != 0)
+            {
+                artefact.Pouvoirs.RemoveAt(ListBoxArtefact.SelectedIndex - 1);
+                RemplirListBox();
+                MAJRichTextBoxDescArtefact();
+            }
         }
     }
 }

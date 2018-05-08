@@ -95,6 +95,12 @@
       <DependentUpon>AboutBoxArtefact.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassArtefact.cs" />
+    <Compile Include="FormAjouterMat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAjouterMat.Designer.cs">
+      <DependentUpon>FormAjouterMat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAjoutSortMagieInnee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,7 +194,7 @@
     <Compile Include="FormPrincipale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPrincipale.Designer.cs">
+    <Compile Include="FormPrincipale.designer.cs">
       <DependentUpon>FormPrincipale.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -196,6 +202,9 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="AboutBoxArtefact.resx">
       <DependentUpon>AboutBoxArtefact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAjouterMat.resx">
+      <DependentUpon>FormAjouterMat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjoutSortMagieInnee.resx">
       <DependentUpon>FormAjoutSortMagieInnee.cs</DependentUpon>
@@ -244,7 +253,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipale.resx">
       <DependentUpon>FormPrincipale.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

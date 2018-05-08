@@ -295,7 +295,7 @@ namespace CreationArtefact.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
@@ -319,6 +319,9 @@ namespace CreationArtefact.Properties {
         public global::System.Collections.Specialized.StringCollection Materiel {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Materiel"]));
+            }
+            set {
+                this["Materiel"] = value;
             }
         }
         
@@ -1532,6 +1535,36 @@ namespace CreationArtefact.Properties {
             }
             set {
                 this["RepertoireInit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>0</string>
+  <string>0</string>
+  <string>5</string>
+  <string>0</string>
+  <string>5</string>
+  <string>10</string>
+  <string>10</string>
+  <string>10</string>
+  <string>15</string>
+  <string>15</string>
+  <string>30</string>
+  <string>20</string>
+  <string>20</string>
+  <string>50</string>
+  <string>-10</string>
+  <string>50</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection PresenceMateriel {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["PresenceMateriel"]));
+            }
+            set {
+                this["PresenceMateriel"] = value;
             }
         }
     }
