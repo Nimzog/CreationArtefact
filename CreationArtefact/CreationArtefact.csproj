@@ -25,7 +25,7 @@
     <TargetCulture>fr</TargetCulture>
     <ProductName>Création d%27artéfact</ProductName>
     <PublisherName>Nimzog</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -56,11 +56,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BD5D5C899A70A010EAE7290EF7E744E8E2F3A1F8</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A9BFF3DA311D80CD51DC50E50EC79F6321D55B14</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>CreationArtefact_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -73,6 +72,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Anima_256.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -265,6 +270,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="CreationArtefact_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

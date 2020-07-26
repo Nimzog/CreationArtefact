@@ -10064,7 +10064,7 @@ namespace CreationArtefact
                         CoutPouvoir.Niveau = 2;
                         break;
                     case 2:
-                        CoutPouvoir.PP = 30;
+                        CoutPouvoir.PP = 60;
                         CoutPouvoir.Niveau = 3;
                         break;
                     case 3:

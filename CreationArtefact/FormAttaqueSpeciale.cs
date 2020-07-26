@@ -53,7 +53,7 @@ namespace CreationArtefact
             this.Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             CloseSaveCancel = false;
 
@@ -204,6 +204,11 @@ namespace CreationArtefact
         private void RadioButtonPrimaire_CheckedChanged(object sender, EventArgs e)
         {
             MAJCoutPouvoir();
+        }
+
+        private void FormAttaqueSpeciale_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -42,7 +42,7 @@
             this.ComboBoxPreparation = new System.Windows.Forms.ComboBox();
             this.ComboBoxUtilisation = new System.Windows.Forms.ComboBox();
             this.CheckBoxResFinal = new System.Windows.Forms.CheckBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.ButtonCancel = new System.Windows.Forms.Button();
             this.ButtonSave = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.TextBoxNomAttaque = new System.Windows.Forms.TextBox();
@@ -173,15 +173,15 @@
             this.CheckBoxResFinal.UseVisualStyleBackColor = true;
             this.CheckBoxResFinal.CheckedChanged += new System.EventHandler(this.CheckBoxResFinal_CheckedChanged);
             // 
-            // buttonCancel
+            // ButtonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(187, 319);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(169, 23);
-            this.buttonCancel.TabIndex = 36;
-            this.buttonCancel.Text = "Annuler";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.ButtonCancel.Location = new System.Drawing.Point(187, 319);
+            this.ButtonCancel.Name = "ButtonCancel";
+            this.ButtonCancel.Size = new System.Drawing.Size(169, 23);
+            this.ButtonCancel.TabIndex = 36;
+            this.ButtonCancel.Text = "Annuler";
+            this.ButtonCancel.UseVisualStyleBackColor = true;
+            this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // ButtonSave
             // 
@@ -277,7 +277,7 @@
             this.Controls.Add(this.labelLBLPP);
             this.Controls.Add(this.TextBoxNomAttaque);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.CheckBoxResFinal);
             this.Controls.Add(this.ComboBoxUtilisation);
@@ -299,6 +299,7 @@
             this.Name = "FormAttaqueSpeciale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Facette offensive: Attaque spéciale";
+            this.Load += new System.EventHandler(this.FormAttaqueSpeciale_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,7 +319,7 @@
         private System.Windows.Forms.ComboBox ComboBoxPreparation;
         private System.Windows.Forms.ComboBox ComboBoxUtilisation;
         private System.Windows.Forms.CheckBox CheckBoxResFinal;
-        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button ButtonCancel;
         private System.Windows.Forms.Button ButtonSave;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TextBoxNomAttaque;

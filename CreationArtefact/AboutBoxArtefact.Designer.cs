@@ -129,6 +129,7 @@
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = "Logiciel permettant de créer des artefact pour Anima selon les règles du livre Pr" +
     "ometheum Exxet.";
+            this.textBoxDescription.TextChanged += new System.EventHandler(this.textBoxDescription_TextChanged);
             // 
             // okButton
             // 
