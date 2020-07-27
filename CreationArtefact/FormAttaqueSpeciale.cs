@@ -118,7 +118,7 @@ namespace CreationArtefact
             AttaqueSpec.Degat = ComboBoxDegat.SelectedIndex;
             AttaqueSpec.Distance = ComboBoxDistance.SelectedIndex;
             AttaqueSpec.NbJour = ComboBoxUtilisation.SelectedIndex;
-            AttaqueSpec.nom = TextBoxNomAttaque.Text;
+            AttaqueSpec.Nom = TextBoxNomAttaque.Text;
             AttaqueSpec.Prep = ComboBoxPreparation.SelectedIndex;
             AttaqueSpec.ResFinal = CheckBoxResFinal.Checked;
             AttaqueSpec.Zone = ComboBoxZone.SelectedIndex;

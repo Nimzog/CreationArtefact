@@ -50,14 +50,14 @@ namespace CreationArtefact
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            creerPouvoir();
+            CreerPouvoir();
 
             CloseSaveCancel = true;
 
             this.Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             CloseSaveCancel = false;
 
@@ -99,7 +99,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 2:
                         RadioButtonMod1.Enabled = false;
@@ -130,7 +130,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 3:
                         RadioButtonMod1.Enabled = false;
@@ -161,7 +161,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 4:
                         RadioButtonMod1.Enabled = false;
@@ -192,7 +192,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 5:
                         RadioButtonMod1.Enabled = true;
@@ -228,7 +228,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 270);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 6:
                         RadioButtonMod1.Enabled = false;
@@ -266,7 +266,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 241);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 7:
                         RadioButtonMod1.Enabled = false;
@@ -297,7 +297,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 8:
                         RadioButtonMod1.Enabled = false;
@@ -332,7 +332,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 220);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 9:
                         RadioButtonMod1.Enabled = false;
@@ -363,7 +363,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 10:
                         RadioButtonMod1.Enabled = false;
@@ -394,7 +394,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 11:
                         RadioButtonMod1.Enabled = false;
@@ -425,7 +425,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     case 12:
                         RadioButtonMod1.Enabled = false;
@@ -456,7 +456,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                     default:
                         RadioButtonMod1.Enabled = false;
@@ -487,7 +487,7 @@ namespace CreationArtefact
                         this.Size = new Size(400, 165);
 
                         //generer les couts et mettre a jour les labels
-                        majForm();
+                        MajForm();
                         break;
                 }
             }
@@ -521,21 +521,21 @@ namespace CreationArtefact
                 this.Size = new Size(400, 165);
 
                 //generer les couts et mettre a jour les labels
-                majForm();
+                MajForm();
             }
         }
 
         private void ComboBoxSelectBonus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            majForm();
+            MajForm();
         }
 
         private void CheckBoxMod1_CheckedChanged(object sender, EventArgs e)
         {
-            majForm();
+            MajForm();
         }
 
-        private void creerPouvoir()
+        private void CreerPouvoir()
         {
             Combat = new ClassFacetteCombat();
 
@@ -617,14 +617,14 @@ namespace CreationArtefact
             }
         }
 
-        private void majForm()
+        private void MajForm()
         {
             ClassCoutPouvoir coutPouvoir = new ClassCoutPouvoir();
 
             if (ComboBoxSelectBonus.SelectedIndex != 0)
             {
                 ButtonSave.Enabled = true;
-                creerPouvoir();
+                CreerPouvoir();
 
                 //calculer les coûts du pouvoir à ajouter
                 coutPouvoir = Combat.GetCoutPouvoir();
@@ -652,17 +652,17 @@ namespace CreationArtefact
 
         private void RadioButtonMod2_CheckedChanged(object sender, EventArgs e)
         {
-            majForm();
+            MajForm();
         }
 
         private void RadioButtonMod1_CheckedChanged(object sender, EventArgs e)
         {
-            majForm();
+            MajForm();
         }
 
         private void RadioButtonMod3_CheckedChanged(object sender, EventArgs e)
         {
-            majForm();
+            MajForm();
         }
 
         private void FormFacetteCombat_Load(object sender, EventArgs e)
@@ -768,12 +768,12 @@ namespace CreationArtefact
 
         private void RadioButtonMod4_CheckedChanged(object sender, EventArgs e)
         {
-            majForm();
+            MajForm();
         }
 
         private void CheckBoxMod2_CheckedChanged(object sender, EventArgs e)
         {
-            majForm();
+            MajForm();
         }
     }
 }

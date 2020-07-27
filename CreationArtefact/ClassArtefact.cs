@@ -26,7 +26,7 @@ namespace CreationArtefact
         public List<ClassFacette> Pouvoirs { get; set; } //Listes des pouvoir de cet artefact.
 
         int PresenceRestante, PPlvl1, PPlvl2, PPlvl3, PPlvl4, PPlvl5;
-        ClassAffinite AffiniteBidon;
+        //ClassAffinite AffiniteBidon;
 
         /// <summary>
         /// 
@@ -43,7 +43,7 @@ namespace CreationArtefact
             PPlvl3 = 0;
             PPlvl4 = 0;
             PPlvl5 = 0;
-            AffiniteBidon = new ClassAffinite(0);
+            //AffiniteBidon = new ClassAffinite(0);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace CreationArtefact
         /// Ajoute le pouvoir a la liste Pouvoirs. Ajuste le cout en PP si il existe déjà un pouvoir de cette facette.
         /// </summary>
         /// <param name="pouvoir">Le pouvoir à ajouter</param>
-        /// /// <param name="pouvoir">Le pouvoir à ajouter</param>
+        /// <param name="flag"></param>
         /// <returns>Si l'ajout a été fait avec succès</returns>
         public bool AddPouvoir(ClassFacetteEsoterique pouvoir, bool flag)
         {
@@ -3590,7 +3590,7 @@ namespace CreationArtefact
         /// <summary>
         /// le nom de l'attaque ;)
         /// </summary>
-        public string nom { get; set; }
+        public string Nom { get; set; }
 
         /// <summary>
         /// 
@@ -3607,7 +3607,7 @@ namespace CreationArtefact
             Prep = 0;
             NbJour = 0;
             ResFinal = false;
-            nom = "";
+            Nom = "";
 
             CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
         }
@@ -3619,7 +3619,7 @@ namespace CreationArtefact
         public override void DescriptionPouvoir(List<string> description)
         {
             string tempDesc = "";
-            description.Add("Attaque spéciale: " + nom + ".");
+            description.Add("Attaque spéciale: " + Nom + ".");
             if (Distance != 0)
             {
                 tempDesc = "Distance: ";
@@ -4056,7 +4056,7 @@ namespace CreationArtefact
         {
             writer.WriteStartElement("ClassAttaqueSpec");
 
-            writer.WriteElementString("nom", nom);
+            writer.WriteElementString("nom", Nom);
 
             writer.WriteStartElement("TypePouvoir");
             writer.WriteValue((int)TypePouvoir);
@@ -4119,7 +4119,7 @@ namespace CreationArtefact
         public override string DescriptionPouvoirUneLigne()
         {
             string tempDesc = "";
-            tempDesc = "Attaque spéciale: " + nom;
+            tempDesc = "Attaque spéciale: " + Nom;
             if (Distance != 0)
             {
                 tempDesc += ", Distance: ";
@@ -7827,8 +7827,10 @@ namespace CreationArtefact
             {
                 foreach (ClassSort sort in SortAutomatique)
                 {
-                    sort.CoutPouvoir = new ClassCoutPouvoir(0, 0, 0);
-                    sort.CoutPouvoir.PP = 5 * (int)Math.Round(sort.CoutZeon / 2 / 5.0, MidpointRounding.ToEven);
+                    sort.CoutPouvoir = new ClassCoutPouvoir(0, 0, 0)
+                    {
+                        PP = 5 * (int)Math.Round(sort.CoutZeon / 2 / 5.0, MidpointRounding.ToEven)
+                    };
                     if (sort.NiveauSort >= 2 && sort.NiveauSort <= 10)
                     {
                         sort.CoutPouvoir.Niveau = 1;
@@ -7876,8 +7878,10 @@ namespace CreationArtefact
             {
                 foreach (ClassSort sort in LanceurSort)
                 {
-                    sort.CoutPouvoir = new ClassCoutPouvoir(0, 0);
-                    sort.CoutPouvoir.PP = 5 * (int)Math.Round(sort.CoutZeon / 4 / 5.0, MidpointRounding.ToEven);
+                    sort.CoutPouvoir = new ClassCoutPouvoir(0, 0)
+                    {
+                        PP = 5 * (int)Math.Round(sort.CoutZeon / 4 / 5.0, MidpointRounding.ToEven)
+                    };
                     if (sort.NiveauSort >= 2 && sort.NiveauSort <= 10)
                     {
                         sort.CoutPouvoir.Niveau = 1;
@@ -10329,8 +10333,6 @@ namespace CreationArtefact
     /// </summary>
     public class ClassAutrePouvoir : ClassFacette
     {
-
-
         public override void DescriptionPouvoir(List<string> description)
         {
             throw new NotImplementedException();
