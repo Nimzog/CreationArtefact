@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreationArtefact", "CreationArtefact\CreationArtefact.csproj", "{DF950B4E-D23F-4B49-81F7-AF18BBA71925}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreationTechniqueKi", "..\CreationTechniqueKi\CreationTechniqueKi\CreationTechniqueKi.csproj", "{FEFC49A1-5D0C-43D9-A856-20118DFEE8C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DF950B4E-D23F-4B49-81F7-AF18BBA71925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF950B4E-D23F-4B49-81F7-AF18BBA71925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF950B4E-D23F-4B49-81F7-AF18BBA71925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEFC49A1-5D0C-43D9-A856-20118DFEE8C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEFC49A1-5D0C-43D9-A856-20118DFEE8C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEFC49A1-5D0C-43D9-A856-20118DFEE8C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEFC49A1-5D0C-43D9-A856-20118DFEE8C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

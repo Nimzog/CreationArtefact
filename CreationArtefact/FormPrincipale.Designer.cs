@@ -188,7 +188,7 @@
             this.richTextBoxDescArtefact.Size = new System.Drawing.Size(393, 498);
             this.richTextBoxDescArtefact.TabIndex = 7;
             this.richTextBoxDescArtefact.Text = "";
-            this.richTextBoxDescArtefact.TextChanged += new System.EventHandler(this.richTextBoxDescArtefact_TextChanged);
+            this.richTextBoxDescArtefact.TextChanged += new System.EventHandler(this.RichTextBoxDescArtefact_TextChanged);
             // 
             // ComboBoxFacette
             // 

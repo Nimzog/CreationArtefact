@@ -736,7 +736,7 @@ namespace CreationArtefact
             }
         }
 
-        private void richTextBoxDescArtefact_TextChanged(object sender, EventArgs e)
+        private void RichTextBoxDescArtefact_TextChanged(object sender, EventArgs e)
         {
 
         }
